@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="125.0" layoutY="66.0" text="RICERCA LAVORATORE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="32.0" />
+         </font>
+      </Label>
+      <Label layoutX="112.0" layoutY="150.0" text="Nome" textFill="WHITE" />
+      <Label layoutX="346.0" layoutY="150.0" text="Cognome" textFill="WHITE" />
+      <TextField fx:id="nomeS_field" layoutX="113.0" layoutY="182.0" />
+      <TextField fx:id="cognomeS_field" layoutX="346.0" layoutY="182.0" />
+      <Label layoutX="112.0" layoutY="238.0" text="Codice fiscale" textFill="WHITE" />
+      <TextField fx:id="codFis_field" layoutX="113.0" layoutY="270.0" prefHeight="25.0" prefWidth="208.0" />
+      <Button fx:id="search_button" layoutX="413.0" layoutY="255.0" mnemonicParsing="false" onAction="#searchAction" prefHeight="40.0" prefWidth="80.0" style="-fx-background-color: #ffc900;" text="RICERCA" />
+   </children>
+</Pane>
