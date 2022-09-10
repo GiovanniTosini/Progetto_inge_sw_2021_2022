@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+      prefWidth="600.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/18"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginapp.HelloController">
+    <children>
+        <Label layoutX="56.0" layoutY="33.0" text="DISPONIBILITÀ ZONE E PERIODI" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="32.0"/>
+            </font>
+        </Label>
+        <Label layoutX="239.0" layoutY="106.0" text="Disponibilità comuni" textFill="WHITE"/>
+        <ComboBox fx:id="disp_field" layoutX="239.0" layoutY="139.0" prefWidth="150.0" promptText="Seleziona comune"/>
+        <Button layoutX="239.0" layoutY="213.0" mnemonicParsing="false" onAction="#saveComune" prefHeight="40.0"
+                prefWidth="150.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI / RIMUOVI"/>
+        <Label layoutX="412.0" layoutY="106.0" text="Tabella comuni disponibili" textFill="WHITE"/>
+        <TextArea fx:id="textAreaComune" editable="false" layoutX="413.0" layoutY="142.0" prefHeight="111.0"
+                  prefWidth="138.0" promptText="Nessun comune aggiunto"/>
+        <Label layoutX="54.0" layoutY="108.0" text="Periodo da:" textFill="WHITE"/>
+        <TextField fx:id="giornoP_field" layoutX="56.0" layoutY="140.0" prefHeight="25.0" prefWidth="33.0"/>
+        <TextField fx:id="meseP_field" layoutX="98.0" layoutY="140.0" prefHeight="25.0" prefWidth="33.0"/>
+        <TextField fx:id="annoP_field" layoutX="139.0" layoutY="140.0" prefHeight="25.0" prefWidth="59.0"/>
+        <Label layoutX="64.0" layoutY="167.0" text="GG" textFill="WHITE"/>
+        <Label layoutX="101.0" layoutY="167.0" text="MM" textFill="WHITE"/>
+        <Label layoutX="153.0" layoutY="167.0" text="AAAA" textFill="WHITE"/>
+        <TextField fx:id="giornoP2_field" layoutX="59.0" layoutY="215.0" prefHeight="25.0" prefWidth="33.0"/>
+        <TextField fx:id="meseP2_field" layoutX="101.0" layoutY="215.0" prefHeight="25.0" prefWidth="33.0"/>
+        <TextField fx:id="annoP2_field" layoutX="142.0" layoutY="215.0" prefHeight="25.0" prefWidth="59.0"/>
+        <Label layoutX="67.0" layoutY="242.0" text="GG" textFill="WHITE"/>
+        <Label layoutX="104.0" layoutY="242.0" text="MM" textFill="WHITE"/>
+        <Label layoutX="156.0" layoutY="242.0" text="AAAA" textFill="WHITE"/>
+        <Label layoutX="62.0" layoutY="190.0" text="a:" textFill="WHITE"/>
+        <Button layoutX="131.0" layoutY="305.0" mnemonicParsing="false" onAction="#save3Action" prefHeight="40.0"
+                prefWidth="150.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA"/>
+        <Button layoutX="344.0" layoutY="305.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="40.0"
+                prefWidth="109.0" style="-fx-background-color: #ffc900;" text="EXIT"/>
+    </children>
+</Pane>

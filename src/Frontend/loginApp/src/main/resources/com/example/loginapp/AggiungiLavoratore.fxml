@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0"
+      prefWidth="1253.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/18"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.loginapp.HelloController">
+    <children>
+        <Label layoutX="437.0" layoutY="51.0" text="AGGIUNGI LAVORATORE" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="32.0"/>
+            </font>
+        </Label>
+        <Label layoutX="86.0" layoutY="140.0" text="Nome" textFill="WHITE"/>
+        <Label layoutX="316.0" layoutY="140.0" text="Cognome" textFill="WHITE"/>
+        <Label layoutX="541.0" layoutY="140.0" text="Luogo di Nascita" textFill="WHITE"/>
+        <Label layoutX="762.0" layoutY="140.0" text="Data di nascita" textFill="WHITE"/>
+        <Label layoutX="989.0" layoutY="140.0" text="Nazionalità" textFill="WHITE"/>
+        <Label layoutX="542.0" layoutY="255.0" text="Telefono" textFill="WHITE"/>
+        <Label layoutX="762.0" layoutY="255.0" text="Email" textFill="WHITE"/>
+        <Label layoutX="990.0" layoutY="255.0" text="Esperienze precedenti" textFill="WHITE"/>
+        <Label layoutX="88.0" layoutY="370.0" text="Lingue parlate" textFill="WHITE"/>
+        <Label layoutX="604.0" layoutY="375.0" text="Patente di guida" textFill="WHITE"/>
+        <Label layoutX="450.0" layoutY="546.0" text="Persona da avvisare in caso di emergenza:" textFill="WHITE">
+            <font>
+                <Font size="19.0"/>
+            </font>
+        </Label>
+        <Label layoutX="86.0" layoutY="598.0" text="Nome" textFill="WHITE"/>
+        <Label layoutX="319.0" layoutY="598.0" text="Cognome" textFill="WHITE"/>
+        <Label layoutX="542.0" layoutY="598.0" text="Telefono" textFill="WHITE"/>
+        <Label layoutX="760.0" layoutY="598.0" text="Email" textFill="WHITE"/>
+        <TextField fx:id="nome_field" layoutX="87.0" layoutY="172.0"/>
+        <TextField fx:id="cognome_field" layoutX="316.0" layoutY="172.0"/>
+        <TextField fx:id="luogo_field" layoutX="542.0" layoutY="172.0"/>
+        <TextField fx:id="giorno_field" layoutX="760.0" layoutY="172.0" prefHeight="25.0" prefWidth="33.0"/>
+        <TextField fx:id="nazio_field" layoutX="990.0" layoutY="172.0"/>
+        <TextField fx:id="via_field" layoutX="87.0" layoutY="287.0" prefHeight="25.0" prefWidth="149.0"/>
+        <TextField fx:id="tel_field" layoutX="542.0" layoutY="287.0"/>
+        <TextField fx:id="email_field" layoutX="761.0" layoutY="287.0"/>
+        <TextField fx:id="esp_field" layoutX="990.0" layoutY="287.0"/>
+        <TextField fx:id="nome2_field" layoutX="87.0" layoutY="636.0"/>
+        <TextField fx:id="cognome2_field" layoutX="319.0" layoutY="636.0"/>
+        <TextField fx:id="tel2_field" layoutX="542.0" layoutY="636.0"/>
+        <TextField fx:id="email2_field" layoutX="760.0" layoutY="636.0"/>
+        <TextField fx:id="mese_field" layoutX="802.0" layoutY="172.0" prefHeight="25.0" prefWidth="33.0"/>
+        <TextField fx:id="anno_field" layoutX="843.0" layoutY="172.0" prefHeight="25.0" prefWidth="59.0"/>
+        <Label layoutX="768.0" layoutY="199.0" text="GG" textFill="WHITE"/>
+        <Label layoutX="805.0" layoutY="199.0" text="MM" textFill="WHITE"/>
+        <Label layoutX="857.0" layoutY="199.0" text="AAAA" textFill="WHITE"/>
+        <TextField fx:id="prov_field" layoutX="402.0" layoutY="287.0" prefHeight="25.0" prefWidth="52.0"/>
+        <TextField fx:id="citta_field" layoutX="245.0" layoutY="287.0" prefHeight="25.0" prefWidth="149.0"/>
+        <Label layoutX="88.0" layoutY="255.0" text="Via" textFill="WHITE"/>
+        <Label layoutX="245.0" layoutY="255.0" text="Città" textFill="WHITE"/>
+        <Label layoutX="403.0" layoutY="255.0" text="Provincia" textFill="WHITE"/>
+        <Button layoutX="981.0" layoutY="621.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="40.0"
+                prefWidth="149.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA"/>
+        <CheckBox fx:id="lingue_field" layoutX="90.0" layoutY="407.0" mnemonicParsing="false" text="Italiano"
+                  textFill="WHITE"/>
+        <ComboBox fx:id="patente_field" accessibleText="A" layoutX="604.0" layoutY="408.0" prefWidth="150.0"
+                  promptText="Seleziona patente"/>
+        <CheckBox layoutX="173.0" layoutY="408.0" mnemonicParsing="false" text="Albanese" textFill="WHITE"/>
+        <CheckBox layoutX="258.0" layoutY="408.0" mnemonicParsing="false" text="Francese" textFill="WHITE"/>
+        <CheckBox layoutX="342.0" layoutY="409.0" mnemonicParsing="false" text="Sloveno" textFill="WHITE"/>
+        <CheckBox layoutX="426.0" layoutY="409.0" mnemonicParsing="false" text="Tedesco" textFill="WHITE"/>
+        <CheckBox layoutX="91.0" layoutY="447.0" mnemonicParsing="false" text="Inglese" textFill="WHITE"/>
+        <CheckBox layoutX="173.0" layoutY="449.0" mnemonicParsing="false" text="Arabo" textFill="WHITE"/>
+        <CheckBox layoutX="258.0" layoutY="449.0" mnemonicParsing="false" text="Rumeno" textFill="WHITE"/>
+        <CheckBox layoutX="342.0" layoutY="449.0" mnemonicParsing="false" text="Cinese" textFill="WHITE"/>
+        <Label layoutX="834.0" layoutY="377.0" text="Automunito" textFill="WHITE"/>
+        <RadioButton fx:id="auto_field" layoutX="835.0" layoutY="410.0" mnemonicParsing="false" text="Sì"
+                     textFill="WHITE">
+            <toggleGroup>
+                <ToggleGroup fx:id="automunito"/>
+            </toggleGroup>
+        </RadioButton>
+        <RadioButton fx:id="auto_field2" layoutX="889.0" layoutY="410.0" mnemonicParsing="false" selected="true"
+                     text="No" textFill="WHITE" toggleGroup="$automunito"/>
+        <CheckBox layoutX="427.0" layoutY="450.0" mnemonicParsing="false" text="Spagnolo" textFill="WHITE"/>
+    </children>
+</Pane>
