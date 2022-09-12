@@ -1,9 +1,9 @@
 package backend;
 
 public class Date {
-    private final int day;
-    private final int month;
-    private final int year;
+    private int day;
+    private int month;
+    private int year;
 
     private static int daysInMonth[] = {
             31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31
@@ -42,6 +42,7 @@ public class Date {
     }
 
     public int compareTo(Date other) {
+        //maggiore se this viene dopo di other
         int diff = year - other.year;
         if (diff != 0)
             return diff;
@@ -63,5 +64,17 @@ public class Date {
     private static boolean isLeapYear(int year) {
         return year % 4 == 0 &&
                 (year % 100 != 0 || year % 400 == 0);
+    }
+
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 }

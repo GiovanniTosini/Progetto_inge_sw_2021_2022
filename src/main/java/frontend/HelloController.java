@@ -1,5 +1,8 @@
 package frontend;
 
+import backend.Date;
+import backend.Periodo;
+import backend.Residenza;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,10 +15,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.util.*;
 
 public class HelloController implements Initializable {
 
@@ -23,6 +28,8 @@ public class HelloController implements Initializable {
     private Scene scene;
 
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
+    Set<String> comuni = new HashSet<>();
+    Map<Periodo,Set<String>> mappaPeriodi = new HashMap();
 
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
@@ -49,15 +56,6 @@ public class HelloController implements Initializable {
 
     @FXML
     TextField luogo_field;
-
-    @FXML
-    TextField giorno_field;
-
-    @FXML
-    TextField mese_field;
-
-    @FXML
-    TextField anno_field;
 
     @FXML
     TextField nazio_field;
@@ -93,7 +91,34 @@ public class HelloController implements Initializable {
     TextField email2_field;
 
     @FXML
-    CheckBox lingue_field;
+    CheckBox ita_field;
+
+    @FXML
+    CheckBox al_field;
+
+    @FXML
+    CheckBox fr_field;
+
+    @FXML
+    CheckBox slo_field;
+
+    @FXML
+    CheckBox de_field;
+
+    @FXML
+    CheckBox en_field;
+
+    @FXML
+    CheckBox ar_field;
+
+    @FXML
+    CheckBox ru_field;
+
+    @FXML
+    CheckBox cin_field;
+
+    @FXML
+    CheckBox spa_field;
 
     @FXML
     RadioButton auto_field;
@@ -114,42 +139,6 @@ public class HelloController implements Initializable {
     TextArea textAreaComune;
 
     @FXML
-    TextField giornoP_field;
-
-    @FXML
-    TextField meseP_field;
-
-    @FXML
-    TextField annoP_field;
-
-    @FXML
-    TextField giornoP2_field;
-
-    @FXML
-    TextField meseP2_field;
-
-    @FXML
-    TextField annoP2_field;
-
-    @FXML
-    TextField giorno2_field;
-
-    @FXML
-    TextField mese2_field;
-
-    @FXML
-    TextField anno2_field;
-
-    @FXML
-    TextField giorno3_field;
-
-    @FXML
-    TextField mese3_field;
-
-    @FXML
-    TextField anno3_field;
-
-    @FXML
     TextField nomeA_field;
 
     @FXML
@@ -161,6 +150,15 @@ public class HelloController implements Initializable {
     @FXML
     TextField cash_field;
 
+    @FXML
+    DatePicker data_field;
+
+    @FXML
+    DatePicker dataP_field;
+
+    @FXML
+    DatePicker dataP2_field;
+
 
     //fare con database (check admin)
     String username = "admin";
@@ -169,13 +167,7 @@ public class HelloController implements Initializable {
     String nome;
     String cognome;
     String luogo;
-    String giorno;
-    String mese;
-    String anno;
     String nazio;
-    String via;
-    String citta;
-    String prov;
     String tel;
     String email;
     String esp;
@@ -183,29 +175,22 @@ public class HelloController implements Initializable {
     String cognome2;
     String tel2;
     String email2;
-    String lingue;
     String patente;
     Boolean auto = false;
     String disp;
     String codFisS;
     String nomeS;
     String cognomeS;
-    String giornoP;
-    String meseP;
-    String annoP;
-    String giornoP2;
-    String meseP2;
-    String annoP2;
-    String giorno2;
-    String mese2;
-    String anno2;
-    String giorno3;
-    String mese3;
-    String anno3;
     String nomeA;
     String luogoA;
     String mansioni;
     String cash;
+    Date birthDate = new Date(01,01,2000);
+    Date inizioPeriodoDate = new Date(01,01,2000);
+    Date finePeriodoDate = new Date(01,01,2000);
+
+    public HelloController() throws Exception {
+    }
 
     public void loginAction(ActionEvent actionEvent) throws IOException {
 
@@ -252,16 +237,15 @@ public class HelloController implements Initializable {
 
     public void saveAction(ActionEvent actionEvent) throws IOException {
 
+        Set<String> lingue = new HashSet<>();
+
         nome = nome_field.getText();
         cognome = cognome_field.getText();
         luogo = luogo_field.getText();
-        giorno = giorno_field.getText();
-        mese = mese_field.getText();
-        anno = anno_field.getText();
         nazio = nazio_field.getText();
-        via = via_field.getText();
-        citta = citta_field.getText();
-        prov = prov_field.getText();
+
+        Residenza residenza = new Residenza(via_field.getText(), citta_field.getText(), prov_field.getText());
+
         tel = tel_field.getText();
         email = email_field.getText();
         esp = esp_field.getText();
@@ -270,9 +254,63 @@ public class HelloController implements Initializable {
         tel2 = tel2_field.getText();
         email2 = email2_field.getText();
 
-        if (lingue_field.isSelected()) {
+        if (ita_field.isSelected()) {
 
-            lingue = lingue_field.getText();
+            lingue.add(ita_field.getText());
+
+        }
+
+        if (al_field.isSelected()) {
+
+            lingue.add(al_field.getText());
+
+        }
+
+        if (fr_field.isSelected()) {
+
+            lingue.add(fr_field.getText());
+
+        }
+
+        if (slo_field.isSelected()) {
+
+            lingue.add(slo_field.getText());
+
+        }
+
+        if (de_field.isSelected()) {
+
+            lingue.add(de_field.getText());
+
+        }
+
+        if (en_field.isSelected()) {
+
+            lingue.add(en_field.getText());
+
+        }
+
+        if (ar_field.isSelected()) {
+
+            lingue.add(ar_field.getText());
+
+        }
+
+        if (ru_field.isSelected()) {
+
+            lingue.add(ru_field.getText());
+
+        }
+
+        if (cin_field.isSelected()) {
+
+            lingue.add(cin_field.getText());
+
+        }
+
+        if (spa_field.isSelected()) {
+
+            lingue.add(spa_field.getText());
 
         }
 
@@ -288,15 +326,8 @@ public class HelloController implements Initializable {
 
         }
 
-        if (disp_field.getSelectionModel().getSelectedItem() != null) {
-
-            //disp = textAreaComune.getText();
-
-        }
-
-        System.out.println(nome + "\n" + cognome + "\n" + luogo + "\n" + giorno + "\n" + mese + "\n" + anno +
-                "\n" + nazio + "\n" + via + "\t" + citta + "\t" + prov + "\n" + tel + "\n" + email + "\n" + esp +
-                "\n" + nome2 + "\n" + cognome2 + "\n" + tel2 + "\n" + email2 + "\n" + lingue + "\n" + auto + "\n"
+        System.out.println(nome + "\n" + cognome + "\n" + luogo + "\n" + "\n" + nazio + "\n" + "\n" + tel + "\n" + email + "\n" + esp +
+                "\n" + nome2 + "\n" + cognome2 + "\n" + tel2 + "\n" + email2 + "\n" + "\n" + auto + "\n"
                 + patente + "\n" + disp);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
@@ -330,19 +361,12 @@ public class HelloController implements Initializable {
 
     public void save2Action(ActionEvent actionEvent) throws IOException {
 
-        giorno2 = giorno2_field.getText();
-        mese2 = mese2_field.getText();
-        anno2 = anno2_field.getText();
-        giorno3 = giorno3_field.getText();
-        mese3 = mese3_field.getText();
-        anno3 = anno3_field.getText();
         nomeA = nomeA_field.getText();
         luogoA = luogoA_field.getText();
         mansioni = mansioni_field.getText();
         cash = cash_field.getText();
 
-        System.out.println(giorno2 + "\n" + mese2 + "\n" + anno2 + "\n" + giorno3 + "\n" + mese3 + "\n" + anno3 + "\n"
-                + nomeA + "\n" + luogoA + "\n" + mansioni + "\n" + cash + "\n");
+        System.out.println(nomeA + "\n" + luogoA + "\n" + mansioni + "\n" + cash + "\n");
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -396,17 +420,21 @@ public class HelloController implements Initializable {
 
         //salvo parametri periodi e zone
 
-        System.out.println("Salvo date e periodi:\n");
+        Periodo periodo = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
-        giornoP = giornoP_field.getText();
-        meseP = meseP_field.getText();
-        annoP = annoP_field.getText();
-        giornoP2 = giornoP2_field.getText();
-        meseP2 = meseP2_field.getText();
-        annoP2 = annoP2_field.getText();
+        String testo = textAreaComune.getText();
 
-        System.out.println("da: " + giornoP + " / " + meseP + " / " + annoP + " a: " + giornoP2 + " / " + meseP2 + " / "
-                + annoP2 + "\n" + "Nei comuni di: " + textAreaComune.getText());
+        String[] arrComuni = testo.split("\n");
+
+        for (String stringa: arrComuni) {
+            comuni.add(stringa);
+        }
+
+        //inizializzazione mappa
+
+        mappaPeriodi.put(periodo,comuni);
+
+        System.out.println(mappaPeriodi);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -441,6 +469,60 @@ public class HelloController implements Initializable {
         //da implementare
 
         System.out.println("SCEMO CHI LEGGE (SIETE TUTTI E DUE DEI TACCHINI FIGA)");
+
+    }
+
+    public void setBirthDate(ActionEvent actionEvent) throws Exception {
+
+        int day;
+        int month;
+        int year;
+
+        LocalDate mydate = data_field.getValue();
+
+        day = mydate.getDayOfMonth();
+        month = mydate.getMonthValue();
+        year = mydate.getYear();
+
+        birthDate.setDay(day);
+        birthDate.setMonth(month);
+        birthDate.setYear(year);
+
+    }
+
+    public void setInizioPeriodo(ActionEvent actionEvent) {
+
+        int day;
+        int month;
+        int year;
+
+        LocalDate mydate = dataP_field.getValue();
+
+        day = mydate.getDayOfMonth();
+        month = mydate.getMonthValue();
+        year = mydate.getYear();
+
+        inizioPeriodoDate.setDay(day);
+        inizioPeriodoDate.setMonth(month);
+        inizioPeriodoDate.setYear(year);
+
+    }
+
+    public void setFinePeriodo(ActionEvent actionEvent) {
+
+        int day;
+        int month;
+        int year;
+
+        LocalDate mydate = dataP2_field.getValue();
+
+        day = mydate.getDayOfMonth();
+        month = mydate.getMonthValue();
+        year = mydate.getYear();
+
+        finePeriodoDate.setDay(day);
+        finePeriodoDate.setMonth(month);
+        finePeriodoDate.setYear(year);
 
     }
 }
