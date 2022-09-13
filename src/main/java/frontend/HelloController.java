@@ -1,8 +1,8 @@
 package frontend;
 
 import backend.Date;
-import backend.Periodo;
-import backend.Residenza;
+import backend.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -16,6 +16,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -27,9 +28,13 @@ public class HelloController implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    File file = new File("lavoratori.json");
+
+    ObjectMapper objectMapper = new ObjectMapper();
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
-    static Map<Periodo,Set<String>> mappaPeriodi = new HashMap();
+    static Disponibilità disponibilità;
+    List<Lavoratore> listaLavoratori = new ArrayList<>();
 
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
@@ -169,7 +174,6 @@ public class HelloController implements Initializable {
     //fare con database (check admin)
     String username = "admin";
     String password = "admin";
-    String codFis = "fstgrl01e25d434q";
     String nome;
     String cognome;
     String luogo;
@@ -249,10 +253,12 @@ public class HelloController implements Initializable {
 
     }
 
-    public void saveAction(ActionEvent actionEvent) throws IOException {
+
+    //salva prima parte del lavoratore tranne mappaperiodi
+    public void saveAction(ActionEvent actionEvent) throws Exception {
 
         Set<String> lingue = new HashSet<>();
-
+        Set<String> esp = new HashSet<>();
         nome = nome_field.getText();
         cognome = cognome_field.getText();
         luogo = luogo_field.getText();
@@ -262,7 +268,7 @@ public class HelloController implements Initializable {
 
         tel = tel_field.getText();
         email = email_field.getText();
-        esp = esp_field.getText();
+        esp.add(esp_field.getText());
         nome2 = nome2_field.getText();
         cognome2 = cognome2_field.getText();
         tel2 = tel2_field.getText();
@@ -340,9 +346,13 @@ public class HelloController implements Initializable {
 
         }
 
-        System.out.println(nome + "\n" + cognome + "\n" + luogo + "\n" + "\n" + nazio + "\n" + "\n" + tel + "\n" + email + "\n" + esp +
-                "\n" + nome2 + "\n" + cognome2 + "\n" + tel2 + "\n" + email2 + "\n" + "\n" + auto + "\n"
-                + patente + "\n" + disp);
+        PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
+
+        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, mappaPeriodi, esp, personaemergenza);
+
+        listaLavoratori.add(lavoratore);
+
+        objectMapper.writeValue(file, listaLavoratori);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -431,6 +441,7 @@ public class HelloController implements Initializable {
 
     }
 
+    //salva anche parte di mappaperiodi in json
     public void save3Action(ActionEvent actionEvent) throws IOException {
 
         //salvo parametri periodi e zone
@@ -449,7 +460,12 @@ public class HelloController implements Initializable {
 
         mappaPeriodi.put(periodo,comuni);
 
-        System.out.println(mappaPeriodi);
+
+        listaLavoratori = objectMapper.readValue(file, ArrayList.class);
+
+
+
+        objectMapper.writeValue(file, listaLavoratori);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

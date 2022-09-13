@@ -6,4 +6,5 @@ module frontend{
 
     opens frontend to javafx.fxml;
     exports frontend;
+    exports backend;
 }
