@@ -29,7 +29,7 @@ public class HelloController implements Initializable {
 
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
-    Map<Periodo,Set<String>> mappaPeriodi = new HashMap();
+    static Map<Periodo,Set<String>> mappaPeriodi = new HashMap();
 
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
@@ -159,6 +159,12 @@ public class HelloController implements Initializable {
     @FXML
     DatePicker dataP2_field;
 
+    @FXML
+    DatePicker data2_field;
+
+    @FXML
+    DatePicker data3_field;
+
 
     //fare con database (check admin)
     String username = "admin";
@@ -185,19 +191,27 @@ public class HelloController implements Initializable {
     String luogoA;
     String mansioni;
     String cash;
-    Date birthDate = new Date(01,01,2000);
-    Date inizioPeriodoDate = new Date(01,01,2000);
-    Date finePeriodoDate = new Date(01,01,2000);
+    Date birthDate;
+    Date inizioPeriodoDate;
+    Date finePeriodoDate;
 
-    public HelloController() throws Exception {
+    {
+        try {
+            birthDate = new Date(01,01,2000);
+            inizioPeriodoDate = new Date(01,01,2000);
+            finePeriodoDate = new Date(01,01,2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void loginAction(ActionEvent actionEvent) throws IOException {
 
         String username_text = username_field.getText();
         String password_text = password_field.getText();
 
-        //check con database
+        //check con jackson
         if (username_text.compareTo(username) == 0 && password_text.compareTo(password) == 0) {
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
@@ -365,6 +379,7 @@ public class HelloController implements Initializable {
         luogoA = luogoA_field.getText();
         mansioni = mansioni_field.getText();
         cash = cash_field.getText();
+        Periodo periodo2 = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
         System.out.println(nomeA + "\n" + luogoA + "\n" + mansioni + "\n" + cash + "\n");
 
@@ -382,7 +397,7 @@ public class HelloController implements Initializable {
         cognomeS = cognomeS_field.getText();
         codFisS = codFis_field.getText();
 
-        if (nomeS.compareTo(username) == 0 && cognomeS.compareTo(password) == 0 && codFisS.compareTo(codFis) == 0) {
+        if (nomeS.compareTo(username) == 0 && cognomeS.compareTo(password) == 0) {
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AggiornaLavoro.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -446,6 +461,8 @@ public class HelloController implements Initializable {
 
     public void exitAction(ActionEvent actionEvent) throws IOException {
 
+        System.out.println(mappaPeriodi);
+
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -474,55 +491,52 @@ public class HelloController implements Initializable {
 
     public void setBirthDate(ActionEvent actionEvent) throws Exception {
 
-        int day;
-        int month;
-        int year;
-
         LocalDate mydate = data_field.getValue();
 
-        day = mydate.getDayOfMonth();
-        month = mydate.getMonthValue();
-        year = mydate.getYear();
-
-        birthDate.setDay(day);
-        birthDate.setMonth(month);
-        birthDate.setYear(year);
+        birthDate.setDay(mydate.getDayOfMonth());
+        birthDate.setMonth(mydate.getMonthValue());
+        birthDate.setYear(mydate.getYear());
 
     }
 
     public void setInizioPeriodo(ActionEvent actionEvent) {
 
-        int day;
-        int month;
-        int year;
-
         LocalDate mydate = dataP_field.getValue();
 
-        day = mydate.getDayOfMonth();
-        month = mydate.getMonthValue();
-        year = mydate.getYear();
-
-        inizioPeriodoDate.setDay(day);
-        inizioPeriodoDate.setMonth(month);
-        inizioPeriodoDate.setYear(year);
+        inizioPeriodoDate.setDay(mydate.getDayOfMonth());
+        inizioPeriodoDate.setMonth(mydate.getMonthValue());
+        inizioPeriodoDate.setYear(mydate.getYear());
 
     }
 
     public void setFinePeriodo(ActionEvent actionEvent) {
 
-        int day;
-        int month;
-        int year;
-
         LocalDate mydate = dataP2_field.getValue();
 
-        day = mydate.getDayOfMonth();
-        month = mydate.getMonthValue();
-        year = mydate.getYear();
-
-        finePeriodoDate.setDay(day);
-        finePeriodoDate.setMonth(month);
-        finePeriodoDate.setYear(year);
+        finePeriodoDate.setDay(mydate.getDayOfMonth());
+        finePeriodoDate.setMonth(mydate.getMonthValue());
+        finePeriodoDate.setYear(mydate.getYear());
 
     }
+
+    public void setInizioPeriodo2(ActionEvent actionEvent) {
+
+        LocalDate mydate = data2_field.getValue();
+
+        inizioPeriodoDate.setDay(mydate.getDayOfMonth());
+        inizioPeriodoDate.setMonth(mydate.getMonthValue());
+        inizioPeriodoDate.setYear(mydate.getYear());
+
+    }
+
+    public void setFinePeriodo2(ActionEvent actionEvent) {
+
+        LocalDate mydate = data3_field.getValue();
+
+        finePeriodoDate.setDay(mydate.getDayOfMonth());
+        finePeriodoDate.setMonth(mydate.getMonthValue());
+        finePeriodoDate.setYear(mydate.getYear());
+
+    }
+
 }
