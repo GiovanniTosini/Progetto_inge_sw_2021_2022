@@ -41,8 +41,9 @@ public class Date {
                 && this.year == other.year;
     }
 
+    //maggiore se this viene dopo di other
+
     public int compareTo(Date other) {
-        //maggiore se this viene dopo di other
         int diff = year - other.year;
         if (diff != 0)
             return diff;

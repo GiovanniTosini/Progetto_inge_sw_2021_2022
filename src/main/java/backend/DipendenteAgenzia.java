@@ -14,4 +14,6 @@ public class DipendenteAgenzia extends Persona{
         this.login = login;
         this.password = password;
     }
+
+
 }

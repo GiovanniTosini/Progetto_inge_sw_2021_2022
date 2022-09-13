@@ -7,6 +7,10 @@ public class Periodo {
     public Periodo(Date inizioPeriodo, Date finePeriodo) {
         this.inizioPeriodo = inizioPeriodo;
         this.finePeriodo = finePeriodo;
+
+        //se l'inizio periodo viene dopo il fine periodo non va bene
+        if(inizioPeriodo.compareTo(finePeriodo) > 0)
+            throw new IllegalArgumentException("Inizio periodo incorretto");
     }
 
     //torna true se il periodo this è contenuto all interno del periodo other
