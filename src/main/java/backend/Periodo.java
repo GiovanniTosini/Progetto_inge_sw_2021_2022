@@ -27,4 +27,12 @@ public class Periodo {
                 ", finePeriodo=" + finePeriodo +
                 '}';
     }
+
+    public Date getInizioPeriodo() {
+        return inizioPeriodo;
+    }
+
+    public Date getFinePeriodo() {
+        return finePeriodo;
+    }
 }

@@ -43,6 +43,16 @@ public class Persona {
                 string.contains("6") || string.contains("7") || string.contains("8") || string.contains("9");
     }
 
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nome='" + nome + '\'' +
+                ", cognome='" + cognome + '\'' +
+                ", indirizzoEmail='" + indirizzoEmail + '\'' +
+                ", numeroTelefono='" + numeroTelefono + '\'' +
+                '}';
+    }
+
     public String getNome() {
         return nome;
     }

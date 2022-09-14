@@ -2,6 +2,7 @@ package frontend;
 
 import backend.Date;
 import backend.*;
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,7 +34,8 @@ public class HelloController implements Initializable {
     ObjectMapper objectMapper = new ObjectMapper();
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
-    static Disponibilità disponibilità;
+    static List<Disponibilità> disponibilità = new ArrayList<>();
+
     List<Lavoratore> listaLavoratori = new ArrayList<>();
 
     @FXML
@@ -266,6 +268,8 @@ public class HelloController implements Initializable {
 
         Residenza residenza = new Residenza(via_field.getText(), citta_field.getText(), prov_field.getText());
 
+        System.out.println(residenza);
+
         tel = tel_field.getText();
         email = email_field.getText();
         esp.add(esp_field.getText());
@@ -348,7 +352,9 @@ public class HelloController implements Initializable {
 
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
 
-        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, mappaPeriodi, esp, personaemergenza);
+        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esp, personaemergenza);
+
+        System.out.println(lavoratore);
 
         listaLavoratori.add(lavoratore);
 
@@ -456,28 +462,31 @@ public class HelloController implements Initializable {
             comuni.add(stringa);
         }
 
-        //inizializzazione mappa
+        Disponibilità newdisponibilità = new Disponibilità(periodo,comuni);
 
-        mappaPeriodi.put(periodo,comuni);
+        disponibilità.add(newdisponibilità);
 
+        System.out.println(disponibilità);
 
-        listaLavoratori = objectMapper.readValue(file, ArrayList.class);
-
-
-
-        objectMapper.writeValue(file, listaLavoratori);
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        dataP_field.getEditor().clear();
+        dataP2_field.getEditor().clear();
+        disp_field.getSelectionModel().clearSelection();
+        textAreaComune.clear();
 
     }
 
     public void exitAction(ActionEvent actionEvent) throws IOException {
 
-        System.out.println(mappaPeriodi);
+        //inizializzazione nuova disponibilità
+
+        listaLavoratori = objectMapper.readValue(file, new TypeReference<List<Lavoratore>>() {});
+
+        Lavoratore newlavoratore = listaLavoratori.get(listaLavoratori.size()-1);
+
+        newlavoratore.setDisponibilità(disponibilità);
+
+        objectMapper.writeValue(file, listaLavoratori);
+
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

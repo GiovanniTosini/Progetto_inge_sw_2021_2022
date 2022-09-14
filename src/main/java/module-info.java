@@ -7,4 +7,6 @@ module frontend{
     opens frontend to javafx.fxml;
     exports frontend;
     exports backend;
+
+    opens backend to com.fasterxml.jackson.databind;
 }

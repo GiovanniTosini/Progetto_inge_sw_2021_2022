@@ -78,4 +78,24 @@ public class Date {
     public void setYear(int year) {
         this.year = year;
     }
+
+    public int getDay() {
+        return day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public static int[] getDaysInMonth() {
+        return daysInMonth;
+    }
+
+    public static String[] getItalianMonths() {
+        return italianMonths;
+    }
 }
