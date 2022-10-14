@@ -26,6 +26,8 @@ public class Date {
             throw new Exception("data illegale!");
     }
 
+    public Date(){}
+
     @Override
     public String toString() {
         return "Date{" +
@@ -98,4 +100,6 @@ public class Date {
     public static String[] getItalianMonths() {
         return italianMonths;
     }
+
+
 }

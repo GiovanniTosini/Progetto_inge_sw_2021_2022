@@ -13,6 +13,8 @@ public class Periodo {
             throw new IllegalArgumentException("Inizio periodo incorretto");
     }
 
+    public Periodo(){}
+
     //torna true se il periodo this è contenuto all interno del periodo other
     public boolean compareTo(Periodo other){
         if ((this.inizioPeriodo.compareTo(other.inizioPeriodo)>=0) && (this.finePeriodo.compareTo(other.finePeriodo)<=0))

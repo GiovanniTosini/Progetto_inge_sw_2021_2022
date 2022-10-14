@@ -13,6 +13,8 @@ public class Residenza {
                 throw new IllegalArgumentException("Parametri residenza errati");
     }
 
+    public Residenza(){}
+
     @Override
     public String toString() {
         return via + ", " + città + ", " + provincia;

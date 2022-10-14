@@ -2,7 +2,6 @@ package frontend;
 
 import backend.Date;
 import backend.*;
-import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -32,11 +31,12 @@ public class HelloController implements Initializable {
     File file = new File("lavoratori.json");
 
     ObjectMapper objectMapper = new ObjectMapper();
+
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
     static List<Disponibilità> disponibilità = new ArrayList<>();
 
-    List<Lavoratore> listaLavoratori = new ArrayList<>();
+    ListaLavoratori listaLavoratori = new ListaLavoratori();
 
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
@@ -356,7 +356,7 @@ public class HelloController implements Initializable {
 
         System.out.println(lavoratore);
 
-        listaLavoratori.add(lavoratore);
+        listaLavoratori.getListaLavoratori().add(lavoratore);
 
         objectMapper.writeValue(file, listaLavoratori);
 
@@ -397,7 +397,7 @@ public class HelloController implements Initializable {
         cash = cash_field.getText();
         Periodo periodo2 = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
-        System.out.println(nomeA + "\n" + luogoA + "\n" + mansioni + "\n" + cash + "\n");
+        System.out.println(nomeA + "\n" + luogoA + "\n" + mansioni + "\n" + cash + "\n" + periodo2 + "\n");
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -479,14 +479,13 @@ public class HelloController implements Initializable {
 
         //inizializzazione nuova disponibilità
 
-        listaLavoratori = objectMapper.readValue(file, new TypeReference<List<Lavoratore>>() {});
+        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
 
-        Lavoratore newlavoratore = listaLavoratori.get(listaLavoratori.size()-1);
+        Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
 
         newlavoratore.setDisponibilità(disponibilità);
 
         objectMapper.writeValue(file, listaLavoratori);
-
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

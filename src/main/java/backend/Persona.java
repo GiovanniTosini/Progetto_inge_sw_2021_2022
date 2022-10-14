@@ -17,6 +17,8 @@ public class Persona {
             throw new IllegalArgumentException("Nome, cognome o indirizzo email errati");
     }
 
+    public Persona(){}
+
     /*
     verifica dell'indirizzo email tramite regex per il grosso delle cose
     più verifica se è presente più di una @ (errore nel caso)

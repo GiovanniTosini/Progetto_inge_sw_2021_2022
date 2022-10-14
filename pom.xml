@@ -32,6 +32,12 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.13.4</version>
     </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>2.13.4</version>
+    </dependency>
+
   </dependencies>
   <name>Archetype - Progetto_inge_sw_2022</name>
   <url>http://maven.apache.org</url>

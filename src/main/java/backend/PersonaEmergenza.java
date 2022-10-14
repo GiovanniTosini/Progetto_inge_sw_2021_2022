@@ -9,6 +9,8 @@ public class PersonaEmergenza extends Persona{
             throw new IllegalArgumentException("Parametri persona emergenza errati");
     }
 
+    public PersonaEmergenza(){}
+
     public boolean numeroDiTelefonoCheck(String numero){
 
         if(numero.length() != 10)

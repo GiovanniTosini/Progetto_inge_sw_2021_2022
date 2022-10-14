@@ -34,6 +34,8 @@ public class Lavoratore extends Persona{
             throw new IllegalArgumentException("Parametri lavoratore errati");
     }
 
+    public Lavoratore(){}
+
     public boolean numeroDiTelefonoCheck(String numero){
 
         if(numero == null)
@@ -101,4 +103,7 @@ public class Lavoratore extends Persona{
     public PersonaEmergenza getPersonaEmergenza() {
         return personaEmergenza;
     }
+
+
+
 }

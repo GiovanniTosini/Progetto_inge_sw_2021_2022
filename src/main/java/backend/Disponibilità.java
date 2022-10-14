@@ -12,6 +12,8 @@ public class Disponibilità {
         this.comuni = comuni;
     }
 
+    public Disponibilità(){}
+
     @Override
     public String toString() {
         return "Disponibilità{" +

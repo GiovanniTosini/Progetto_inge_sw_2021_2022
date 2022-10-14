@@ -15,5 +15,6 @@ public class DipendenteAgenzia extends Persona{
         this.password = password;
     }
 
+    public DipendenteAgenzia(){}
 
 }
