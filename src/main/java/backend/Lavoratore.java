@@ -15,6 +15,8 @@ public class Lavoratore extends Persona{
     public List<Disponibilità> disponibilità;
     public Set<String> esperienze; //esperienze/specializzazioni del lavoratore
 
+    public List<Lavoro> lavoro; //elenco lavoro(<5 anni)
+    //TODO: aggiungere lavoro al costruttore...
     public Lavoratore(String nome, String cognome, String luogoDiNascita, String nazionalità, String indirizzoEmail, String numeroTelefono,
                       Date dataDiNascita, Residenza residenza, String patente, boolean automunito,
                       Set<String> lingueParlate, List<Disponibilità> disponibilità, Set<String> esperienze, PersonaEmergenza personaEmergenza) throws Exception {

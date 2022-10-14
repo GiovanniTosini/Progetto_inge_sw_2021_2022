@@ -81,7 +81,7 @@
       <TextArea fx:id="textAreaComune" editable="false" layoutX="516.0" layoutY="659.0" prefHeight="116.0" prefWidth="138.0" promptText="Nessun comune aggiunto" />
       <Label layoutX="102.0" layoutY="629.0" text="Periodo da:" textFill="WHITE" />
       <Label layoutX="102.0" layoutY="711.0" text="a:" textFill="WHITE" />
-      <Button layoutX="768.0" layoutY="732.0" mnemonicParsing="false" onAction="#save3Action" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI DISPONIBILITA" />
+      <Button layoutX="768.0" layoutY="732.0" mnemonicParsing="false" onAction="#saveAvailabilityAction" prefHeight="40.0" prefWidth="191.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI DISPONIBILITA" />
       <Button layoutX="1022.0" layoutY="732.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #ffc900;" text="SALVA" />
       <DatePicker fx:id="dataP_field" layoutX="102.0" layoutY="660.0" onAction="#setInizioPeriodo" promptText="Scegli una data" />
       <DatePicker fx:id="dataP2_field" layoutX="102.0" layoutY="742.0" onAction="#setFinePeriodo" promptText="Scegli una data" />

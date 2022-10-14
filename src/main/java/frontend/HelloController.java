@@ -211,7 +211,8 @@ public class HelloController implements Initializable {
         }
     }
 
-
+    //funzione che verifica i dati inseriti di login e ci porta ad afterlogin
+    //login -> afterlogin
     public void loginAction(ActionEvent actionEvent) throws IOException {
 
         String username_text = username_field.getText();
@@ -234,8 +235,10 @@ public class HelloController implements Initializable {
 
     }
 
-
-    public void addAction(ActionEvent actionEvent) throws IOException {
+    //ci porta ad aggiungilavoratore dopo afterlogin
+    //afterlogin -> aggiungilavoratore
+    //addWorkerAction
+    public void addWorkerAction(ActionEvent actionEvent) throws IOException {
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AggiungiLavoratore.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -245,7 +248,10 @@ public class HelloController implements Initializable {
 
     }
 
-    public void aggAction(ActionEvent actionEvent) throws IOException {
+    //funzione che viene richiamata con ricercalavoratore
+    // afterlogin -> ricercalavoratore
+    //searchWorkerAction
+    public void searchWorkerAction(ActionEvent actionEvent) throws IOException {
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("RicercaLavoratore.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -257,6 +263,9 @@ public class HelloController implements Initializable {
 
 
     //salva prima parte del lavoratore tranne mappaperiodi
+    //salva i dati del lavoratore, i dati del contatto di emergenza e gli scrive nel json
+    // aggiungilavoratore -> disponibilità
+    //saveWorkerAction
     public void saveAction(ActionEvent actionEvent) throws Exception {
 
         Set<String> lingue = new HashSet<>();
@@ -368,6 +377,7 @@ public class HelloController implements Initializable {
 
     }
 
+    //funzione che inizializza i campi della patente e delle province da selezionare
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -389,7 +399,10 @@ public class HelloController implements Initializable {
 
     }
 
-    public void save2Action(ActionEvent actionEvent) throws IOException {
+    //aggiorna lavoro
+    //aggioralavoro -> afterlogin
+    //updateWorkAction
+    public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
         nomeA = nomeA_field.getText();
         luogoA = luogoA_field.getText();
@@ -407,6 +420,8 @@ public class HelloController implements Initializable {
 
     }
 
+    //ricerva lavoro per aggiornare lavoratore
+    // ricercalavoratore -> aggiornalavoro
     public void searchAction(ActionEvent actionEvent) throws IOException {
 
         nomeS = nomeS_field.getText();
@@ -425,6 +440,7 @@ public class HelloController implements Initializable {
 
     }
 
+    //salvataggio comune in disponibilità
     public void saveComune(ActionEvent actionEvent) {
 
         if (disp_field.getSelectionModel().getSelectedItem() != null) {
@@ -447,8 +463,10 @@ public class HelloController implements Initializable {
 
     }
 
+    //salva disponibilità lavoratore in disponibilità
     //salva anche parte di mappaperiodi in json
-    public void save3Action(ActionEvent actionEvent) throws IOException {
+    //saveAvailabilityAction
+    public void saveAvailabilityAction(ActionEvent actionEvent) throws IOException {
 
         //salvo parametri periodi e zone
 
@@ -475,6 +493,8 @@ public class HelloController implements Initializable {
 
     }
 
+    //ritorna ad afterlogin e salva la disponibilità(comuni, e periodi)
+    //disponibilità -> afterlogin
     public void exitAction(ActionEvent actionEvent) throws IOException {
 
         //inizializzazione nuova disponibilità
@@ -495,7 +515,10 @@ public class HelloController implements Initializable {
 
     }
 
+    //ci porta in effettuaricerche da afterlogin
+    //afterlogin -> effettuaricerche
     public void ricercaAction(ActionEvent actionEvent) throws IOException {
+
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EffettuaRicerche.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -505,6 +528,7 @@ public class HelloController implements Initializable {
 
     }
 
+    //effettua ricerca lavoratore in effettuaricerche
     public void search2Action(ActionEvent actionEvent) {
 
         //da implementare

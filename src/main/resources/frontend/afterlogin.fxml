@@ -9,9 +9,9 @@
       prefWidth="600.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/18"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HelloController">
     <children>
-        <Button layoutX="204.0" layoutY="143.0" mnemonicParsing="false" onAction="#addAction" prefHeight="40.0"
+        <Button layoutX="204.0" layoutY="143.0" mnemonicParsing="false" onAction="#addWorkerAction" prefHeight="40.0"
                 prefWidth="190.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI LAVORATORI"/>
-        <Button layoutX="219.0" layoutY="218.0" mnemonicParsing="false" onAction="#aggAction" prefHeight="40.0"
+        <Button layoutX="219.0" layoutY="218.0" mnemonicParsing="false" onAction="#searchWorkerAction" prefHeight="40.0"
                 prefWidth="160.0" style="-fx-background-color: #ffc900;" text="AGGIORNA LAVORI"/>
         <Button layoutX="250.0" layoutY="296.0" mnemonicParsing="false" onAction="#ricercaAction" prefHeight="40.0"
                 prefWidth="100.0" style="-fx-background-color: ffc900;" text="RICERCA"/>
