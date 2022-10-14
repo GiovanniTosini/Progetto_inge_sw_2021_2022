@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb8d3ade-3d0a-43f8-a547-dcdd84be41c6" name="Changes" comment="" />
+    <list default="true" id="bb8d3ade-3d0a-43f8-a547-dcdd84be41c6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore2.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore2.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/HelloApplication.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -35,13 +41,13 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/haxel/Documents/GitHub/Progetto_inge_sw_2021_2022"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/haxel/Documents/GitHub/Progetto_inge_sw_2021_2022&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="frontend.HelloApplication" />
@@ -72,5 +78,16 @@
       <updated>1665739009231</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -54,7 +54,7 @@
       <Label layoutX="88.0" layoutY="255.0" text="Via" textFill="WHITE" />
       <Label layoutX="245.0" layoutY="255.0" text="Città" textFill="WHITE" />
       <Label layoutX="403.0" layoutY="255.0" text="Provincia" textFill="WHITE" />
-      <Button layoutX="981.0" layoutY="621.0" mnemonicParsing="false" onAction="#saveAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA" />
+      <Button layoutX="981.0" layoutY="621.0" mnemonicParsing="false" onAction="#saveWorkerAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA" />
       <CheckBox fx:id="ita_field" layoutX="90.0" layoutY="407.0" mnemonicParsing="false" text="Italiano" textFill="WHITE" />
       <ComboBox fx:id="patente_field" accessibleText="A" layoutX="604.0" layoutY="408.0" prefWidth="150.0" promptText="Seleziona patente" />
       <CheckBox fx:id="al_field" layoutX="173.0" layoutY="408.0" mnemonicParsing="false" text="Albanese" textFill="WHITE" />

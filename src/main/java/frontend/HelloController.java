@@ -266,7 +266,7 @@ public class HelloController implements Initializable {
     //salva i dati del lavoratore, i dati del contatto di emergenza e gli scrive nel json
     // aggiungilavoratore -> disponibilità
     //saveWorkerAction
-    public void saveAction(ActionEvent actionEvent) throws Exception {
+    public void saveWorkerAction(ActionEvent actionEvent) throws Exception {
 
         Set<String> lingue = new HashSet<>();
         Set<String> esp = new HashSet<>();
