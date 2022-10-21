@@ -217,6 +217,7 @@ public class HelloController implements Initializable {
     {
         try {
             birthDate = new Date(01,01,2000);
+            ricercaDate = new Date(01,01,2000);
             inizioPeriodoDate = new Date(01,01,2000);
             finePeriodoDate = new Date(01,01,2000);
         } catch (Exception e) {
