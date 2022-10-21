@@ -34,6 +34,7 @@ public class HelloController implements Initializable {
 
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
+    Set<String> esperienze = new HashSet<>();
     static List<Disponibilità> disponibilità = new ArrayList<>();
 
     ListaLavoratori listaLavoratori = new ListaLavoratori();
@@ -41,10 +42,15 @@ public class HelloController implements Initializable {
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
 
-    String[] list3 = new String[110];
+    String[] listaComuni = new String[110];
+
+    String[] listaEsperienze = new String[69];
 
     @FXML
     ComboBox<String> disp_field = new ComboBox<>();
+
+    @FXML
+    ComboBox<String> esp_field = new ComboBox<>();
 
     @FXML
     TextField username_field;
@@ -81,9 +87,6 @@ public class HelloController implements Initializable {
 
     @FXML
     TextField email_field;
-
-    @FXML
-    TextField esp_field;
 
     @FXML
     TextField nome2_field;
@@ -146,6 +149,9 @@ public class HelloController implements Initializable {
     TextArea textAreaComune;
 
     @FXML
+    TextArea textAreaEsp;
+
+    @FXML
     TextField nomeA_field;
 
     @FXML
@@ -182,7 +188,6 @@ public class HelloController implements Initializable {
     String nazio;
     String tel;
     String email;
-    String esp;
     String nome2;
     String cognome2;
     String tel2;
@@ -190,6 +195,7 @@ public class HelloController implements Initializable {
     String patente;
     Boolean auto = false;
     String disp;
+    String esp;
     String codFisS;
     String nomeS;
     String cognomeS;
@@ -281,7 +287,6 @@ public class HelloController implements Initializable {
 
         tel = tel_field.getText();
         email = email_field.getText();
-        esp.add(esp_field.getText());
         nome2 = nome2_field.getText();
         cognome2 = cognome2_field.getText();
         tel2 = tel2_field.getText();
@@ -359,9 +364,17 @@ public class HelloController implements Initializable {
 
         }
 
+        String testoesp = textAreaEsp.getText();
+
+        String[] arrEsp = testoesp.split("\n");
+
+        for (String stringa: arrEsp) {
+            esperienze.add(stringa);
+        }
+
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
 
-        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esp, personaemergenza);
+        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esperienze, personaemergenza);
 
         System.out.println(lavoratore);
 
@@ -386,7 +399,20 @@ public class HelloController implements Initializable {
             String line;
             int i = 0;
             while ((line = br.readLine()) != null) {
-                list3[i] = line;
+                listaComuni[i] = line;
+                i++;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        String fileesp = "src/main/resources/frontend/lavori_stagionali.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileesp))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                listaEsperienze[i] = line;
                 i++;
             }
         } catch (IOException e) {
@@ -395,7 +421,8 @@ public class HelloController implements Initializable {
         }
 
         patente_field.setItems(list);
-        disp_field.getItems().addAll(list3);
+        disp_field.getItems().addAll(listaComuni);
+        esp_field.getItems().addAll(listaEsperienze);
 
     }
 
@@ -512,6 +539,28 @@ public class HelloController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
+    }
+
+    public void saveEsp(ActionEvent actionEvent) {
+
+        if (esp_field.getSelectionModel().getSelectedItem() != null) {
+
+            esp = textAreaEsp.getText();
+
+            if (!esp.contains(esp_field.getSelectionModel().getSelectedItem())) {
+
+                textAreaEsp.appendText(esp_field.getSelectionModel().getSelectedItem() + "\n");
+
+            } else {
+
+                int index = esp.indexOf(esp_field.getSelectionModel().getSelectedItem());
+
+                textAreaEsp.deleteText(index, index + esp_field.getSelectionModel().getSelectedItem().length() + 1);
+
+            }
+
+        }
 
     }
 
