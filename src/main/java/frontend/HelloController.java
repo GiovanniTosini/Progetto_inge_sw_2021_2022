@@ -361,13 +361,7 @@ public class HelloController implements Initializable {
 
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
 
-        Periodo p=new Periodo();
-        Lavoro lavoro=new Lavoro(); //passo perido, ...
-        //TODO: aggiunta Periodi e lavori
-
-
-        List<Lavoro> lavori = new ArrayList<>();
-        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esp, personaemergenza, lavori);
+        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esp, personaemergenza);
 
         System.out.println(lavoratore);
 
