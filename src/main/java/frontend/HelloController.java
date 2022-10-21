@@ -37,7 +37,11 @@ public class HelloController implements Initializable {
     Set<String> esperienze = new HashSet<>();
     static List<Disponibilità> disponibilità = new ArrayList<>();
 
+    List<Lavoro> lavori = new ArrayList<>();
+
     ListaLavoratori listaLavoratori = new ListaLavoratori();
+
+    Lavoratore lavoratoreDaAggiornare = new Lavoratore();
 
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
@@ -51,6 +55,9 @@ public class HelloController implements Initializable {
 
     @FXML
     ComboBox<String> esp_field = new ComboBox<>();
+
+    @FXML
+    ComboBox<String> mansioni_field = new ComboBox<>();
 
     @FXML
     TextField username_field;
@@ -137,13 +144,10 @@ public class HelloController implements Initializable {
     RadioButton auto_field2;
 
     @FXML
-    TextField nomeS_field;
+    TextField ricercaNome_field;
 
     @FXML
-    TextField cognomeS_field;
-
-    @FXML
-    TextField codFis_field;
+    TextField ricercaCognome_field;
 
     @FXML
     TextArea textAreaComune;
@@ -152,13 +156,13 @@ public class HelloController implements Initializable {
     TextArea textAreaEsp;
 
     @FXML
+    TextArea textAreaMansioni;
+
+    @FXML
     TextField nomeA_field;
 
     @FXML
     TextField luogoA_field;
-
-    @FXML
-    TextArea mansioni_field;
 
     @FXML
     TextField cash_field;
@@ -178,6 +182,9 @@ public class HelloController implements Initializable {
     @FXML
     DatePicker data3_field;
 
+    @FXML
+    DatePicker ricercaData_field;
+
 
     //fare con database (check admin)
     String username = "admin";
@@ -196,14 +203,14 @@ public class HelloController implements Initializable {
     Boolean auto = false;
     String disp;
     String esp;
-    String codFisS;
-    String nomeS;
-    String cognomeS;
+    String ricercaNome;
+    String ricercaCognome;
     String nomeA;
     String luogoA;
     String mansioni;
     String cash;
     Date birthDate;
+    Date ricercaDate;
     Date inizioPeriodoDate;
     Date finePeriodoDate;
 
@@ -374,7 +381,7 @@ public class HelloController implements Initializable {
 
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
 
-        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esperienze, personaemergenza);
+        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esperienze, personaemergenza, lavori);
 
         System.out.println(lavoratore);
 
@@ -433,7 +440,6 @@ public class HelloController implements Initializable {
 
         nomeA = nomeA_field.getText();
         luogoA = luogoA_field.getText();
-        mansioni = mansioni_field.getText();
         cash = cash_field.getText();
         Periodo periodo2 = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
@@ -451,17 +457,40 @@ public class HelloController implements Initializable {
     // ricercalavoratore -> aggiornalavoro
     public void searchAction(ActionEvent actionEvent) throws IOException {
 
-        nomeS = nomeS_field.getText();
-        cognomeS = cognomeS_field.getText();
-        codFisS = codFis_field.getText();
+        boolean flag = false;
 
-        if (nomeS.compareTo(username) == 0 && cognomeS.compareTo(password) == 0) {
+        ricercaNome = ricercaNome_field.getText();
+        ricercaCognome = ricercaCognome_field.getText();
+
+        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+
+        for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+
+            if(lavoratore.getNome().equals(ricercaNome) && lavoratore.getCognome().equals(ricercaCognome) && lavoratore.getDataDiNascita().equals(ricercaDate)){
+
+                lavoratoreDaAggiornare = lavoratore;
+
+                listaLavoratori.getListaLavoratori().remove(lavoratore);
+
+                flag = true;
+
+                break;
+
+            }
+
+        }
+
+        if (flag) {
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AggiornaLavoro.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+        }else{
+
+            //TODO implementare in caso in cui non ce il lavoratore
 
         }
 
@@ -564,6 +593,29 @@ public class HelloController implements Initializable {
 
     }
 
+
+    public void saveMansioni(ActionEvent actionEvent) {
+
+        if (mansioni_field.getSelectionModel().getSelectedItem() != null) {
+
+            mansioni = textAreaMansioni.getText();
+
+            if (!mansioni.contains(mansioni_field.getSelectionModel().getSelectedItem())) {
+
+                textAreaMansioni.appendText(mansioni_field.getSelectionModel().getSelectedItem() + "\n");
+
+            } else {
+
+                int index = mansioni.indexOf(mansioni_field.getSelectionModel().getSelectedItem());
+
+                textAreaMansioni.deleteText(index, index + mansioni_field.getSelectionModel().getSelectedItem().length() + 1);
+
+            }
+
+        }
+
+    }
+
     //ci porta in effettuaricerche da afterlogin
     //afterlogin -> effettuaricerche
     public void ricercaAction(ActionEvent actionEvent) throws IOException {
@@ -633,6 +685,16 @@ public class HelloController implements Initializable {
         finePeriodoDate.setDay(mydate.getDayOfMonth());
         finePeriodoDate.setMonth(mydate.getMonthValue());
         finePeriodoDate.setYear(mydate.getYear());
+
+    }
+
+    public void setRicercaDate(ActionEvent actionEvent) {
+
+        LocalDate mydate = ricercaData_field.getValue();
+
+        ricercaDate.setDay(mydate.getDayOfMonth());
+        ricercaDate.setMonth(mydate.getMonthValue());
+        ricercaDate.setYear(mydate.getYear());
 
     }
 

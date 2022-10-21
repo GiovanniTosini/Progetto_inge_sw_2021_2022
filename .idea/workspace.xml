@@ -5,8 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2668c558-1c13-46b6-9a60-3b607c7c34e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +28,38 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="RunManager">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="frontend.HelloApplication" />
+      <module name="Progetto_inge_sw_2022" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="frontend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HelloApplication" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="TaskManager">
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
