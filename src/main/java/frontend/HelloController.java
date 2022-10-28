@@ -1,7 +1,7 @@
 package frontend;
 
-import backend.Date;
 import backend.*;
+import backend.Date;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +23,7 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.*;
 
+
 public class HelloController implements Initializable {
 
     private Stage stage;
@@ -35,16 +36,21 @@ public class HelloController implements Initializable {
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
+    Set<String> mansioniLavoratore = new HashSet<>();
+    Set<String> mansioniLavoratoreRicerca = new HashSet<>();
     static List<Disponibilità> disponibilità = new ArrayList<>();
 
     List<Lavoro> lavori = new ArrayList<>();
 
     ListaLavoratori listaLavoratori = new ListaLavoratori();
 
-    Lavoratore lavoratoreDaAggiornare = new Lavoratore();
+    static Lavoratore lavoratoreDaAggiornare = new Lavoratore();
 
     @FXML
     ComboBox<String> patente_field = new ComboBox<>();
+
+    @FXML
+    ComboBox<String> patenteRicerca_field = new ComboBox<>();
 
     String[] listaComuni = new String[110];
 
@@ -58,6 +64,9 @@ public class HelloController implements Initializable {
 
     @FXML
     ComboBox<String> mansioni_field = new ComboBox<>();
+
+    @FXML
+    ComboBox<String> mansioniRicerca_field = new ComboBox<>();
 
     @FXML
     TextField username_field;
@@ -108,6 +117,18 @@ public class HelloController implements Initializable {
     TextField email2_field;
 
     @FXML
+    TextField luogoRicerca_field;
+
+    @FXML
+    TextField nomeRicerca_field;
+
+    @FXML
+    TextField cognomeRicerca_field;
+
+    @FXML
+    TextArea textAreaResRicerca;
+
+    @FXML
     CheckBox ita_field;
 
     @FXML
@@ -138,10 +159,52 @@ public class HelloController implements Initializable {
     CheckBox spa_field;
 
     @FXML
+    CheckBox itaRicerca_field;
+
+    @FXML
+    CheckBox alRicerca_field;
+
+    @FXML
+    CheckBox frRicerca_field;
+
+    @FXML
+    CheckBox sloRicerca_field;
+
+    @FXML
+    CheckBox deRicerca_field;
+
+    @FXML
+    CheckBox enRicerca_field;
+
+    @FXML
+    CheckBox arRicerca_field;
+
+    @FXML
+    CheckBox ruRicerca_field;
+
+    @FXML
+    CheckBox cinRicerca_field;
+
+    @FXML
+    CheckBox spaRicerca_field;
+
+    @FXML
     RadioButton auto_field;
 
     @FXML
     RadioButton auto_field2;
+
+    @FXML
+    RadioButton autoRicerca_field;
+
+    @FXML
+    RadioButton autoSearch_field;
+
+    @FXML
+    RadioButton autoSearch_field2;
+
+    @FXML
+    RadioButton autoRicerca_field2;
 
     @FXML
     TextField ricercaNome_field;
@@ -157,6 +220,9 @@ public class HelloController implements Initializable {
 
     @FXML
     TextArea textAreaMansioni;
+
+    @FXML
+    TextArea textAreaMansioniRicerca;
 
     @FXML
     TextField nomeA_field;
@@ -185,10 +251,14 @@ public class HelloController implements Initializable {
     @FXML
     DatePicker ricercaData_field;
 
+    @FXML
+    DatePicker inizioPeriodoRicerca_field;
+
+    @FXML
+    DatePicker finePeriodoRicerca_field;
+
 
     //fare con database (check admin)
-    String username = "admin";
-    String password = "admin";
     String nome;
     String cognome;
     String luogo;
@@ -200,19 +270,27 @@ public class HelloController implements Initializable {
     String tel2;
     String email2;
     String patente;
+    String patenteRicerca;
     Boolean auto = false;
+    Boolean autoRicerca = false;
     String disp;
     String esp;
     String ricercaNome;
     String ricercaCognome;
-    String nomeA;
-    String luogoA;
+    String nomeAzienda;
+    String luogoAzienda;
     String mansioni;
-    String cash;
+    String mansioniRicerca;
+    String nomeRicerca;
+    String cognomeRicerca;
+    String luogoRicerca;
+    float cash;
     Date birthDate;
     Date ricercaDate;
     Date inizioPeriodoDate;
     Date finePeriodoDate;
+    Date inizioPeriodoRicercaDate;
+    Date finePeriodoRicercaDate;
 
     {
         try {
@@ -220,6 +298,8 @@ public class HelloController implements Initializable {
             ricercaDate = new Date(01,01,2000);
             inizioPeriodoDate = new Date(01,01,2000);
             finePeriodoDate = new Date(01,01,2000);
+            inizioPeriodoRicercaDate = new Date(01,01,2000);
+            finePeriodoRicercaDate = new Date(01,01,2000);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -227,13 +307,21 @@ public class HelloController implements Initializable {
 
     //funzione che verifica i dati inseriti di login e ci porta ad afterlogin
     //login -> afterlogin
-    public void loginAction(ActionEvent actionEvent) throws IOException {
+    public void loginAction(ActionEvent actionEvent) throws Exception {
+
+        //inizializzo la lista lavoratori ogni volta che accendo il programma
+        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        DipendenteAgenzia aleLorini = new DipendenteAgenzia("Alessandro", "Lorini", "3317574347", "alelorini99@gmail.it", "Chiari", new Date(06,01,1999), "Italiano", "ale", "ale");
+        DipendenteAgenzia gabbaFausty = new DipendenteAgenzia("Gabriele", "Faustinoni", "3288865548", "gabrielefausty7@gmail.it", "Esine", new Date(25,05,2001), "Italiano", "gabba", "gabba");
+        DipendenteAgenzia poppoTosini = new DipendenteAgenzia("Giovanni", "Tosini", "3456789090", "poppo@gmail.it", "Soave", new Date(01,01,1995), "Italiano", "poppo", "poppo");
 
         String username_text = username_field.getText();
         String password_text = password_field.getText();
 
         //check con jackson
-        if (username_text.compareTo(username) == 0 && password_text.compareTo(password) == 0) {
+        if ((username_text.compareTo(aleLorini.getLogin()) == 0 && password_text.compareTo(aleLorini.getPassword()) == 0) ||
+                (username_text.compareTo(gabbaFausty.getLogin()) == 0 && password_text.compareTo(gabbaFausty.getPassword()) == 0) ||
+                (username_text.compareTo(poppoTosini.getLogin()) == 0 && password_text.compareTo(poppoTosini.getPassword()) == 0)) {
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -283,7 +371,6 @@ public class HelloController implements Initializable {
     public void saveWorkerAction(ActionEvent actionEvent) throws Exception {
 
         Set<String> lingue = new HashSet<>();
-        Set<String> esp = new HashSet<>();
         nome = nome_field.getText();
         cognome = cognome_field.getText();
         luogo = luogo_field.getText();
@@ -429,22 +516,41 @@ public class HelloController implements Initializable {
         }
 
         patente_field.setItems(list);
+        patenteRicerca_field.setItems(list);
         disp_field.getItems().addAll(listaComuni);
         esp_field.getItems().addAll(listaEsperienze);
+        mansioni_field.getItems().addAll(listaEsperienze);
+        mansioniRicerca_field.getItems().addAll(listaEsperienze);
 
     }
 
-    //aggiorna lavoro
-    //aggioralavoro -> afterlogin
+    //aggiornalavoro -> afterlogin
     //updateWorkAction
     public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
-        nomeA = nomeA_field.getText();
-        luogoA = luogoA_field.getText();
-        cash = cash_field.getText();
+        nomeAzienda = nomeA_field.getText();
+        luogoAzienda = luogoA_field.getText();
+        try {
+            cash = Float.parseFloat(cash_field.getText());
+        }catch (NumberFormatException e){
+            System.out.println("la stringa non è float");
+        }
+        //cash = cash_field.getText(); //TODO forse meglio metterci un float invece di String
         Periodo periodo2 = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
-        System.out.println(nomeA + "\n" + luogoA + "\n" + mansioni + "\n" + cash + "\n" + periodo2 + "\n");
+        String testoMan = textAreaMansioni.getText();
+        String[] arrMansioni = testoMan.split("\n");
+
+        for (String stringa: arrMansioni) {
+            mansioniLavoratore.add(stringa);
+        }
+
+        //System.out.println(nomeAzienda + "\n" + luogoAzienda + "\n" + mansioni + "\n" + cash + "\n" + periodo2 + "\n");
+
+        Lavoro lavoroTemp = new Lavoro(periodo2, nomeAzienda, luogoAzienda, mansioniLavoratore, cash);
+        lavoratoreDaAggiornare.lavori.add(lavoroTemp);
+        listaLavoratori.getListaLavoratori().add(lavoratoreDaAggiornare);
+        objectMapper.writeValue(file, listaLavoratori);
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -617,6 +723,28 @@ public class HelloController implements Initializable {
 
     }
 
+    public void saveMansioniRicerca(ActionEvent actionEvent) {
+
+        if (mansioniRicerca_field.getSelectionModel().getSelectedItem() != null) {
+
+            mansioniRicerca = textAreaMansioniRicerca.getText();
+
+            if (!mansioniRicerca.contains(mansioniRicerca_field.getSelectionModel().getSelectedItem())) {
+
+                textAreaMansioniRicerca.appendText(mansioniRicerca_field.getSelectionModel().getSelectedItem() + "\n");
+
+            } else {
+
+                int index = mansioniRicerca.indexOf(mansioniRicerca_field.getSelectionModel().getSelectedItem());
+
+                textAreaMansioniRicerca.deleteText(index, index + mansioniRicerca_field.getSelectionModel().getSelectedItem().length() + 1);
+
+            }
+
+        }
+
+    }
+
     //ci porta in effettuaricerche da afterlogin
     //afterlogin -> effettuaricerche
     public void ricercaAction(ActionEvent actionEvent) throws IOException {
@@ -631,11 +759,139 @@ public class HelloController implements Initializable {
     }
 
     //effettua ricerca lavoratore in effettuaricerche
-    public void search2Action(ActionEvent actionEvent) {
+    public void effettaRicercheAction(ActionEvent actionEvent) throws IOException {
 
-        //da implementare
+        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
 
-        System.out.println("SCEMO CHI LEGGE (SIETE TUTTI E DUE DEI TACCHINI FIGA)");
+        Set<String> lingueRicerca = new HashSet<>();
+
+        boolean flag = false;
+
+        nomeRicerca = nomeRicerca_field.getText();
+        cognomeRicerca = cognomeRicerca_field.getText();
+        luogoRicerca = luogoRicerca_field.getText();
+
+        Periodo periodoRicerca = new Periodo(inizioPeriodoDate, finePeriodoDate);
+
+        if (patenteRicerca_field.getSelectionModel().getSelectedItem() != null) {
+
+            patenteRicerca = patenteRicerca_field.getSelectionModel().getSelectedItem();
+
+        }
+
+        if (autoRicerca_field.isSelected()) {
+
+            auto = true;
+
+        }
+
+        if (itaRicerca_field.isSelected()) {
+
+            lingueRicerca.add(itaRicerca_field.getText());
+
+        }
+
+        if (alRicerca_field.isSelected()) {
+
+            lingueRicerca.add(alRicerca_field.getText());
+
+        }
+
+        if (frRicerca_field.isSelected()) {
+
+            lingueRicerca.add(frRicerca_field.getText());
+
+        }
+
+        if (sloRicerca_field.isSelected()) {
+
+            lingueRicerca.add(sloRicerca_field.getText());
+
+        }
+
+        if (deRicerca_field.isSelected()) {
+
+            lingueRicerca.add(deRicerca_field.getText());
+
+        }
+
+        if (enRicerca_field.isSelected()) {
+
+            lingueRicerca.add(enRicerca_field.getText());
+
+        }
+
+        if (arRicerca_field.isSelected()) {
+
+            lingueRicerca.add(arRicerca_field.getText());
+
+        }
+
+        if (ruRicerca_field.isSelected()) {
+
+            lingueRicerca.add(ruRicerca_field.getText());
+
+        }
+
+        if (cinRicerca_field.isSelected()) {
+
+            lingueRicerca.add(cinRicerca_field.getText());
+
+        }
+
+        if (spaRicerca_field.isSelected()) {
+
+            lingueRicerca.add(spaRicerca_field.getText());
+
+        }
+
+        String testoMan = textAreaMansioniRicerca.getText();
+        String[] arrMansioni = testoMan.split("\n");
+
+        for (String stringa: arrMansioni) {
+            mansioniLavoratoreRicerca.add(stringa);
+        }
+
+        //se siamo nell and fai cose altrimenti siamo nell or
+        if(autoSearch_field.isSelected()){
+
+            System.out.println("DENTRO AND");
+
+            for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+
+                if(lavoratore.getNome().equals(ricercaNome) && lavoratore.getCognome().equals(ricercaCognome) && lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
+
+                    textAreaResRicerca.setText(lavoratore.getNome() + " " + lavoratore.getCognome());
+
+                    flag = true;
+
+                }
+
+            }
+
+        }else{
+
+            for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+
+                if(lavoratore.getNome().equals(ricercaNome) || lavoratore.getCognome().equals(ricercaCognome) || lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
+
+                    textAreaResRicerca.setText(lavoratore.getNome() + " " + lavoratore.getCognome());
+
+                    flag = true;
+
+                }
+
+            }
+
+        }
+
+        if(!flag){
+
+            textAreaResRicerca.clear();
+
+        }
+
+        //TODO da implementare con tutti gli altri parametri mancanti, resettare alla fine tutti i campi e vedere utilizzo flag
 
     }
 
@@ -699,4 +955,23 @@ public class HelloController implements Initializable {
 
     }
 
+    public void setInizioPeriodoRicercaAction(ActionEvent actionEvent) {
+
+        LocalDate mydate = inizioPeriodoRicerca_field.getValue();
+
+        inizioPeriodoRicercaDate.setDay(mydate.getDayOfMonth());
+        inizioPeriodoRicercaDate.setMonth(mydate.getMonthValue());
+        inizioPeriodoRicercaDate.setYear(mydate.getYear());
+
+    }
+
+    public void setFinePeriodoRicercaAction(ActionEvent actionEvent) {
+
+        LocalDate mydate = finePeriodoRicerca_field.getValue();
+
+        finePeriodoRicercaDate.setDay(mydate.getDayOfMonth());
+        finePeriodoRicercaDate.setMonth(mydate.getMonthValue());
+        finePeriodoRicercaDate.setYear(mydate.getYear());
+
+    }
 }

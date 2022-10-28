@@ -1,15 +1,17 @@
 package backend;
 
+import java.util.Set;
+
 public class Lavoro {
     private Periodo periodo;
     private String nomeAzienda;
     private String luogoLavoro;
-    private String mansioniSvolte;
-    private String retribuzioneLorda;
+    private Set<String> mansioniSvolte;
+    private float retribuzioneLorda;
 
     public Lavoro(){}
 
-    public Lavoro(Periodo periodo, String nomeAzienda, String luogoLavoro, String mansioniSvolte, String retribuzioneLorda) {
+    public Lavoro(Periodo periodo, String nomeAzienda, String luogoLavoro, Set<String> mansioniSvolte, float retribuzioneLorda) {
         this.periodo = periodo;
         this.nomeAzienda = nomeAzienda;
         this.luogoLavoro = luogoLavoro;
@@ -41,19 +43,19 @@ public class Lavoro {
         this.luogoLavoro = luogoLavoro;
     }
 
-    public String getMansioniSvolte() {
+    public Set<String> getMansioniSvolte() {
         return mansioniSvolte;
     }
 
-    public void setMansioniSvolte(String mansioniSvolte) {
+    public void setMansioniSvolte(Set<String> mansioniSvolte) {
         this.mansioniSvolte = mansioniSvolte;
     }
 
-    public String getRetribuzioneLorda() {
+    public float getRetribuzioneLorda() {
         return retribuzioneLorda;
     }
 
-    public void setRetribuzioneLorda(String retribuzioneLorda) {
+    public void setRetribuzioneLorda(float retribuzioneLorda) {
         this.retribuzioneLorda = retribuzioneLorda;
     }
 }

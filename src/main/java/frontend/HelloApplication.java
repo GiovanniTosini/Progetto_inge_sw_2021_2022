@@ -1,5 +1,8 @@
 package frontend;
 
+import backend.Date;
+import backend.DipendenteAgenzia;
+import backend.ListaLavoratori;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
