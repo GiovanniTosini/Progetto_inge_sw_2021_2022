@@ -23,13 +23,13 @@
         <Label layoutX="759.0" layoutY="150.0" text="a:" textFill="WHITE" />
         <Label layoutX="111.0" layoutY="443.0" text="Lingue parlate" textFill="WHITE" />
         <Label layoutX="557.0" layoutY="244.0" textFill="WHITE" />
-        <Label layoutX="1007.0" layoutY="150.0" text="Luogo di residenza" textFill="WHITE" />
+        <Label layoutX="1007.0" layoutY="150.0" text="Città di residenza" textFill="WHITE" />
         <TextField fx:id="luogoRicerca_field" layoutX="1007.0" layoutY="182.0" />
         <Label layoutX="113.0" layoutY="244.0" text="Patente" textFill="WHITE" />
         <Button layoutX="887.0" layoutY="548.0" mnemonicParsing="false" onAction="#effettaRicercheAction" prefHeight="40.0" prefWidth="118.0" style="-fx-background-color: #ffc900;" text="RICERCA" />
         <Label layoutX="331.0" layoutY="244.0" text="Automunito" textFill="WHITE" />
         <Label layoutX="497.0" layoutY="444.0" text="RISULTATO" textFill="WHITE" />
-        <TextArea fx:id="textAreaResRicerca" layoutX="499.0" layoutY="483.0" prefHeight="109.0" prefWidth="300.0" promptText="Nessun risultato trovato" />
+        <TextArea fx:id="textAreaResRicerca" editable="false" layoutX="499.0" layoutY="483.0" prefHeight="109.0" prefWidth="300.0" promptText="Nessun risultato trovato" />
         <Label layoutX="108.0" layoutY="150.0" text="Nome" textFill="WHITE" />
         <TextField fx:id="nomeRicerca_field" layoutX="109.0" layoutY="182.0" />
         <Label layoutX="328.0" layoutY="150.0" text="Cognome" textFill="WHITE" />
@@ -52,12 +52,12 @@
         <CheckBox fx:id="cinRicerca_field" layoutX="362.0" layoutY="529.0" mnemonicParsing="false" text="Cinese" textFill="WHITE" />
         <CheckBox fx:id="spaRicerca_field" layoutX="193.0" layoutY="568.0" mnemonicParsing="false" text="Spagnolo" textFill="WHITE" />
         <Label layoutX="925.0" layoutY="443.0" text="Includi tutti i parametri nella ricerca" textFill="WHITE" />
-        <RadioButton fx:id="autoSearch_field" layoutX="980.0" layoutY="478.0" mnemonicParsing="false" text="Sì" textFill="WHITE">
+        <RadioButton fx:id="andSearch_field" layoutX="980.0" layoutY="478.0" mnemonicParsing="false" text="Sì" textFill="WHITE">
             <toggleGroup>
                 <ToggleGroup fx:id="search" />
             </toggleGroup>
         </RadioButton>
-        <RadioButton fx:id="autoSearch_field2" layoutX="1033.0" layoutY="478.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$search" />
+        <RadioButton fx:id="orSearch_field" layoutX="1033.0" layoutY="478.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$search" />
         <RadioButton fx:id="autoRicerca_field2" layoutX="381.0" layoutY="279.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$automunito2" />
       <DatePicker fx:id="inizioPeriodoRicerca_field" layoutX="557.0" layoutY="182.0" onAction="#setInizioPeriodoRicercaAction" />
       <DatePicker fx:id="finePeriodoRicerca_field" layoutX="752.0" layoutY="182.0" onAction="#setFinePeriodoRicercaAction" />

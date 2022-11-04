@@ -198,10 +198,10 @@ public class HelloController implements Initializable {
     RadioButton autoRicerca_field;
 
     @FXML
-    RadioButton autoSearch_field;
+    RadioButton andSearch_field;
 
     @FXML
-    RadioButton autoSearch_field2;
+    RadioButton orSearch_field;
 
     @FXML
     RadioButton autoRicerca_field2;
@@ -310,7 +310,6 @@ public class HelloController implements Initializable {
     public void loginAction(ActionEvent actionEvent) throws Exception {
 
         //inizializzo la lista lavoratori ogni volta che accendo il programma
-        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
         DipendenteAgenzia aleLorini = new DipendenteAgenzia("Alessandro", "Lorini", "3317574347", "alelorini99@gmail.it", "Chiari", new Date(06,01,1999), "Italiano", "ale", "ale");
         DipendenteAgenzia gabbaFausty = new DipendenteAgenzia("Gabriele", "Faustinoni", "3288865548", "gabrielefausty7@gmail.it", "Esine", new Date(25,05,2001), "Italiano", "gabba", "gabba");
         DipendenteAgenzia poppoTosini = new DipendenteAgenzia("Giovanni", "Tosini", "3456789090", "poppo@gmail.it", "Soave", new Date(01,01,1995), "Italiano", "poppo", "poppo");
@@ -370,6 +369,8 @@ public class HelloController implements Initializable {
     //saveWorkerAction
     public void saveWorkerAction(ActionEvent actionEvent) throws Exception {
 
+        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        List<Disponibilità> disponibilitàTemp = new ArrayList<>();
         Set<String> lingue = new HashSet<>();
         nome = nome_field.getText();
         cognome = cognome_field.getText();
@@ -469,7 +470,7 @@ public class HelloController implements Initializable {
 
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
 
-        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilità, esperienze, personaemergenza, lavori);
+        Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilitàTemp, esperienze, personaemergenza, lavori);
 
         System.out.println(lavoratore);
 
@@ -666,9 +667,15 @@ public class HelloController implements Initializable {
 
         Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
 
+        listaLavoratori.getListaLavoratori().remove(listaLavoratori.getListaLavoratori().size()-1);
+
         newlavoratore.setDisponibilità(disponibilità);
 
+        listaLavoratori.getListaLavoratori().add(newlavoratore);
+
         objectMapper.writeValue(file, listaLavoratori);
+
+        disponibilità.clear();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -723,6 +730,7 @@ public class HelloController implements Initializable {
 
     }
 
+    //in effetuaricerche, azione del pulsante che aggiunge le varie mansioni nella textarea
     public void saveMansioniRicerca(ActionEvent actionEvent) {
 
         if (mansioniRicerca_field.getSelectionModel().getSelectedItem() != null) {
@@ -853,19 +861,24 @@ public class HelloController implements Initializable {
         }
 
         //se siamo nell and fai cose altrimenti siamo nell or
-        if(autoSearch_field.isSelected()){
-
-            System.out.println("DENTRO AND");
+        if(andSearch_field.isSelected()){
 
             for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
 
-                if(lavoratore.getNome().equals(ricercaNome) && lavoratore.getCognome().equals(ricercaCognome) && lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
+                /*if(lavoratore.getNome().equals(nomeRicerca) && lavoratore.getCognome().equals(cognomeRicerca) && lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
 
-                    textAreaResRicerca.setText(lavoratore.getNome() + " " + lavoratore.getCognome());
+                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + "\n";
+
+                    String testoDaControllare = textAreaResRicerca.getText();
+
+                    if(!testoDaControllare.contains(lavoratoreDaScrivere))
+                        textAreaResRicerca.appendText(lavoratoreDaScrivere);
 
                     flag = true;
 
-                }
+                }*/
+
+                lavoratore.ricercaAnd(nomeRicerca, cognomeRicerca, luogoRicerca, periodoRicerca, auto, patenteRicerca, lingueRicerca, mansioniLavoratoreRicerca);
 
             }
 
@@ -873,9 +886,14 @@ public class HelloController implements Initializable {
 
             for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
 
-                if(lavoratore.getNome().equals(ricercaNome) || lavoratore.getCognome().equals(ricercaCognome) || lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
+                if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) || lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
 
-                    textAreaResRicerca.setText(lavoratore.getNome() + " " + lavoratore.getCognome());
+                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + "\n";
+
+                    String testoDaControllare = textAreaResRicerca.getText();
+
+                    if(!testoDaControllare.contains(lavoratoreDaScrivere))
+                        textAreaResRicerca.appendText(lavoratoreDaScrivere);
 
                     flag = true;
 

@@ -1,5 +1,6 @@
 package backend;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -108,5 +109,68 @@ public class Lavoratore extends Persona{
     }
 
 
+    public void ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean auto, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
 
+        Boolean[] arrayRicerca = new Boolean[8];
+
+        arrayRicerca[0]=true;
+        arrayRicerca[1]=true;
+        arrayRicerca[2]=true;
+        arrayRicerca[3]=true;
+        arrayRicerca[4]=true;
+        arrayRicerca[5]=true;
+        arrayRicerca[6]=true;
+        arrayRicerca[7]=true;
+
+        if(nomeRicerca==null){
+
+            arrayRicerca[0]=false;
+
+        }
+
+        if(cognomeRicerca==null){
+
+            arrayRicerca[1]=false;
+
+        }
+
+        if(luogoRicerca==null){
+
+            arrayRicerca[2]=false;
+
+        }
+
+        if(periodoRicerca==null){
+
+            arrayRicerca[3]=false;
+
+        }
+
+        if(auto==null){
+
+            arrayRicerca[4]=false;
+
+        }
+
+        if(patenteRicerca==null){
+
+            arrayRicerca[5]=false;
+
+        }
+
+        if(lingueRicerca==null){
+
+            arrayRicerca[6]=false;
+
+        }
+
+        if(mansioniLavoratoreRicerca==null){
+
+            arrayRicerca[7]=false;
+
+        }
+
+
+
+    }
 }
