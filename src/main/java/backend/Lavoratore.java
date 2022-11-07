@@ -109,30 +109,38 @@ public class Lavoratore extends Persona{
     }
 
 
-    public void ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean auto, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
+    public Boolean ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean auto, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
 
-        Boolean[] arrayRicerca = new Boolean[8];
-        //n'culet
-        arrayRicerca[0]=false;
-        arrayRicerca[1]=false;
-        arrayRicerca[2]=false;
-        arrayRicerca[3]=false;
-        arrayRicerca[4]=false;
-        arrayRicerca[5]=false;
-        arrayRicerca[6]=false;
-        arrayRicerca[7]=false;
+        if((nomeRicerca!=null && getNome().compareTo(nomeRicerca)!=0)||
+                (cognomeRicerca!=null && getCognome().compareTo(cognomeRicerca)!=0)||
+                (luogoRicerca!=null && getResidenza().getCittà().compareTo(luogoRicerca)!=0)||
+                (auto!=null && automunito!=auto)||
+                (patenteRicerca!=null && getPatente()!=patenteRicerca)){
+            return false;
+        }
 
+        if(periodoRicerca!=null){
+            for(Disponibilità disp: disponibilità){
+                if(disp.getPeriodo().getInizioPeriodo().compareTo(periodoRicerca.getInizioPeriodo())<=0 &&
+                        disp.getPeriodo().getFinePeriodo().compareTo(periodoRicerca.getFinePeriodo())>=0){
+                    return false;
+                }
+            }
+        }
 
-        if(nomeRicerca==null || getNome()==nomeRicerca)
-            arrayRicerca[0]=true;
+        if(!lingueRicerca.isEmpty()){
+            for(String lingua:lingueRicerca){
+                if(!lingueParlate.contains(lingua))
+                    return false;
+            }
+        }
 
-        if(cognomeRicerca==null || getCognome()==cognomeRicerca)
-            arrayRicerca[1]=true;
-
-        if(luogoRicerca==null || getResidenza().getCittà()==luogoRicerca)
-            arrayRicerca[1]=true;
-
-        //if(periodoRicerca==null || periodoRicerca.getInizioPeriodo().)
-
+        if(!mansioniLavoratoreRicerca.isEmpty())
+            for(Lavoro lavoro:lavori){
+                for(String mansione:lavoro.getMansioniSvolte())
+                    if(!esperienze.contains(mansione))
+                        return false;
+            }
+        return true;
     }
 }

@@ -867,7 +867,7 @@ public class HelloController implements Initializable {
 
                 /*if(lavoratore.getNome().equals(nomeRicerca) && lavoratore.getCognome().equals(cognomeRicerca) && lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
 
-                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + "\n";
+                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
 
                     String testoDaControllare = textAreaResRicerca.getText();
 
@@ -878,7 +878,17 @@ public class HelloController implements Initializable {
 
                 }*/
 
-                lavoratore.ricercaAnd(nomeRicerca, cognomeRicerca, luogoRicerca, periodoRicerca, auto, patenteRicerca, lingueRicerca, mansioniLavoratoreRicerca);
+                if(lavoratore.ricercaAnd(nomeRicerca, cognomeRicerca, luogoRicerca, periodoRicerca, auto, patenteRicerca, lingueRicerca, mansioniLavoratoreRicerca)) {
+                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
+                    String testoDaControllare = textAreaResRicerca.getText();
+
+                    if(!testoDaControllare.contains(lavoratoreDaScrivere))
+                        textAreaResRicerca.appendText(lavoratoreDaScrivere);
+
+                }
+
+                flag=true;
+
 
             }
 
@@ -888,7 +898,7 @@ public class HelloController implements Initializable {
 
                 if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) || lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
 
-                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + "\n";
+                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
 
                     String testoDaControllare = textAreaResRicerca.getText();
 
