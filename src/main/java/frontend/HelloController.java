@@ -272,7 +272,7 @@ public class HelloController implements Initializable {
     String patente;
     String patenteRicerca;
     Boolean auto = false;
-    Boolean autoRicerca = false;
+    Boolean autoRicerca;
     String disp;
     String esp;
     String ricercaNome;
@@ -779,7 +779,7 @@ public class HelloController implements Initializable {
         cognomeRicerca = cognomeRicerca_field.getText();
         luogoRicerca = luogoRicerca_field.getText();
 
-        Periodo periodoRicerca = new Periodo(inizioPeriodoDate, finePeriodoDate);
+        Periodo periodoRicerca = new Periodo(inizioPeriodoRicercaDate, finePeriodoRicercaDate);
 
         if (patenteRicerca_field.getSelectionModel().getSelectedItem() != null) {
 
@@ -789,7 +789,7 @@ public class HelloController implements Initializable {
 
         if (autoRicerca_field.isSelected()) {
 
-            auto = true;
+            autoRicerca = true;
 
         }
 
@@ -853,13 +853,14 @@ public class HelloController implements Initializable {
 
         }
 
-        String testoMan = textAreaMansioniRicerca.getText();
-        String[] arrMansioni = testoMan.split("\n");
+        if(textAreaMansioniRicerca.getText().compareTo("")!=0) {
+            String testoMan = textAreaMansioniRicerca.getText();
+            String[] arrMansioni = testoMan.split("\n");
 
-        for (String stringa: arrMansioni) {
-            mansioniLavoratoreRicerca.add(stringa);
+            for (String stringa : arrMansioni) {
+                mansioniLavoratoreRicerca.add(stringa);
+            }
         }
-
         //se siamo nell and fai cose altrimenti siamo nell or
         if(andSearch_field.isSelected()){
 
@@ -878,17 +879,16 @@ public class HelloController implements Initializable {
 
                 }*/
 
-                if(lavoratore.ricercaAnd(nomeRicerca, cognomeRicerca, luogoRicerca, periodoRicerca, auto, patenteRicerca, lingueRicerca, mansioniLavoratoreRicerca)) {
+                if(lavoratore.ricercaAnd(nomeRicerca, cognomeRicerca, luogoRicerca, periodoRicerca, autoRicerca, patenteRicerca, lingueRicerca, mansioniLavoratoreRicerca)) {
                     String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
                     String testoDaControllare = textAreaResRicerca.getText();
 
                     if(!testoDaControllare.contains(lavoratoreDaScrivere))
                         textAreaResRicerca.appendText(lavoratoreDaScrivere);
 
+                    flag=true;
+
                 }
-
-                flag=true;
-
 
             }
 

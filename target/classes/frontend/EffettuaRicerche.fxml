@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1253.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HelloController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="653.0" prefWidth="1253.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.HelloController">
     <children>
         <Label layoutX="564.0" layoutY="50.0" text="RICERCA" textFill="WHITE">
             <font>
@@ -50,7 +50,7 @@
             </toggleGroup>
         </RadioButton>
         <RadioButton fx:id="orSearch_field" layoutX="1033.0" layoutY="478.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$search" />
-        <RadioButton fx:id="autoRicerca_field2" layoutX="381.0" layoutY="279.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$automunito2" />
+        <RadioButton fx:id="autoRicerca_field2" layoutX="381.0" layoutY="279.0" mnemonicParsing="false" text="No" textFill="WHITE" toggleGroup="$automunito2" />
       <DatePicker fx:id="inizioPeriodoRicerca_field" layoutX="557.0" layoutY="182.0" onAction="#setInizioPeriodoRicercaAction" />
       <DatePicker fx:id="finePeriodoRicerca_field" layoutX="752.0" layoutY="182.0" onAction="#setFinePeriodoRicercaAction" />
       <Label layoutX="557.0" layoutY="244.0" text="Mansioni svolte" textFill="WHITE" />

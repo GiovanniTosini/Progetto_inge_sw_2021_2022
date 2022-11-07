@@ -109,13 +109,13 @@ public class Lavoratore extends Persona{
     }
 
 
-    public Boolean ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean auto, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
+    public Boolean ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean autoRicerca, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
 
-        if((nomeRicerca!=null && getNome().compareTo(nomeRicerca)!=0)||
-                (cognomeRicerca!=null && getCognome().compareTo(cognomeRicerca)!=0)||
-                (luogoRicerca!=null && getResidenza().getCittà().compareTo(luogoRicerca)!=0)||
-                (auto!=null && automunito!=auto)||
-                (patenteRicerca!=null && getPatente()!=patenteRicerca)){
+        if((nomeRicerca.compareTo("")!=0 && getNome().compareTo(nomeRicerca)!=0)||
+                (cognomeRicerca.compareTo("")!=0 && getCognome().compareTo(cognomeRicerca)!=0)||
+                (luogoRicerca.compareTo("")!=0 && getResidenza().getCittà().compareTo(luogoRicerca)!=0)||
+                (autoRicerca!=null && automunito!=autoRicerca)||
+                (patenteRicerca!=null && getPatente().compareTo(patenteRicerca)!=0)){
             return false;
         }
 

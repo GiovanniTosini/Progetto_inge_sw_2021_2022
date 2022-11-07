@@ -10,6 +10,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Progetto_inge_sw_2022" />
+        <module name="Progetto_inge_sw_2021_2022" />
       </profile>
     </annotationProcessing>
   </component>
