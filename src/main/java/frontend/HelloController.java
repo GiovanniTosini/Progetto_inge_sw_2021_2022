@@ -769,6 +769,8 @@ public class HelloController implements Initializable {
     //effettua ricerca lavoratore in effettuaricerche
     public void effettaRicercheAction(ActionEvent actionEvent) throws IOException {
 
+        textAreaResRicerca.clear();
+
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
 
         Set<String> lingueRicerca = new HashSet<>();
@@ -778,6 +780,7 @@ public class HelloController implements Initializable {
         nomeRicerca = nomeRicerca_field.getText();
         cognomeRicerca = cognomeRicerca_field.getText();
         luogoRicerca = luogoRicerca_field.getText();
+        autoRicerca = null;
 
         Periodo periodoRicerca = new Periodo(inizioPeriodoRicercaDate, finePeriodoRicercaDate);
 
@@ -790,6 +793,12 @@ public class HelloController implements Initializable {
         if (autoRicerca_field.isSelected()) {
 
             autoRicerca = true;
+
+        }
+
+        if (autoRicerca_field2.isSelected()){
+
+            autoRicerca = false;
 
         }
 
@@ -896,7 +905,7 @@ public class HelloController implements Initializable {
 
             for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
 
-                if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) || lavoratore.getLuogoDiNascita().equals(luogoRicerca)){
+                if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) || lavoratore.getResidenza().getCittà().equals(luogoRicerca) || lavoratore.isAutomunito()==autoRicerca){
 
                     String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
 

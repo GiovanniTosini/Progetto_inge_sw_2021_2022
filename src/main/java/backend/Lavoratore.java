@@ -111,22 +111,31 @@ public class Lavoratore extends Persona{
 
     public Boolean ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean autoRicerca, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
 
-        if((nomeRicerca.compareTo("")!=0 && getNome().compareTo(nomeRicerca)!=0)||
-                (cognomeRicerca.compareTo("")!=0 && getCognome().compareTo(cognomeRicerca)!=0)||
-                (luogoRicerca.compareTo("")!=0 && getResidenza().getCittà().compareTo(luogoRicerca)!=0)||
-                (autoRicerca!=null && automunito!=autoRicerca)||
-                (patenteRicerca!=null && getPatente().compareTo(patenteRicerca)!=0)){
+        Date dataDefault = new Date();
+
+        try {
+            dataDefault = new Date(01, 01, 2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        if ((nomeRicerca.compareTo("") != 0 && getNome().compareTo(nomeRicerca) != 0) ||
+                (cognomeRicerca.compareTo("") != 0 && getCognome().compareTo(cognomeRicerca) != 0) ||
+                (luogoRicerca.compareTo("") != 0 && getResidenza().getCittà().compareTo(luogoRicerca) != 0) ||
+                (autoRicerca != null && automunito != autoRicerca) ||
+                (patenteRicerca != null && getPatente().compareTo(patenteRicerca) != 0)) {
             return false;
         }
 
-        if(periodoRicerca!=null){
-            for(Disponibilità disp: disponibilità){
-                if(disp.getPeriodo().getInizioPeriodo().compareTo(periodoRicerca.getInizioPeriodo())<=0 &&
-                        disp.getPeriodo().getFinePeriodo().compareTo(periodoRicerca.getFinePeriodo())>=0){
+        if (!(periodoRicerca.getInizioPeriodo().equals(dataDefault) && periodoRicerca.getFinePeriodo().equals(dataDefault))){
+            for (Disponibilità disp : disponibilità) {
+                if (periodoRicerca.getInizioPeriodo().equals(periodoRicerca.getFinePeriodo()) ||
+                        !periodoRicerca.compareTo(disp.getPeriodo()))
                     return false;
-                }
             }
         }
+
 
         if(!lingueRicerca.isEmpty()){
             for(String lingua:lingueRicerca){
@@ -136,9 +145,10 @@ public class Lavoratore extends Persona{
         }
 //TODO vedere se trasformare la lista lavori in set, e finire il controllo bene
         if(!mansioniLavoratoreRicerca.isEmpty())
-            for(String lavoro:mansioniLavoratoreRicerca){
-                if(!lavori.get .contains(lavoro))
-                    return false;
+            for(String mansione: mansioniLavoratoreRicerca){
+                for(Lavoro lavoro: lavori)
+                    if(!lavoro.getMansioniSvolte().contains(mansione))
+                        return false;
             }
         return true;
     }
