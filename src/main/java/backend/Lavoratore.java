@@ -134,12 +134,11 @@ public class Lavoratore extends Persona{
                     return false;
             }
         }
-
+//TODO vedere se trasformare la lista lavori in set, e finire il controllo bene
         if(!mansioniLavoratoreRicerca.isEmpty())
-            for(Lavoro lavoro:lavori){
-                for(String mansione:lavoro.getMansioniSvolte())
-                    if(!esperienze.contains(mansione))
-                        return false;
+            for(String lavoro:mansioniLavoratoreRicerca){
+                if(!lavori.get .contains(lavoro))
+                    return false;
             }
         return true;
     }

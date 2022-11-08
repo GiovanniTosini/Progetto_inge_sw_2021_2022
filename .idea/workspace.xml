@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2668c558-1c13-46b6-9a60-3b607c7c34e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Disponibilità.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Disponibilità.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Periodo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Periodo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/EffettuaRicerche.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/backend/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Date.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,14 +80,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/frontend/HelloController.java</url>
-          <line>855</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/backend/Lavoratore.java</url>
-          <line>137</line>
-          <option name="timeStamp" value="6" />
+          <line>121</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
