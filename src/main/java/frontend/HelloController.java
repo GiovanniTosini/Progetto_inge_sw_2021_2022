@@ -780,6 +780,7 @@ public class HelloController implements Initializable {
         nomeRicerca = nomeRicerca_field.getText();
         cognomeRicerca = cognomeRicerca_field.getText();
         luogoRicerca = luogoRicerca_field.getText();
+
         autoRicerca = null;
 
         Periodo periodoRicerca = new Periodo(inizioPeriodoRicercaDate, finePeriodoRicercaDate);
