@@ -33,7 +33,7 @@ public class HelloController implements Initializable {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
+    ObservableList<String> list = FXCollections.observableArrayList("Seleziona patente","A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
     Set<String> mansioniLavoratore = new HashSet<>();
@@ -767,7 +767,7 @@ public class HelloController implements Initializable {
     }
 
     //effettua ricerca lavoratore in effettuaricerche
-    public void effettaRicercheAction(ActionEvent actionEvent) throws IOException {
+    public void effettaRicercheAction(ActionEvent actionEvent) throws Exception {
 
         textAreaResRicerca.clear();
 
@@ -781,7 +781,7 @@ public class HelloController implements Initializable {
         cognomeRicerca = cognomeRicerca_field.getText();
         luogoRicerca = luogoRicerca_field.getText();
 
-        autoRicerca = null;
+
 
         Periodo periodoRicerca = new Periodo(inizioPeriodoRicercaDate, finePeriodoRicercaDate);
 
@@ -905,29 +905,77 @@ public class HelloController implements Initializable {
         }else{
 
             for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+                //controllo primi parametri (+facili)
+                if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) ||
+                        lavoratore.getResidenza().getCittà().equals(luogoRicerca)){
+                    flag = true;
+                }
 
-                if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) || lavoratore.getResidenza().getCittà().equals(luogoRicerca) || lavoratore.isAutomunito()==autoRicerca){
+                if(lavoratore.getPatente()!=null){
+                    if(lavoratore.getPatente().equals(patenteRicerca))
+                        flag=true;
+                }
+                if(autoRicerca!=null){
+                    if(lavoratore.isAutomunito()==autoRicerca)
+                        flag=true;
+                }
 
+                //controllo periodo: controllo data di default, controllo date valide
+                for(Disponibilità disp: disponibilità){
+                    if(periodoRicerca.compareTo(disp.getPeriodo())){
+                        flag=true;
+                    }
+                }
+
+                for(String lingua:lingueRicerca){
+                    if(lavoratore.lingueParlate.contains(lingua))
+                        flag=true;
+                }
+
+                for(String mansione: mansioniLavoratoreRicerca){
+                    for(Lavoro lavoro:lavoratore.lavori){
+                        if(lavoro.getMansioniSvolte().contains(mansione))
+                            flag=true;
+                    }
+                }
+
+
+
+                if(flag){
                     String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
-
                     String testoDaControllare = textAreaResRicerca.getText();
 
                     if(!testoDaControllare.contains(lavoratoreDaScrivere))
                         textAreaResRicerca.appendText(lavoratoreDaScrivere);
 
-                    flag = true;
-
                 }
+                flag=false;
+
 
             }
 
         }
 
-        if(!flag){
-
-            textAreaResRicerca.clear();
-
-        }
+        nomeRicerca_field.clear();
+        cognomeRicerca_field.clear();
+        luogoRicerca_field.clear();
+        inizioPeriodoRicerca_field.getEditor().clear();
+        finePeriodoRicerca_field.getEditor().clear();
+        itaRicerca_field.setSelected(false);
+        alRicerca_field.setSelected(false);
+        frRicerca_field.setSelected(false);
+        sloRicerca_field.setSelected(false);
+        deRicerca_field.setSelected(false);
+        enRicerca_field.setSelected(false);
+        arRicerca_field.setSelected(false);
+        ruRicerca_field.setSelected(false);
+        cinRicerca_field.setSelected(false);
+        spaRicerca_field.setSelected(false);
+        autoRicerca_field.setSelected(false);
+        autoRicerca_field2.setSelected(false);
+        textAreaMansioniRicerca.clear();
+        patenteRicerca_field.getSelectionModel().clearSelection();
+        mansioniRicerca_field.getSelectionModel().clearSelection();
 
         //TODO da implementare con tutti gli altri parametri mancanti, resettare alla fine tutti i campi e vedere utilizzo flag
 

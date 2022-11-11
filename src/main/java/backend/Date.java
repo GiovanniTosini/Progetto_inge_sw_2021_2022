@@ -26,7 +26,9 @@ public class Date {
             throw new Exception("data illegale!");
     }
 
-    public Date(){}
+    public Date(){
+
+    }
 
     @Override
     public String toString() {

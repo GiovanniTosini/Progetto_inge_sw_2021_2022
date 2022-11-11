@@ -111,7 +111,7 @@ public class Lavoratore extends Persona{
 
     public Boolean ricercaAnd(String nomeRicerca, String cognomeRicerca, String luogoRicerca, Periodo periodoRicerca, Boolean autoRicerca, String patenteRicerca, Set<String> lingueRicerca, Set<String> mansioniLavoratoreRicerca) {
 
-        Date dataDefault = new Date();
+        Date dataDefault=null;
 
         try {
             dataDefault = new Date(01, 01, 2000);
@@ -127,7 +127,7 @@ public class Lavoratore extends Persona{
                 (patenteRicerca != null && getPatente().compareTo(patenteRicerca) != 0)) {
             return false;
         }
-
+        //verifica che la data non sia di default
         if (!(periodoRicerca.getInizioPeriodo().equals(dataDefault) && periodoRicerca.getFinePeriodo().equals(dataDefault))){
             for (Disponibilità disp : disponibilità) {
                 if (periodoRicerca.getInizioPeriodo().equals(periodoRicerca.getFinePeriodo()) ||
