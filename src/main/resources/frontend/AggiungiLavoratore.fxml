@@ -78,5 +78,7 @@
       <Button layoutX="615.0" layoutY="480.0" mnemonicParsing="false" onAction="#saveEsp" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI / RIMUOVI" />
       <Label layoutX="788.0" layoutY="375.0" text="Tabella esperienze precedenti" textFill="WHITE" />
       <TextArea fx:id="textAreaEsp" editable="false" layoutX="789.0" layoutY="407.0" prefHeight="116.0" prefWidth="352.0" promptText="Nessuna esperienza aggiunta" />
+      <Label fx:id="lingueCheck_label" layoutX="182.0" layoutY="529.0" text="Nessuna lingua selezionata" textFill="RED" visible="false" />
+      <Label fx:id="patenteCheck_label" layoutX="395.0" layoutY="449.0" text="Nessuna patente selezionata" textFill="RED" visible="false" />
    </children>
 </Pane>

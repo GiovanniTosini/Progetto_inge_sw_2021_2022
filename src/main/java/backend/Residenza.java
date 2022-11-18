@@ -4,16 +4,29 @@ public class Residenza {
 
     private String via, città, provincia;
 
+    boolean cittàCheck=false;
+    boolean provinciaCheck=false;
+
     public Residenza(String via, String città, String provincia){
             this.via = via;
             this.città = città;
             this.provincia = provincia;
 
-            if(numberChecker(città) || numberChecker(provincia))
-                throw new IllegalArgumentException("Parametri residenza errati");
+            if(numberChecker(città))
+                cittàCheck=true;
+            if(numberChecker(provincia))
+                provinciaCheck=true;
     }
 
     public Residenza(){}
+
+    public boolean isCittàCheck() {
+        return cittàCheck;
+    }
+
+    public boolean isProvinciaCheck() {
+        return provinciaCheck;
+    }
 
     @Override
     public String toString() {

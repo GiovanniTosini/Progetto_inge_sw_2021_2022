@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2668c558-1c13-46b6-9a60-3b607c7c34e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Date.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/PersonaEmergenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/PersonaEmergenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Residenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Residenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/backend/Date.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Date.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/afterlogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/afterlogin.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/backend/Disponibilità.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Disponibilità.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Lavoratore.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/backend/Periodo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/backend/Periodo.class" afterDir="false" />
@@ -33,16 +38,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Gianluigi/Documents/GitHub/Progetto_inge_sw_2021_2022",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
-  }
-}]]></component>
   <component name="RunManager">
     <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-19.0.1" />
@@ -88,15 +83,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/frontend/HelloController.java</url>
-          <line>913</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="frontend.HelloController" memberName="nomeA_field" />

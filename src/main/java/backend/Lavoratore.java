@@ -16,6 +16,11 @@ public class Lavoratore extends Persona{
     public List<Disponibilità> disponibilità;
     public Set<String> esperienze; //esperienze/specializzazioni del lavoratore
 
+    //varaibili per check parametri in aggiungi lavoratore
+    boolean telefonoCheck=false;
+    boolean luogoCheck=false;
+    boolean nazionalitàCheck=false;
+
     public List<Lavoro> lavori; //elenco lavoro(<5 anni)
     //TODO: aggiungere lavoro al costruttore...
     public Lavoratore(String nome, String cognome, String luogoDiNascita, String nazionalità, String indirizzoEmail, String numeroTelefono,
@@ -34,15 +39,31 @@ public class Lavoratore extends Persona{
         this.personaEmergenza = personaEmergenza; //controlli nella classe
         this.lavori = lavori;
 
-        if(!numeroDiTelefonoCheck(numeroTelefono) || numberChecker(luogoDiNascita) || numberChecker(nazionalità))
-            throw new IllegalArgumentException("Parametri lavoratore errati");
+        if(!numeroDiTelefonoCheck(numeroTelefono))
+            telefonoCheck=true;
+        if(numberChecker(luogoDiNascita))
+            luogoCheck=true;
+        if(numberChecker(nazionalità))
+            nazionalitàCheck=true;
     }
 
     public Lavoratore(){}
 
+    public boolean isTelefonoCheck() {
+        return telefonoCheck;
+    }
+
+    public boolean isLuogoCheck() {
+        return luogoCheck;
+    }
+
+    public boolean isNazionalitàCheck() {
+        return nazionalitàCheck;
+    }
+
     public boolean numeroDiTelefonoCheck(String numero){
 
-        if(numero == null)
+        if(numero.equals(""))
             return true;
         else if(numero.length() != 10)
             return false;
@@ -56,7 +77,7 @@ public class Lavoratore extends Persona{
     }
 
     private boolean numberChecker(String string){
-        return string.contains("0") || string.contains("1") || string.contains("2") || string.contains("3") || string.contains("4") || string.contains("5") ||
+        return string.contains("") || string.contains("0") || string.contains("1") || string.contains("2") || string.contains("3") || string.contains("4") || string.contains("5") ||
                 string.contains("6") || string.contains("7") || string.contains("8") || string.contains("9");
     }
 

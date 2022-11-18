@@ -2,17 +2,25 @@ package backend;
 
 public class PersonaEmergenza extends Persona{
 
+    boolean telefonoCheck=false;
+
     public PersonaEmergenza(String nome, String cognome, String numeroTelefono, String indirizzoEmail) {
         super(nome, cognome, numeroTelefono, indirizzoEmail);
 
         if(!numeroDiTelefonoCheck(numeroTelefono))
-            throw new IllegalArgumentException("Parametri persona emergenza errati");
+            telefonoCheck=true;
     }
 
     public PersonaEmergenza(){}
 
+    public boolean isTelefonoCheck() {
+        return telefonoCheck;
+    }
+
     public boolean numeroDiTelefonoCheck(String numero){
 
+        if(numero.equals(""))
+            return true;
         if(numero.length() != 10)
             return false;
 

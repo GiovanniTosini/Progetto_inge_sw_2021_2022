@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -33,7 +34,7 @@ public class HelloController implements Initializable {
 
     ObjectMapper objectMapper = new ObjectMapper();
 
-    ObservableList<String> list = FXCollections.observableArrayList("Seleziona patente","A", "B", "C", "D");
+    ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
     Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
     Set<String> mansioniLavoratore = new HashSet<>();
@@ -76,6 +77,12 @@ public class HelloController implements Initializable {
 
     @FXML
     Label status_label;
+
+    @FXML
+    Label lingueCheck_label;
+
+    @FXML
+    Label patenteCheck_label;
 
     @FXML
     TextField nome_field;
@@ -322,6 +329,7 @@ public class HelloController implements Initializable {
                 (username_text.compareTo(gabbaFausty.getLogin()) == 0 && password_text.compareTo(gabbaFausty.getPassword()) == 0) ||
                 (username_text.compareTo(poppoTosini.getLogin()) == 0 && password_text.compareTo(poppoTosini.getPassword()) == 0)) {
 
+
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -372,14 +380,29 @@ public class HelloController implements Initializable {
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
         List<Disponibilità> disponibilitàTemp = new ArrayList<>();
         Set<String> lingue = new HashSet<>();
+        boolean flag=false;
+
+        nome_field.setStyle("-fx-text-fill:black;");
+        cognome_field.setStyle("-fx-text-fill:black;");
+        email_field.setStyle("-fx-text-fill:black;");
+        tel_field.setStyle("-fx-text-fill:black;");
+        luogo_field.setStyle("-fx-text-fill:black;");
+        nazio_field.setStyle("-fx-text-fill:black;");
+        citta_field.setStyle("-fx-text-fill:black;");
+        prov_field.setStyle("-fx-text-fill:black;");
+        nome2_field.setStyle("-fx-text-fill:black;");
+        cognome2_field.setStyle("-fx-text-fill:black;");
+        email2_field.setStyle("-fx-text-fill:black;");
+        tel2_field.setStyle("-fx-text-fill:black;");
+        lingueCheck_label.setVisible(false);
+        patenteCheck_label.setVisible(false);
+
         nome = nome_field.getText();
         cognome = cognome_field.getText();
         luogo = luogo_field.getText();
         nazio = nazio_field.getText();
 
         Residenza residenza = new Residenza(via_field.getText(), citta_field.getText(), prov_field.getText());
-
-        System.out.println(residenza);
 
         tel = tel_field.getText();
         email = email_field.getText();
@@ -452,6 +475,11 @@ public class HelloController implements Initializable {
 
             patente = patente_field.getSelectionModel().getSelectedItem();
 
+        }else{
+
+            patenteCheck_label.setVisible(true);
+            flag=true;
+
         }
 
         if (auto_field.isSelected()) {
@@ -472,17 +500,108 @@ public class HelloController implements Initializable {
 
         Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilitàTemp, esperienze, personaemergenza, lavori);
 
-        System.out.println(lavoratore);
+        if(lavoratore.isNomeCheck()){
 
-        listaLavoratori.getListaLavoratori().add(lavoratore);
+            nome_field.setStyle("-fx-text-fill:red;");
+            flag=true;
 
-        objectMapper.writeValue(file, listaLavoratori);
+        }
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(lavoratore.isCognomeCheck()){
+
+            cognome_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lavoratore.isMailCheck()){
+
+            email_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lavoratore.isTelefonoCheck()){
+
+            tel_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lavoratore.isLuogoCheck()){
+
+            luogo_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lavoratore.isNazionalitàCheck()){
+
+            nazio_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lavoratore.getResidenza().isCittàCheck()){
+
+            citta_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lavoratore.getResidenza().isProvinciaCheck()){
+
+            prov_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(lingue.isEmpty()){
+
+            lingueCheck_label.setVisible(true);
+
+        }
+
+        if(personaemergenza.isNomeCheck()){
+
+            nome2_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(personaemergenza.isCognomeCheck()){
+
+            cognome2_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(personaemergenza.isMailCheck()){
+
+            email2_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(personaemergenza.isTelefonoCheck()){
+
+            tel2_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+
+        }
+
+        if(!flag) {
+
+            listaLavoratori.getListaLavoratori().add(lavoratore);
+
+            objectMapper.writeValue(file, listaLavoratori);
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }
 
     }
 
@@ -871,6 +990,7 @@ public class HelloController implements Initializable {
                 mansioniLavoratoreRicerca.add(stringa);
             }
         }
+
         //se siamo nell and fai cose altrimenti siamo nell or
         if(andSearch_field.isSelected()){
 
@@ -895,8 +1015,6 @@ public class HelloController implements Initializable {
 
                     if(!testoDaControllare.contains(lavoratoreDaScrivere))
                         textAreaResRicerca.appendText(lavoratoreDaScrivere);
-
-                    flag=true;
 
                 }
 
@@ -956,7 +1074,7 @@ public class HelloController implements Initializable {
 
         }
 
-        nomeRicerca_field.clear();
+        /*nomeRicerca_field.clear();
         cognomeRicerca_field.clear();
         luogoRicerca_field.clear();
         inizioPeriodoRicerca_field.getEditor().clear();
@@ -976,6 +1094,7 @@ public class HelloController implements Initializable {
         textAreaMansioniRicerca.clear();
         patenteRicerca_field.getSelectionModel().clearSelection();
         mansioniRicerca_field.getSelectionModel().clearSelection();
+        */
 
         //TODO da implementare con tutti gli altri parametri mancanti, resettare alla fine tutti i campi e vedere utilizzo flag
 
@@ -1060,4 +1179,5 @@ public class HelloController implements Initializable {
         finePeriodoRicercaDate.setYear(mydate.getYear());
 
     }
+
 }
