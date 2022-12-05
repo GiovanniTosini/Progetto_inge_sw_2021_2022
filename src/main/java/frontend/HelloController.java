@@ -1102,11 +1102,14 @@ public class HelloController implements Initializable {
 
     public void setBirthDate(ActionEvent actionEvent) throws Exception {
 
+
         LocalDate mydate = data_field.getValue();
 
         birthDate.setDay(mydate.getDayOfMonth());
         birthDate.setMonth(mydate.getMonthValue());
         birthDate.setYear(mydate.getYear());
+
+
 
     }
 
