@@ -57,6 +57,8 @@ public class HelloController implements Initializable {
 
     String[] listaEsperienze = new String[69];
 
+    String[] listaProvince = new String[110];
+
     @FXML
     ComboBox<String> disp_field = new ComboBox<>();
 
@@ -70,6 +72,9 @@ public class HelloController implements Initializable {
     ComboBox<String> mansioniRicerca_field = new ComboBox<>();
 
     @FXML
+    ComboBox<String> province_field = new ComboBox<>();
+
+    @FXML
     TextField username_field;
 
     @FXML
@@ -79,10 +84,9 @@ public class HelloController implements Initializable {
     Label status_label;
 
     @FXML
-    Label lingueCheck_label;
+    Label campiObbligatori_label;
 
-    @FXML
-    Label patenteCheck_label;
+
 
     @FXML
     TextField nome_field;
@@ -101,9 +105,6 @@ public class HelloController implements Initializable {
 
     @FXML
     TextField citta_field;
-
-    @FXML
-    TextField prov_field;
 
     @FXML
     TextField tel_field;
@@ -291,6 +292,8 @@ public class HelloController implements Initializable {
     String nomeRicerca;
     String cognomeRicerca;
     String luogoRicerca;
+
+    String province;
     float cash;
     Date birthDate;
     Date ricercaDate;
@@ -388,21 +391,29 @@ public class HelloController implements Initializable {
         tel_field.setStyle("-fx-text-fill:black;");
         luogo_field.setStyle("-fx-text-fill:black;");
         nazio_field.setStyle("-fx-text-fill:black;");
+        via_field.setStyle("-fx-text-fill:black;");
         citta_field.setStyle("-fx-text-fill:black;");
-        prov_field.setStyle("-fx-text-fill:black;");
         nome2_field.setStyle("-fx-text-fill:black;");
         cognome2_field.setStyle("-fx-text-fill:black;");
         email2_field.setStyle("-fx-text-fill:black;");
         tel2_field.setStyle("-fx-text-fill:black;");
-        lingueCheck_label.setVisible(false);
-        patenteCheck_label.setVisible(false);
+        campiObbligatori_label.setStyle("-fx-text-fill:white;");
+
+
 
         nome = nome_field.getText();
         cognome = cognome_field.getText();
         luogo = luogo_field.getText();
         nazio = nazio_field.getText();
+        if (province_field.getSelectionModel().getSelectedItem() != null)
+                province = province_field.getSelectionModel().getSelectedItem();
+        else{
 
-        Residenza residenza = new Residenza(via_field.getText(), citta_field.getText(), prov_field.getText());
+            flag=true;
+
+        }
+
+        Residenza residenza = new Residenza(via_field.getText(), citta_field.getText(), province);
 
         tel = tel_field.getText();
         email = email_field.getText();
@@ -477,7 +488,6 @@ public class HelloController implements Initializable {
 
         }else{
 
-            patenteCheck_label.setVisible(true);
             flag=true;
 
         }
@@ -500,90 +510,86 @@ public class HelloController implements Initializable {
 
         Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilitàTemp, esperienze, personaemergenza, lavori);
 
-        if(lavoratore.isNomeCheck()){
+        if(lavoratore.getResidenza().isViaCheck(via_field.getText())){
+            via_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+        }
+
+        if(lavoratore.getResidenza().isCittàCheck(citta_field.getText())){
+            citta_field.setStyle("-fx-text-fill:red;");
+            flag=true;
+        }
+
+        if(lavoratore.isNomeCheck(nome)){
 
             nome_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(lavoratore.isCognomeCheck()){
+        if(lavoratore.isCognomeCheck(cognome)){
 
             cognome_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(lavoratore.isMailCheck()){
+        if(lavoratore.isMailCheck(email)){
 
             email_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(lavoratore.isTelefonoCheck()){
+        if(lavoratore.isTelefonoCheck(tel)){
 
             tel_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(lavoratore.isLuogoCheck()){
+        if(lavoratore.isLuogoCheck(luogo)){
 
             luogo_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(lavoratore.isNazionalitàCheck()){
+        if(lavoratore.isNazionalitàCheck(nazio)){
 
             nazio_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(lavoratore.getResidenza().isCittàCheck()){
-
-            citta_field.setStyle("-fx-text-fill:red;");
-            flag=true;
-
-        }
-
-        if(lavoratore.getResidenza().isProvinciaCheck()){
-
-            prov_field.setStyle("-fx-text-fill:red;");
-            flag=true;
-
-        }
-
         if(lingue.isEmpty()){
 
-            lingueCheck_label.setVisible(true);
+            flag=true;
 
         }
 
-        if(personaemergenza.isNomeCheck()){
+        if(personaemergenza.isNomeCheck(nome2)){
 
             nome2_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(personaemergenza.isCognomeCheck()){
+        if(personaemergenza.isCognomeCheck(cognome2)){
 
             cognome2_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(personaemergenza.isMailCheck()){
+        if(personaemergenza.isMailCheck(email2)){
 
             email2_field.setStyle("-fx-text-fill:red;");
             flag=true;
 
         }
 
-        if(personaemergenza.isTelefonoCheck()){
+        if(personaemergenza.isTelefonoCheck(tel2)){
 
             tel2_field.setStyle("-fx-text-fill:red;");
             flag=true;
@@ -601,6 +607,8 @@ public class HelloController implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+        }else{
+            campiObbligatori_label.setStyle("-fx-text-fill:red;");
         }
 
     }
@@ -635,12 +643,26 @@ public class HelloController implements Initializable {
             e.printStackTrace();
         }
 
+        String fileProvince = "src/main/resources/frontend/sigla_province.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileProvince))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                listaProvince[i] = line;
+                i++;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
         patente_field.setItems(list);
         patenteRicerca_field.setItems(list);
         disp_field.getItems().addAll(listaComuni);
         esp_field.getItems().addAll(listaEsperienze);
         mansioni_field.getItems().addAll(listaEsperienze);
         mansioniRicerca_field.getItems().addAll(listaEsperienze);
+        province_field.getItems().addAll(listaProvince);
 
     }
 

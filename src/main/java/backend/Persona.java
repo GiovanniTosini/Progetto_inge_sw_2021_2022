@@ -7,35 +7,33 @@ public class Persona {
 
     private String nome, cognome, indirizzoEmail, numeroTelefono;
 
-    boolean nomeCheck=false;
-    boolean cognomeCheck=false;
-    boolean mailCheck=false;
-
     public Persona(String nome, String cognome, String numeroTelefono, String indirizzoEmail){
         this.nome = nome;
         this.cognome = cognome;
         this.indirizzoEmail = indirizzoEmail;
         this.numeroTelefono = numeroTelefono;
-
-        if(numberChecker(nome))
-            nomeCheck=true;
-        if(numberChecker(cognome))
-            cognomeCheck=true;
-        if(!mailChecker(indirizzoEmail))
-            mailCheck=true;
     }
 
     public Persona(){}
 
-    public boolean isNomeCheck() {
+    public boolean isNomeCheck(String nome) {
+        boolean nomeCheck=false;
+        if(numberChecker(nome))
+            nomeCheck=true;
         return nomeCheck;
     }
 
-    public boolean isCognomeCheck() {
+    public boolean isCognomeCheck(String cognome) {
+        boolean cognomeCheck=false;
+        if(numberChecker(cognome))
+            cognomeCheck=true;
         return cognomeCheck;
     }
 
-    public boolean isMailCheck() {
+    public boolean isMailCheck(String indirizzoEmail) {
+        boolean mailCheck=false;
+        if(!mailChecker(indirizzoEmail))
+            mailCheck=true;
         return mailCheck;
     }
 
@@ -57,7 +55,7 @@ public class Persona {
              }
              return matcher.matches();
          }else{
-             return true;
+             return false;
          }
     }
 

@@ -2,25 +2,26 @@ package backend;
 
 public class PersonaEmergenza extends Persona{
 
-    boolean telefonoCheck=false;
 
     public PersonaEmergenza(String nome, String cognome, String numeroTelefono, String indirizzoEmail) {
         super(nome, cognome, numeroTelefono, indirizzoEmail);
 
-        if(!numeroDiTelefonoCheck(numeroTelefono))
-            telefonoCheck=true;
+
     }
 
     public PersonaEmergenza(){}
 
-    public boolean isTelefonoCheck() {
+    public boolean isTelefonoCheck(String numeroTelefono) {
+        boolean telefonoCheck=false;
+        if(!numeroDiTelefonoCheck(numeroTelefono))
+            telefonoCheck=true;
         return telefonoCheck;
     }
 
     public boolean numeroDiTelefonoCheck(String numero){
 
         if(numero.equals(""))
-            return true;
+            return false;
         if(numero.length() != 10)
             return false;
 

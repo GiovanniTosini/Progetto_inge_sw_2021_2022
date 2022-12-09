@@ -9,8 +9,14 @@
       <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/PersonaEmergenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/PersonaEmergenza.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Residenza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Residenza.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/sigla_province.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/sigla_province.txt" afterDir="false" />
+    </list>
+    <list id="6f8960c2-6bf3-467f-af9c-5538a62a5115" name="Changes by Angy" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +25,39 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/src/main/java/frontend/HelloController.java">
+      <ranges>
+        <range start1="59" end1="59" start2="59" end2="61" changelist="6f8960c2-6bf3-467f-af9c-5538a62a5115" />
+        <range start1="71" end1="71" start2="73" end2="76" changelist="6f8960c2-6bf3-467f-af9c-5538a62a5115" />
+        <range start1="81" end1="82" start2="86" end2="87" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="83" end1="85" start2="88" end2="89" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="103" end1="106" start2="107" end2="107" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="293" end1="293" start2="294" end2="296" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="390" end1="390" start2="393" end2="394" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="391" end1="392" start2="395" end2="395" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="396" end1="398" start2="399" end2="402" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="403" end1="403" start2="407" end2="412" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="404" end1="405" start2="413" end2="416" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="479" end1="480" start2="490" end2="490" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="502" end1="503" start2="512" end2="523" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="509" end1="510" start2="529" end2="530" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="516" end1="517" start2="536" end2="537" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="523" end1="524" start2="543" end2="544" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="530" end1="531" start2="550" end2="551" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="537" end1="538" start2="557" end2="558" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="543" end1="557" start2="563" end2="563" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="560" end1="561" start2="566" end2="567" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="564" end1="565" start2="570" end2="571" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="571" end1="572" start2="577" end2="578" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="578" end1="579" start2="584" end2="585" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="585" end1="586" start2="591" end2="592" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="603" end1="603" start2="609" end2="611" changelist="2668c558-1c13-46b6-9a60-3b607c7c34e1" />
+        <range start1="637" end1="637" start2="645" end2="658" changelist="6f8960c2-6bf3-467f-af9c-5538a62a5115" />
+        <range start1="643" end1="643" start2="664" end2="665" changelist="6f8960c2-6bf3-467f-af9c-5538a62a5115" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -81,6 +120,19 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/frontend/HelloController.java</url>
+          <line>910</line>
+          <properties class="frontend.HelloController" method="effettaRicercheAction">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="frontend.HelloController" memberName="nomeA_field" />

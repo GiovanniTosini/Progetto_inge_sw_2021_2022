@@ -4,28 +4,37 @@ public class Residenza {
 
     private String via, città, provincia;
 
-    boolean cittàCheck=false;
-    boolean provinciaCheck=false;
+
+
+
 
     public Residenza(String via, String città, String provincia){
             this.via = via;
             this.città = città;
             this.provincia = provincia;
 
-            if(numberChecker(città))
-                cittàCheck=true;
-            if(numberChecker(provincia))
-                provinciaCheck=true;
+    }
+
+    private boolean isFieldNull(String stringa) {
+        if(stringa.equals(""))
+            return false;
+        else return true;
     }
 
     public Residenza(){}
 
-    public boolean isCittàCheck() {
+    public boolean isCittàCheck(String città) {
+        boolean cittàCheck=false;
+        if(numberChecker(città) || !isFieldNull(città))
+            cittàCheck=true;
         return cittàCheck;
     }
 
-    public boolean isProvinciaCheck() {
-        return provinciaCheck;
+    public boolean isViaCheck(String via) {
+        boolean viaCheck=false;
+        if(!isFieldNull(via))
+            viaCheck=true;
+        return viaCheck;
     }
 
     @Override

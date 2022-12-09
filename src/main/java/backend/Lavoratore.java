@@ -17,9 +17,9 @@ public class Lavoratore extends Persona{
     public Set<String> esperienze; //esperienze/specializzazioni del lavoratore
 
     //varaibili per check parametri in aggiungi lavoratore
-    boolean telefonoCheck=false;
-    boolean luogoCheck=false;
-    boolean nazionalitàCheck=false;
+    //boolean telefonoCheck=false;
+    //boolean luogoCheck=false;
+    //boolean nazionalitàCheck=false;
 
     public List<Lavoro> lavori; //elenco lavoro(<5 anni)
     //TODO: aggiungere lavoro al costruttore...
@@ -39,25 +39,34 @@ public class Lavoratore extends Persona{
         this.personaEmergenza = personaEmergenza; //controlli nella classe
         this.lavori = lavori;
 
-        if(!numeroDiTelefonoCheck(numeroTelefono))
-            telefonoCheck=true;
-        if(numberChecker(luogoDiNascita))
-            luogoCheck=true;
+
+
+        boolean nazionalitàCheck=false;
+
         if(numberChecker(nazionalità))
             nazionalitàCheck=true;
     }
 
     public Lavoratore(){}
 
-    public boolean isTelefonoCheck() {
+    public boolean isTelefonoCheck(String numeroTelefono) {
+        boolean telefonoCheck=false;
+        if(!numeroDiTelefonoCheck(numeroTelefono))
+            telefonoCheck=true;
         return telefonoCheck;
     }
 
-    public boolean isLuogoCheck() {
+    public boolean isLuogoCheck(String luogoDiNascita) {
+        boolean luogoCheck=false;
+        if(numberChecker(luogoDiNascita))
+            luogoCheck=true;
         return luogoCheck;
     }
 
-    public boolean isNazionalitàCheck() {
+    public boolean isNazionalitàCheck(String nazionalità) {
+        boolean nazionalitàCheck=false;
+        if(numberChecker(nazionalità))
+            nazionalitàCheck=true;
         return nazionalitàCheck;
     }
 

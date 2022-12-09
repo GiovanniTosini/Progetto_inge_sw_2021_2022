@@ -11,24 +11,24 @@
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="86.0" layoutY="140.0" text="Nome" textFill="WHITE" />
-      <Label layoutX="316.0" layoutY="140.0" text="Cognome" textFill="WHITE" />
-      <Label layoutX="541.0" layoutY="140.0" text="Luogo di Nascita" textFill="WHITE" />
-      <Label layoutX="752.0" layoutY="140.0" text="Data di nascita" textFill="WHITE" />
-      <Label layoutX="989.0" layoutY="140.0" text="Nazionalità" textFill="WHITE" />
+      <Label layoutX="86.0" layoutY="140.0" text="Nome *" textFill="WHITE" />
+      <Label layoutX="316.0" layoutY="140.0" text="Cognome *" textFill="WHITE" />
+      <Label layoutX="541.0" layoutY="140.0" text="Luogo di Nascita *" textFill="WHITE" />
+      <Label layoutX="752.0" layoutY="140.0" text="Data di nascita *" textFill="WHITE" />
+      <Label layoutX="989.0" layoutY="140.0" text="Nazionalità *" textFill="WHITE" />
       <Label layoutX="542.0" layoutY="255.0" text="Telefono" textFill="WHITE" />
-      <Label layoutX="762.0" layoutY="255.0" text="Email" textFill="WHITE" />
-      <Label layoutX="88.0" layoutY="370.0" text="Lingue parlate" textFill="WHITE" />
-      <Label layoutX="394.0" layoutY="375.0" text="Patente di guida" textFill="WHITE" />
+      <Label layoutX="762.0" layoutY="255.0" text="Email *" textFill="WHITE" />
+      <Label layoutX="88.0" layoutY="370.0" text="Lingue parlate *" textFill="WHITE" />
+      <Label layoutX="394.0" layoutY="459.0" text="Patente di guida *" textFill="WHITE" />
       <Label layoutX="450.0" layoutY="576.0" text="Persona da avvisare in caso di emergenza:" textFill="WHITE">
          <font>
             <Font size="19.0" />
          </font>
       </Label>
-      <Label layoutX="86.0" layoutY="628.0" text="Nome" textFill="WHITE" />
-      <Label layoutX="319.0" layoutY="628.0" text="Cognome" textFill="WHITE" />
-      <Label layoutX="542.0" layoutY="628.0" text="Telefono" textFill="WHITE" />
-      <Label layoutX="760.0" layoutY="628.0" text="Email" textFill="WHITE" />
+      <Label layoutX="86.0" layoutY="628.0" text="Nome *" textFill="WHITE" />
+      <Label layoutX="319.0" layoutY="628.0" text="Cognome *" textFill="WHITE" />
+      <Label layoutX="542.0" layoutY="628.0" text="Telefono *" textFill="WHITE" />
+      <Label layoutX="760.0" layoutY="628.0" text="Email *" textFill="WHITE" />
       <TextField fx:id="nome_field" layoutX="87.0" layoutY="172.0" />
       <TextField fx:id="cognome_field" layoutX="316.0" layoutY="172.0" />
       <TextField fx:id="luogo_field" layoutX="542.0" layoutY="172.0" />
@@ -40,14 +40,13 @@
       <TextField fx:id="cognome2_field" layoutX="319.0" layoutY="666.0" />
       <TextField fx:id="tel2_field" layoutX="542.0" layoutY="666.0" />
       <TextField fx:id="email2_field" layoutX="760.0" layoutY="666.0" />
-      <TextField fx:id="prov_field" layoutX="402.0" layoutY="287.0" prefHeight="25.0" prefWidth="52.0" />
       <TextField fx:id="citta_field" layoutX="245.0" layoutY="287.0" prefHeight="25.0" prefWidth="149.0" />
-      <Label layoutX="88.0" layoutY="255.0" text="Via" textFill="WHITE" />
-      <Label layoutX="245.0" layoutY="255.0" text="Città" textFill="WHITE" />
-      <Label layoutX="403.0" layoutY="255.0" text="Provincia" textFill="WHITE" />
+      <Label layoutX="88.0" layoutY="255.0" text="Via *" textFill="WHITE" />
+      <Label layoutX="245.0" layoutY="255.0" text="Città *" textFill="WHITE" />
+      <Label layoutX="403.0" layoutY="255.0" text="Provincia *" textFill="WHITE" />
       <Button layoutX="981.0" layoutY="651.0" mnemonicParsing="false" onAction="#saveWorkerAction" prefHeight="40.0" prefWidth="149.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA" />
       <CheckBox fx:id="ita_field" layoutX="90.0" layoutY="407.0" mnemonicParsing="false" text="Italiano" textFill="WHITE" />
-      <ComboBox fx:id="patente_field" accessibleText="A" layoutX="394.0" layoutY="408.0" prefWidth="150.0" promptText="Seleziona patente" />
+      <ComboBox fx:id="patente_field" accessibleText="A" layoutX="394.0" layoutY="492.0" prefWidth="150.0" promptText="Seleziona patente" />
       <CheckBox fx:id="al_field" layoutX="173.0" layoutY="408.0" mnemonicParsing="false" text="Albanese" textFill="WHITE" />
       <CheckBox fx:id="fr_field" layoutX="258.0" layoutY="408.0" mnemonicParsing="false" text="Francese" textFill="WHITE" />
       <CheckBox fx:id="slo_field" layoutX="91.0" layoutY="489.0" mnemonicParsing="false" text="Sloveno" textFill="WHITE" />
@@ -56,13 +55,13 @@
       <CheckBox fx:id="ar_field" layoutX="173.0" layoutY="449.0" mnemonicParsing="false" text="Arabo" textFill="WHITE" />
       <CheckBox fx:id="ru_field" layoutX="258.0" layoutY="449.0" mnemonicParsing="false" text="Rumeno" textFill="WHITE" />
       <CheckBox fx:id="cin_field" layoutX="172.0" layoutY="489.0" mnemonicParsing="false" text="Cinese" textFill="WHITE" />
-      <Label layoutX="989.0" layoutY="255.0" text="Automunito" textFill="WHITE" />
-      <RadioButton fx:id="auto_field" layoutX="990.0" layoutY="288.0" mnemonicParsing="false" text="Sì" textFill="WHITE">
+      <Label layoutX="395.0" layoutY="375.0" text="Automunito *" textFill="WHITE" />
+      <RadioButton fx:id="auto_field" layoutX="396.0" layoutY="408.0" mnemonicParsing="false" text="Sì" textFill="WHITE">
          <toggleGroup>
             <ToggleGroup fx:id="automunito" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="auto_field2" layoutX="1044.0" layoutY="288.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$automunito" />
+      <RadioButton fx:id="auto_field2" layoutX="450.0" layoutY="408.0" mnemonicParsing="false" selected="true" text="No" textFill="WHITE" toggleGroup="$automunito" />
       <CheckBox fx:id="spa_field" layoutX="90.0" layoutY="529.0" mnemonicParsing="false" text="Spagnolo" textFill="WHITE" />
       <DatePicker fx:id="data_field" editable="false" layoutX="753.0" layoutY="172.0" onAction="#setBirthDate" promptText="Scegli una data" />
       <Label layoutX="615.0" layoutY="375.0" text="Esperienze precedenti" textFill="WHITE" />
@@ -70,7 +69,7 @@
       <Button layoutX="615.0" layoutY="480.0" mnemonicParsing="false" onAction="#saveEsp" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI / RIMUOVI" />
       <Label layoutX="788.0" layoutY="375.0" text="Tabella esperienze precedenti" textFill="WHITE" />
       <TextArea fx:id="textAreaEsp" editable="false" layoutX="789.0" layoutY="407.0" prefHeight="116.0" prefWidth="352.0" promptText="Nessuna esperienza aggiunta" />
-      <Label fx:id="lingueCheck_label" layoutX="182.0" layoutY="529.0" text="Nessuna lingua selezionata" textFill="RED" visible="false" />
-      <Label fx:id="patenteCheck_label" layoutX="395.0" layoutY="449.0" text="Nessuna patente selezionata" textFill="RED" visible="false" />
+      <ComboBox fx:id="province_field" layoutX="403.0" layoutY="287.0" prefHeight="25.0" prefWidth="60.0" />
+      <Label fx:id="campiObbligatori_label" layoutX="981.0" layoutY="620.0" text="* Campi obbligatori" textFill="WHITE" />
    </children>
 </Pane>
