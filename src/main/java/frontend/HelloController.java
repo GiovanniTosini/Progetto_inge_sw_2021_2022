@@ -89,6 +89,8 @@ public class HelloController implements Initializable {
     @FXML
     Label erroriAggiorna_label;
 
+    @FXML
+    Label erroriRicercaLavoratore_label;
 
 
     @FXML
@@ -737,14 +739,30 @@ public class HelloController implements Initializable {
         }
     }
 
-    //ricerva lavoro per aggiornare lavoratore
+    //ricerca lavoratore per aggiornare lavoro
     // ricercalavoratore -> aggiornalavoro
     public void searchAction(ActionEvent actionEvent) throws IOException {
 
         boolean flag = false;
+        erroriRicercaLavoratore_label.setStyle("-fx-text-fill:#333;");
+        ricercaNome_field.setStyle("-fx-text-fill:black;");
+        ricercaCognome_field.setStyle("-fx-text-fill:black;");
 
         ricercaNome = ricercaNome_field.getText();
+
+        if(ricercaNome.equals("")){
+
+            ricercaNome_field.setStyle("-fx-text-fill:red;");
+
+        }
+
         ricercaCognome = ricercaCognome_field.getText();
+
+        if(ricercaCognome.equals("")){
+
+            ricercaCognome_field.setStyle("-fx-text-fill:red;");
+
+        }
 
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
 
@@ -774,7 +792,7 @@ public class HelloController implements Initializable {
 
         }else{
 
-            //TODO implementare in caso in cui non ce il lavoratore
+            erroriRicercaLavoratore_label.setStyle("-fx-text-fill:red;");
 
         }
 
@@ -932,7 +950,6 @@ public class HelloController implements Initializable {
     //ci porta in effettuaricerche da afterlogin
     //afterlogin -> effettuaricerche
     public void ricercaAction(ActionEvent actionEvent) throws IOException {
-
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EffettuaRicerche.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
