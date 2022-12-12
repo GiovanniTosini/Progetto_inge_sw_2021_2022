@@ -86,6 +86,9 @@ public class HelloController implements Initializable {
     @FXML
     Label campiObbligatori_label;
 
+    @FXML
+    Label erroriAggiorna_label;
+
 
 
     @FXML
@@ -670,14 +673,37 @@ public class HelloController implements Initializable {
     //updateWorkAction
     public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
+        erroriAggiorna_label.setStyle("-fx-text-fill:#333;");
+        luogoA_field.setStyle("-fx-text-fill:black;");
+        cash_field.setStyle("-fx-text-fill:black;");
+        boolean flag=true;
         nomeAzienda = nomeA_field.getText();
         luogoAzienda = luogoA_field.getText();
+
+        Date dataDefault=null;
+
+        try {
+            dataDefault = new Date(01, 01, 2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        if(nomeAzienda.equals("")) {
+            nomeA_field.setStyle("-fx-text-fill:red");
+        }
+
+        if(luogoAzienda.equals("")||luogoAzienda.contains("0")||luogoAzienda.contains("1")||luogoAzienda.contains("2")||luogoAzienda.contains("3")||luogoAzienda.contains("4")||luogoAzienda.contains("5")||luogoAzienda.contains("6")||luogoAzienda.contains("7")||luogoAzienda.contains("8")||luogoAzienda.contains("9")) {
+            flag = false;
+            luogoA_field.setStyle("-fx-text-fill:red");
+        }
+
         try {
             cash = Float.parseFloat(cash_field.getText());
         }catch (NumberFormatException e){
-            System.out.println("la stringa non è float");
+            flag=false;
+            cash_field.setStyle("-fx-text-fill:red");
         }
-        //cash = cash_field.getText(); //TODO forse meglio metterci un float invece di String
+
         Periodo periodo2 = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
         String testoMan = textAreaMansioni.getText();
@@ -689,17 +715,26 @@ public class HelloController implements Initializable {
 
         //System.out.println(nomeAzienda + "\n" + luogoAzienda + "\n" + mansioni + "\n" + cash + "\n" + periodo2 + "\n");
 
-        Lavoro lavoroTemp = new Lavoro(periodo2, nomeAzienda, luogoAzienda, mansioniLavoratore, cash);
-        lavoratoreDaAggiornare.lavori.add(lavoroTemp);
-        listaLavoratori.getListaLavoratori().add(lavoratoreDaAggiornare);
-        objectMapper.writeValue(file, listaLavoratori);
+        if(nomeAzienda.equals("") || luogoAzienda.equals("") || mansioniLavoratore.isEmpty() || cash==0 ||
+                (periodo2.getInizioPeriodo().equals(dataDefault) && periodo2.getFinePeriodo().equals(dataDefault)))
+            flag=false;
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+        if(flag) {
+            Lavoro lavoroTemp = new Lavoro(periodo2, nomeAzienda, luogoAzienda, mansioniLavoratore, cash);
+            lavoratoreDaAggiornare.lavori.add(lavoroTemp);
+            listaLavoratori.getListaLavoratori().add(lavoratoreDaAggiornare);
+            objectMapper.writeValue(file, listaLavoratori);
 
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        }else{
+
+            erroriAggiorna_label.setStyle("-fx-text-fill:red;");
+
+        }
     }
 
     //ricerva lavoro per aggiornare lavoratore

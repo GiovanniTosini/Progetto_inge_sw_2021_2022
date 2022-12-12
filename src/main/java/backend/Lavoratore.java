@@ -149,6 +149,10 @@ public class Lavoratore extends Persona{
             e.printStackTrace();
         }
 
+        if(nomeRicerca.equals("") && cognomeRicerca.equals("") && luogoRicerca.equals("") &&
+                autoRicerca == null && patenteRicerca == null && (periodoRicerca.getInizioPeriodo().equals(dataDefault) &&
+                periodoRicerca.getFinePeriodo().equals(dataDefault)) && lingueRicerca.isEmpty() && mansioniLavoratoreRicerca.isEmpty())
+            return false;
 
         if ((nomeRicerca.compareTo("") != 0 && getNome().compareTo(nomeRicerca) != 0) ||
                 (cognomeRicerca.compareTo("") != 0 && getCognome().compareTo(cognomeRicerca) != 0) ||
