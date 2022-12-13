@@ -676,6 +676,7 @@ public class HelloController implements Initializable {
     public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
         erroriAggiorna_label.setStyle("-fx-text-fill:#333;");
+        nomeA_field.setStyle("-fx-text-fill:black");
         luogoA_field.setStyle("-fx-text-fill:black;");
         cash_field.setStyle("-fx-text-fill:black;");
         boolean flag=true;
