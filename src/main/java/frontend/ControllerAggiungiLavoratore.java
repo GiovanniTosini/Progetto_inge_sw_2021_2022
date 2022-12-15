@@ -28,6 +28,8 @@ public class ControllerAggiungiLavoratore implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    Model model = Model.getModel();
+
     ListaLavoratori listaLavoratori = new ListaLavoratori();
 
     ObjectMapper objectMapper = new ObjectMapper();
@@ -185,7 +187,8 @@ public class ControllerAggiungiLavoratore implements Initializable {
     //saveWorkerAction
     public void saveWorkerAction(ActionEvent actionEvent) throws Exception {
 
-        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        listaLavoratori=model.readJson(listaLavoratori);
         List<Disponibilità> disponibilitàTemp = new ArrayList<>();
         Set<String> lingue = new HashSet<>();
         boolean flag=false;
@@ -405,7 +408,8 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
             listaLavoratori.getListaLavoratori().add(lavoratore);
 
-            objectMapper.writeValue(file, listaLavoratori);
+            //objectMapper.writeValue(file, listaLavoratori);
+            model.writeJson(listaLavoratori);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -503,7 +507,8 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         //inizializzazione nuova disponibilità
 
-        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        listaLavoratori = model.readJson(listaLavoratori);
 
         Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
 
@@ -513,9 +518,20 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         listaLavoratori.getListaLavoratori().add(newlavoratore);
 
-        objectMapper.writeValue(file, listaLavoratori);
+        //objectMapper.writeValue(file, listaLavoratori);
+        model.writeJson(listaLavoratori);
 
         disponibilità.clear();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
+    public void returnAction(ActionEvent actionEvent) throws IOException {
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

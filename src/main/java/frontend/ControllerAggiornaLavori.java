@@ -28,6 +28,8 @@ public class ControllerAggiornaLavori implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    Model model = Model.getModel();
+
     File file = new File("lavoratori.json");
 
     ObjectMapper objectMapper = new ObjectMapper();
@@ -152,7 +154,8 @@ public class ControllerAggiornaLavori implements Initializable {
             Lavoro lavoroTemp = new Lavoro(periodo2, nomeAzienda, luogoAzienda, mansioniLavoratore, cash);
             lavoratoreDaAggiornare.lavori.add(lavoroTemp);
             listaLavoratori.getListaLavoratori().add(lavoratoreDaAggiornare);
-            objectMapper.writeValue(file, listaLavoratori);
+            //objectMapper.writeValue(file, listaLavoratori);
+            model.writeJson(listaLavoratori);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -191,7 +194,8 @@ public class ControllerAggiornaLavori implements Initializable {
 
         }
 
-        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        listaLavoratori=model.readJson(listaLavoratori);
 
         for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
 
@@ -222,6 +226,16 @@ public class ControllerAggiornaLavori implements Initializable {
             erroriRicercaLavoratore_label.setStyle("-fx-text-fill:red;");
 
         }
+
+    }
+
+    public void returnAction(ActionEvent actionEvent) throws IOException {
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 

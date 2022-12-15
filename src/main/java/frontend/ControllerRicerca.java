@@ -28,6 +28,8 @@ public class ControllerRicerca implements Initializable {
     private Stage stage;
     private Scene scene;
 
+    Model model = Model.getModel();
+
     File file = new File("lavoratori.json");
 
     ObjectMapper objectMapper = new ObjectMapper();
@@ -135,7 +137,8 @@ public class ControllerRicerca implements Initializable {
 
         textAreaResRicerca.clear();
 
-        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        listaLavoratori=model.readJson(listaLavoratori);
 
         Set<String> lingueRicerca = new HashSet<>();
 
@@ -334,22 +337,6 @@ public class ControllerRicerca implements Initializable {
     //ritorna ad afterlogin e salva la disponibilità(comuni, e periodi)
     //disponibilità -> afterlogin
     public void exitAction(ActionEvent actionEvent) throws IOException {
-
-        //inizializzazione nuova disponibilità
-
-        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-
-        Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
-
-        listaLavoratori.getListaLavoratori().remove(listaLavoratori.getListaLavoratori().size()-1);
-
-        newlavoratore.setDisponibilità(disponibilità);
-
-        listaLavoratori.getListaLavoratori().add(newlavoratore);
-
-        objectMapper.writeValue(file, listaLavoratori);
-
-        disponibilità.clear();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

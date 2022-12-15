@@ -5,34 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2668c558-1c13-46b6-9a60-3b607c7c34e1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/backend/Model.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiornaLavori.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerRicerca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/PagApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiornaLavori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiornaLavori.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/ControllerRicerca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerRicerca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/afterlogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/afterlogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/disponibilità.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/disponibilità.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/login2.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/EffettuaRicerche.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloApplication.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiornaLavori.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiornaLavori.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiungiLavoratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiungiLavoratore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/ControllerRicerca.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/ControllerRicerca.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/Model.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/afterlogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/afterlogin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/disponibilità.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/disponibilità.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/login2.fxml" beforeDir="false" />
     </list>
     <list id="6f8960c2-6bf3-467f-af9c-5538a62a5115" name="Changes by Angy" comment="" />
     <option name="SHOW_DIALOG" value="false" />

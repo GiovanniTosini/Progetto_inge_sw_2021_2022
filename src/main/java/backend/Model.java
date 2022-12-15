@@ -1,8 +1,17 @@
 package backend;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.File;
+import java.io.IOException;
+
 public class Model {
 
     private static Model modelInstance;
+
+    ObjectMapper objectMapper = new ObjectMapper();
+
+    File file = new File("lavoratori.json");
 
     public Model() {
     }
@@ -13,6 +22,20 @@ public class Model {
             modelInstance = new Model();
         }
         return modelInstance;
+
+    }
+
+    public ListaLavoratori readJson(ListaLavoratori listaLavoratori) throws IOException {
+
+        listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+
+        return listaLavoratori;
+
+    }
+
+    public void writeJson(ListaLavoratori listaLavoratori) throws IOException {
+
+        objectMapper.writeValue(file, listaLavoratori);
 
     }
 
