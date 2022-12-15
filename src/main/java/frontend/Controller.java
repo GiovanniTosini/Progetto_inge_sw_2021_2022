@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Background;
 import javafx.stage.Stage;
 
 import java.io.BufferedReader;
@@ -25,7 +24,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 
-public class HelloController implements Initializable {
+public class Controller implements Initializable {
 
     private Stage stage;
     private Scene scene;

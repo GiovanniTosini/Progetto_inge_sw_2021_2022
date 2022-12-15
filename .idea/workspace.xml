@@ -5,13 +5,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2668c558-1c13-46b6-9a60-3b607c7c34e1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/backend/Model.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiornaLavori.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerLogin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerRicerca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/PagApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/EffettuaRicerche.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/afterlogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/afterlogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/disponibilità.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/disponibilità.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/login2.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/EffettuaRicerche.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/EffettuaRicerche.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloApplication.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/HelloController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/afterlogin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/afterlogin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/disponibilità.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/disponibilità.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/frontend/login2.fxml" beforeDir="false" />
     </list>
     <list id="6f8960c2-6bf3-467f-af9c-5538a62a5115" name="Changes by Angy" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +40,23 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -30,20 +66,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/haxel/Documents/GitHub/Progetto_inge_sw_2021_2022&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;vcs.Git&quot;
-  }
-}</component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+  </component>
   <component name="RunManager">
-    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="PagApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-19.0.1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="frontend.HelloApplication" />
-      <module name="Progetto_inge_sw_2021_2022" />
+      <option name="MAIN_CLASS_NAME" value="frontend.PagApplication" />
+      <module name="Progetto_inge_sw_2022" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="frontend.*" />
@@ -56,7 +87,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="Application.PagApplication" />
       </list>
     </recent_temporary>
   </component>
