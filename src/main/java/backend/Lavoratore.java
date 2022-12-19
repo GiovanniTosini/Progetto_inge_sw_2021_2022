@@ -177,12 +177,16 @@ public class Lavoratore extends Persona{
                     return false;
             }
         }
-
+        boolean flag;
         if(!mansioniLavoratoreRicerca.isEmpty()) {
             for (String mansione : mansioniLavoratoreRicerca) {
-                for (Lavoro lavoro : lavori)
-                    if (!lavoro.getMansioniSvolte().contains(mansione))
-                        return false;
+                flag=false;
+                for (Lavoro lavoro : lavori) {
+                    if (lavoro.getMansioniSvolte().contains(mansione))
+                        flag=true;
+                }
+                if(!flag)
+                    return false;
             }
         }
         return true;

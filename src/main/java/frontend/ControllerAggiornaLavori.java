@@ -103,6 +103,7 @@ public class ControllerAggiornaLavori implements Initializable {
     //updateWorkAction
     public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
+        listaLavoratori=model.readJson(listaLavoratori);
         erroriAggiorna_label.setStyle("-fx-text-fill:#333;");
         nomeA_field.setStyle("-fx-text-fill:black");
         luogoA_field.setStyle("-fx-text-fill:black;");
@@ -204,6 +205,8 @@ public class ControllerAggiornaLavori implements Initializable {
                 lavoratoreDaAggiornare = lavoratore;
 
                 listaLavoratori.getListaLavoratori().remove(lavoratore);
+
+                model.writeJson(listaLavoratori);
 
                 flag = true;
 
