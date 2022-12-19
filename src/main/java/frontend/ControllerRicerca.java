@@ -230,6 +230,8 @@ public class ControllerRicerca implements Initializable {
 
         }
 
+        mansioniLavoratoreRicerca.clear();
+
         if(textAreaMansioniRicerca.getText().compareTo("")!=0) {
             String testoMan = textAreaMansioniRicerca.getText();
             String[] arrMansioni = testoMan.split("\n");

@@ -36,6 +36,8 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
     File file = new File("lavoratori.json");
 
+    Disponibilità newdisponibilità = new Disponibilità();
+
     Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
 
@@ -149,6 +151,9 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
     @FXML
     Label campiObbligatori_label;
+
+    @FXML
+    Label campiObbligatoriDisponibilità_label;
 
     String nome;
     String cognome;
@@ -429,6 +434,18 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         //salvo parametri periodi e zone
 
+        campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:#333;");
+
+        comuni.clear();
+
+        Date dataDefault=null;
+
+        try {
+            dataDefault = new Date(01, 01, 2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         Periodo periodo = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
         String testo = textAreaComune.getText();
@@ -439,16 +456,25 @@ public class ControllerAggiungiLavoratore implements Initializable {
             comuni.add(stringa);
         }
 
-        Disponibilità newdisponibilità = new Disponibilità(periodo, comuni);
+        if(!comuni.isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
 
-        disponibilità.add(newdisponibilità);
+            newdisponibilità.setPeriodo(periodo);
+            newdisponibilità.setComuni(comuni);
 
-        System.out.println(disponibilità);
+            disponibilità.add(newdisponibilità);
 
-        dataP_field.getEditor().clear();
-        dataP2_field.getEditor().clear();
-        disp_field.getSelectionModel().clearSelection();
-        textAreaComune.clear();
+            System.out.println(disponibilità);
+
+            dataP_field.getEditor().clear();
+            dataP2_field.getEditor().clear();
+            disp_field.getSelectionModel().clearSelection();
+            textAreaComune.clear();
+
+        }else{
+
+            campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:red;");
+
+        }
 
     }
 
