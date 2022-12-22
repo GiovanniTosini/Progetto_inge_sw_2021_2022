@@ -8,20 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lavoratori.json" beforeDir="false" afterPath="$PROJECT_DIR$/lavoratori.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Lavoratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/backend/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/backend/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiornaLavori.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiornaLavori.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/frontend/ControllerRicerca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/frontend/ControllerRicerca.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiornaLavoro.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/AggiungiLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/frontend/RicercaLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiornaLavoro.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/AggiungiLavoratore.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiornaLavori.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiornaLavori.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiungiLavoratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/ControllerAggiungiLavoratore.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/ControllerRicerca.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/ControllerRicerca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/Model.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/frontend/RicercaLavoratore.fxml" afterDir="false" />
     </list>
     <list id="6f8960c2-6bf3-467f-af9c-5538a62a5115" name="Changes by Angy" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +50,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="$USER_HOME$/.jdks/openjdk-19.0.1" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="frontend.PagApplication" />
-      <module name="Progetto_inge_sw_2022" />
+      <module name="Progetto_inge_sw_2021_2022" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="frontend.*" />
@@ -103,6 +90,25 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java</url>
+          <line>411</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/frontend/ControllerAggiungiLavoratore.java</url>
+          <line>190</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/backend/Lavoratore.java</url>
+          <line>180</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <pin-to-top-manager>
       <pinned-members>
         <PinnedItemInfo parentTag="frontend.HelloController" memberName="nomeA_field" />
@@ -112,6 +118,7 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="mansioniLavoratoreRicerca.toArray()[0]" />
+        <watch expression="dataDefault" />
       </configuration>
     </watches-manager>
   </component>
