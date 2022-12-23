@@ -32,12 +32,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
     ListaLavoratori listaLavoratori = new ListaLavoratori();
 
-    ObjectMapper objectMapper = new ObjectMapper();
-
-    File file = new File("lavoratori.json");
-
-    Disponibilità newdisponibilità = new Disponibilità();
-
     Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
 
@@ -193,7 +187,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
     public void saveWorkerAction(ActionEvent actionEvent) throws Exception {
 
         //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-        listaLavoratori=model.readJson(listaLavoratori);
+        //listaLavoratori=model.readJson(listaLavoratori);
         List<Disponibilità> disponibilitàTemp = new ArrayList<>();
         Set<String> lingue = new HashSet<>();
         boolean flag=false;
@@ -411,16 +405,19 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         if(!flag) {
 
-            listaLavoratori.getListaLavoratori().add(lavoratore);
+            //listaLavoratori.getListaLavoratori().add(lavoratore);
 
             //objectMapper.writeValue(file, listaLavoratori);
-            model.writeJson(listaLavoratori);
+            //model.writeJson(listaLavoratori);
+
+            model.add_saveWorker(lavoratore);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
         }else{
             campiObbligatori_label.setStyle("-fx-text-fill:red;");
         }
@@ -458,17 +455,20 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         if(!comuni.isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
 
-            newdisponibilità.setPeriodo(periodo);
-            newdisponibilità.setComuni(comuni);
-
-            disponibilità.add(newdisponibilità);
+            disponibilità.add(new Disponibilità(periodo,comuni));
 
             System.out.println(disponibilità);
 
-            dataP_field.getEditor().clear();
+            /*dataP_field.getEditor().clear();
             dataP2_field.getEditor().clear();
             disp_field.getSelectionModel().clearSelection();
-            textAreaComune.clear();
+            textAreaComune.clear();*/
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
 
         }else{
 
@@ -534,6 +534,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
         //inizializzazione nuova disponibilità
 
         //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+
         listaLavoratori = model.readJson(listaLavoratori);
 
         Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
