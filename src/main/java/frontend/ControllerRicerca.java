@@ -30,13 +30,7 @@ public class ControllerRicerca implements Initializable {
 
     Model model = Model.getModel();
 
-    File file = new File("lavoratori.json");
-
-    ObjectMapper objectMapper = new ObjectMapper();
-
     ListaLavoratori listaLavoratori = new ListaLavoratori();
-
-    static List<Disponibilità> disponibilità = new ArrayList<>();
 
     Set<String> mansioniLavoratoreRicerca = new HashSet<>();
 
@@ -276,7 +270,7 @@ public class ControllerRicerca implements Initializable {
                 }
 
                 //controllo periodo: controllo data di default, controllo date valide
-                for(Disponibilità disp: disponibilità){
+                for(Disponibilità disp: lavoratore.disponibilità){
                     if(periodoRicerca.compareTo(disp.getPeriodo())){
                         flag=true;
                     }
@@ -288,7 +282,7 @@ public class ControllerRicerca implements Initializable {
                 }
 
                 for(String mansione: mansioniLavoratoreRicerca){
-                    for(Lavoro lavoro:lavoratore.lavori){
+                    for(Lavoro lavoro: lavoratore.lavori){
                         if(lavoro.getMansioniSvolte().contains(mansione))
                             flag=true;
                     }

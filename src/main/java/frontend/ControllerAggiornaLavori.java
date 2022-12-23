@@ -30,10 +30,6 @@ public class ControllerAggiornaLavori implements Initializable {
 
     Model model = Model.getModel();
 
-    File file = new File("lavoratori.json");
-
-    ObjectMapper objectMapper = new ObjectMapper();
-
     ListaLavoratori listaLavoratori = new ListaLavoratori();
 
     static Lavoratore lavoratoreDaAggiornare = new Lavoratore();

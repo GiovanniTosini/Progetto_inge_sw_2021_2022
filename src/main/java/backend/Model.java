@@ -13,6 +13,8 @@ public class Model {
 
     File file = new File("lavoratori.json");
 
+    ListaLavoratori listaLavoratori = new ListaLavoratori();
+
     public Model() {
     }
 
@@ -25,7 +27,7 @@ public class Model {
 
     }
 
-    public ListaLavoratori readJson(ListaLavoratori listaLavoratori) throws IOException {
+    public ListaLavoratori readJson( ListaLavoratori listaLavoratori) throws IOException {
 
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
 
@@ -38,5 +40,14 @@ public class Model {
         objectMapper.writeValue(file, listaLavoratori);
 
     }
+
+    public void add_saveWorker(Lavoratore lavoratore) throws IOException {
+
+        listaLavoratori.getListaLavoratori().add(lavoratore);
+        writeJson(listaLavoratori);
+
+    }
+
+
 
 }
