@@ -1,37 +1,85 @@
 package backend;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Model {
 
     private static Model modelInstance;
 
-    ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper();
 
-    File file = new File("lavoratori.json");
+    private File file = new File("lavoratori.json");
 
-    ListaLavoratori listaLavoratori = new ListaLavoratori();
+    private ListaLavoratori listaLavoratori = new ListaLavoratori();
+
+
+    private List<Disponibilità> disponibilità = new ArrayList<>();
+
+
+    Set<String> comuni = new HashSet<>();
+    Set<String> esperienze = new HashSet<>();
+
+    ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
+
+    List<Lavoro> lavori = new ArrayList<>();
+
+    String[] listaComuni = new String[110];
+
+    String[] listaEsperienze = new String[69];
+
+    String[] listaProvince = new String[110];
 
     public Model() {
+
     }
 
     public static Model getModel(){
 
         if(modelInstance==null){
             modelInstance = new Model();
+
         }
         return modelInstance;
 
     }
 
-    public ListaLavoratori readJson( ListaLavoratori listaLavoratori) throws IOException {
+    public ObservableList<String> getList() {
+        return list;
+    }
+
+    public String[] getListaComuni() {
+        return listaComuni;
+    }
+
+    public String[] getListaEsperienze() {
+        return listaEsperienze;
+    }
+
+    public String[] getListaProvince() {
+        return listaProvince;
+    }
+
+    public Set<String> getComuni() {
+        return comuni;
+    }
+
+    public Set<String> getEsperienze() {
+        return esperienze;
+    }
+    public void readJson() throws IOException {
 
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-
-        return listaLavoratori;
 
     }
 
@@ -49,5 +97,79 @@ public class Model {
     }
 
 
+    public void addDisponibilità(Disponibilità newDisponibilità) {
 
+        disponibilità.add(newDisponibilità);
+    }
+
+
+    public void saveDisponibilità() throws IOException {
+
+        Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
+
+        listaLavoratori.getListaLavoratori().remove(listaLavoratori.getListaLavoratori().size()-1);
+
+        newlavoratore.setDisponibilità(disponibilità);
+
+        listaLavoratori.getListaLavoratori().add(newlavoratore);
+
+        //objectMapper.writeValue(file, listaLavoratori);
+        writeJson(listaLavoratori);
+
+        disponibilità.clear();
+    }
+
+    public void inizializzaListe(){
+        String file = "src/main/resources/frontend/province.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                listaComuni[i] = line;
+                i++;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        String fileesp = "src/main/resources/frontend/lavori_stagionali.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileesp))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                listaEsperienze[i] = line;
+                i++;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+        String fileProvince = "src/main/resources/frontend/sigla_province.txt";
+        try (BufferedReader br = new BufferedReader(new FileReader(fileProvince))) {
+            String line;
+            int i = 0;
+            while ((line = br.readLine()) != null) {
+                listaProvince[i] = line;
+                i++;
+            }
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
+
+    public void setComuni(String testo){
+
+        String[] arrComuni = testo.split("\n");
+
+        for (String stringa : arrComuni) {
+            comuni.add(stringa);
+        }
+    }
+
+    public void clearComuni() {
+        comuni.clear();
+    }
 }

@@ -30,22 +30,10 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
     Model model = Model.getModel();
 
-    ListaLavoratori listaLavoratori = new ListaLavoratori();
-
     Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
 
-    static List<Disponibilità> disponibilità = new ArrayList<>();
-
-    ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
-
     List<Lavoro> lavori = new ArrayList<>();
-
-    String[] listaComuni = new String[110];
-
-    String[] listaEsperienze = new String[69];
-
-    String[] listaProvince = new String[110];
 
     @FXML
     TextField nome_field;
@@ -433,7 +421,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:#333;");
 
-        comuni.clear();
+        model.clearComuni();
 
         Date dataDefault=null;
 
@@ -445,19 +433,16 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         Periodo periodo = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
-        String testo = textAreaComune.getText();
+        model.setComuni(textAreaComune.getText());
 
-        String[] arrComuni = testo.split("\n");
+        if(!model.getComuni().isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
 
-        for (String stringa : arrComuni) {
-            comuni.add(stringa);
-        }
+            //disponibilità.add(new Disponibilità(periodo,comuni));
+            Disponibilità newdisp=new Disponibilità(periodo,model.getComuni());
 
-        if(!comuni.isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
+            model.addDisponibilità(newdisp);
 
-            disponibilità.add(new Disponibilità(periodo,comuni));
-
-            System.out.println(disponibilità);
+            //System.out.println(disponibilità);
 
             /*dataP_field.getEditor().clear();
             dataP2_field.getEditor().clear();
@@ -481,49 +466,10 @@ public class ControllerAggiungiLavoratore implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String file = "src/main/resources/frontend/province.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
-            String line;
-            int i = 0;
-            while ((line = br.readLine()) != null) {
-                listaComuni[i] = line;
-                i++;
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        String fileesp = "src/main/resources/frontend/lavori_stagionali.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(fileesp))) {
-            String line;
-            int i = 0;
-            while ((line = br.readLine()) != null) {
-                listaEsperienze[i] = line;
-                i++;
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        String fileProvince = "src/main/resources/frontend/sigla_province.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(fileProvince))) {
-            String line;
-            int i = 0;
-            while ((line = br.readLine()) != null) {
-                listaProvince[i] = line;
-                i++;
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        patente_field.setItems(list);
-        disp_field.getItems().addAll(listaComuni);
-        esp_field.getItems().addAll(listaEsperienze);
-        province_field.getItems().addAll(listaProvince);
+        patente_field.setItems(model.getList());
+        disp_field.getItems().addAll(model.getListaComuni());
+        esp_field.getItems().addAll(model.getListaEsperienze());
+        province_field.getItems().addAll(model.getListaProvince());
 
     }
 
@@ -535,20 +481,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
 
-        listaLavoratori = model.readJson(listaLavoratori);
-
-        Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
-
-        listaLavoratori.getListaLavoratori().remove(listaLavoratori.getListaLavoratori().size()-1);
-
-        newlavoratore.setDisponibilità(disponibilità);
-
-        listaLavoratori.getListaLavoratori().add(newlavoratore);
-
-        //objectMapper.writeValue(file, listaLavoratori);
-        model.writeJson(listaLavoratori);
-
-        disponibilità.clear();
+        model.saveDisponibilità();
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
         stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

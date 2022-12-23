@@ -2,6 +2,7 @@ package frontend;
 
 import backend.Date;
 import backend.DipendenteAgenzia;
+import backend.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class ControllerLogin {
+
+    Model model = Model.getModel();
+
 
     private Stage stage;
     private Scene scene;
@@ -34,6 +38,7 @@ public class ControllerLogin {
     //login -> afterlogin
     public void loginAction(ActionEvent actionEvent) throws Exception {
 
+
         //inizializzo la lista lavoratori ogni volta che accendo il programma
         DipendenteAgenzia aleLorini = new DipendenteAgenzia("Alessandro", "Lorini", "3317574347", "alelorini99@gmail.it", "Chiari", new Date(06,01,1999), "Italiano", "ale", "ale");
         DipendenteAgenzia gabbaFausty = new DipendenteAgenzia("Gabriele", "Faustinoni", "3288865548", "gabrielefausty7@gmail.it", "Esine", new Date(25,05,2001), "Italiano", "gabba", "gabba");
@@ -47,6 +52,8 @@ public class ControllerLogin {
                 (username_text.compareTo(gabbaFausty.getLogin()) == 0 && password_text.compareTo(gabbaFausty.getPassword()) == 0) ||
                 (username_text.compareTo(poppoTosini.getLogin()) == 0 && password_text.compareTo(poppoTosini.getPassword()) == 0)) {
 
+            model.readJson();
+            model.inizializzaListe();
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

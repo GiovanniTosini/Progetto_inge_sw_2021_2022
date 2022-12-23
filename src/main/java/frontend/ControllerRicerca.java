@@ -132,7 +132,7 @@ public class ControllerRicerca implements Initializable {
         textAreaResRicerca.clear();
 
         //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-        listaLavoratori=model.readJson(listaLavoratori);
+        //listaLavoratori=model.readJson(listaLavoratori);
 
         Set<String> lingueRicerca = new HashSet<>();
 

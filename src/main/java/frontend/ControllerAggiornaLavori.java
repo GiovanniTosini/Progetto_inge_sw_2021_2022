@@ -99,7 +99,7 @@ public class ControllerAggiornaLavori implements Initializable {
     //updateWorkAction
     public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
-        listaLavoratori=model.readJson(listaLavoratori);
+        //listaLavoratori=model.readJson(listaLavoratori);
         erroriAggiorna_label.setStyle("-fx-text-fill:#333;");
         nomeA_field.setStyle("-fx-text-fill:black");
         luogoA_field.setStyle("-fx-text-fill:black;");
@@ -192,7 +192,7 @@ public class ControllerAggiornaLavori implements Initializable {
         }
 
         //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-        listaLavoratori=model.readJson(listaLavoratori);
+        //listaLavoratori=model.readJson(listaLavoratori);
 
         for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
 
