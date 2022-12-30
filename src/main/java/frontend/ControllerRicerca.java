@@ -27,62 +27,38 @@ public class ControllerRicerca implements Initializable {
 
     private Stage stage;
     private Scene scene;
-
     Model model = Model.getModel();
-
-    ListaLavoratori listaLavoratori = new ListaLavoratori();
-
     Set<String> mansioniLavoratoreRicerca = new HashSet<>();
-
-    ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
-
-    String[] listaEsperienze = new String[69];
-
     @FXML
     ComboBox<String> patenteRicerca_field = new ComboBox<>();
-
     @FXML
     ComboBox<String> mansioniRicerca_field = new ComboBox<>();
-
     @FXML
     TextField luogoRicerca_field;
-
     @FXML
     TextField nomeRicerca_field;
-
     @FXML
     TextField cognomeRicerca_field;
-
     @FXML
     RadioButton autoRicerca_field;
-
     @FXML
     RadioButton autoRicerca_field2;
-
     @FXML
     RadioButton andSearch_field;
-
     @FXML
     RadioButton orSearch_field;
-
     @FXML
     CheckBox itaRicerca_field;
-
     @FXML
     CheckBox alRicerca_field;
-
     @FXML
     CheckBox frRicerca_field;
-
     @FXML
     CheckBox sloRicerca_field;
-
     @FXML
     CheckBox deRicerca_field;
-
     @FXML
     CheckBox enRicerca_field;
-
     @FXML
     CheckBox arRicerca_field;
 
@@ -238,7 +214,7 @@ public class ControllerRicerca implements Initializable {
         //se siamo nell and fai cose altrimenti siamo nell or
         if(andSearch_field.isSelected()){
 
-            for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+            for(Lavoratore lavoratore : model.getListaLavoratoriFromModel().getListaLavoratori()){
 
                 if(lavoratore.ricercaAnd(nomeRicerca, cognomeRicerca, luogoRicerca, periodoRicerca, autoRicerca, patenteRicerca, lingueRicerca, mansioniLavoratoreRicerca)) {
                     String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
@@ -253,7 +229,7 @@ public class ControllerRicerca implements Initializable {
 
         }else{
 
-            for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+            for(Lavoratore lavoratore : model.getListaLavoratoriFromModel().getListaLavoratori()){
                 //controllo primi parametri (+facili)
                 if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) ||
                         lavoratore.getResidenza().getCittà().equals(luogoRicerca)){
@@ -378,22 +354,8 @@ public class ControllerRicerca implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String fileesp = "src/main/resources/frontend/lavori_stagionali.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(fileesp))) {
-            String line;
-            int i = 0;
-            while ((line = br.readLine()) != null) {
-                listaEsperienze[i] = line;
-                i++;
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        patenteRicerca_field.setItems(list);
-        mansioniRicerca_field.getItems().addAll(listaEsperienze);
-
+        patenteRicerca_field.setItems(model.getList());
+        mansioniRicerca_field.getItems().addAll(model.getListaEsperienze());
     }
 
 }

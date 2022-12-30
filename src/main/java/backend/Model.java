@@ -16,15 +16,12 @@ import java.util.Set;
 public class Model {
 
     private static Model modelInstance;
-
     private ObjectMapper objectMapper = new ObjectMapper();
-
     private File file = new File("lavoratori.json");
-
     private ListaLavoratori listaLavoratori = new ListaLavoratori();
-
-
     private List<Disponibilità> disponibilità = new ArrayList<>();
+    private Lavoratore lavoratoreDaAggiornare = new Lavoratore();
+
 
     Set<String> esperienze = new HashSet<>();
 
@@ -56,6 +53,12 @@ public class Model {
         return list;
     }
 
+    public void setLavoratoreDaAggiornare(Lavoratore lavoratoreDaAggiornare) {
+        this.lavoratoreDaAggiornare = lavoratoreDaAggiornare;
+    }
+    public ListaLavoratori getListaLavoratoriFromModel() {
+        return listaLavoratori;
+    }
     public String[] getListaComuni() {
         return listaComuni;
     }
@@ -74,7 +77,6 @@ public class Model {
     public void readJson() throws IOException {
 
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-
     }
 
     public void writeJson(ListaLavoratori listaLavoratori) throws IOException {
@@ -87,7 +89,6 @@ public class Model {
 
         listaLavoratori.getListaLavoratori().add(lavoratore);
         writeJson(listaLavoratori);
-
     }
 
 
@@ -157,5 +158,14 @@ public class Model {
         }
     }
 
+    public void remove_saveWorker(Lavoratore lavoratore) throws IOException {
+        listaLavoratori.getListaLavoratori().remove(lavoratore);
+        writeJson(listaLavoratori);
+    }
+
+    public void updateWorks(Lavoro lavoro) throws IOException {
+        lavoratoreDaAggiornare.lavori.add(lavoro);
+        add_saveWorker(lavoratoreDaAggiornare);
+    }
 
 }

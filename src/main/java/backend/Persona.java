@@ -61,12 +61,21 @@ public class Persona {
 
     /*
     ritorna true se la stringa contiene almeno un numero
+    cicla un carattere alla volta controllando il valose ASCII
      */
     private boolean numberChecker(String string){
-        return string.equals("") || string.contains("0") || string.contains("1") || string.contains("2") || string.contains("3") || string.contains("4") || string.contains("5") ||
-                string.contains("6") || string.contains("7") || string.contains("8") || string.contains("9");
+
+        for(int i = 0; i < string.length(); i++){
+            if(((int)string.charAt(i) < 65 || (int)string.charAt(i) > 90) &&
+                    ((int)string.charAt(i) < 97 || (int)string.charAt(i) > 122))
+                return true;
+        }
+        return false;
     }
 
+    /*
+    è un toString Ale che vuoi che faccia? il caffè?!
+     */
     @Override
     public String toString() {
         return "Persona{" +

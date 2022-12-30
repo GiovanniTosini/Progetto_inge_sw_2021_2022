@@ -194,8 +194,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
         tel2_field.setStyle("-fx-text-fill:black;");
         campiObbligatori_label.setStyle("-fx-text-fill:white;");
 
-
-
         nome = nome_field.getText();
         cognome = cognome_field.getText();
         luogo = luogo_field.getText();
@@ -203,13 +201,10 @@ public class ControllerAggiungiLavoratore implements Initializable {
         if (province_field.getSelectionModel().getSelectedItem() != null)
             province = province_field.getSelectionModel().getSelectedItem();
         else{
-
             flag=true;
-
         }
 
         Residenza residenza = new Residenza(via_field.getText(), citta_field.getText(), province);
-
         tel = tel_field.getText();
         email = email_field.getText();
         nome2 = nome2_field.getText();
@@ -224,9 +219,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
         }
 
         if (al_field.isSelected()) {
-
             lingue.add(al_field.getText());
-
         }
 
         if (fr_field.isSelected()) {
@@ -418,13 +411,8 @@ public class ControllerAggiungiLavoratore implements Initializable {
     public void saveAvailabilityAction(ActionEvent actionEvent) throws IOException {
 
         //salvo parametri periodi e zone
-
-        Set<String> comuni = new HashSet<>();
-
         campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:#333;");
-
         comuni.clear();
-
         Date dataDefault=null;
 
         try {
@@ -434,9 +422,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
         }
 
         Periodo periodo = new Periodo(inizioPeriodoDate, finePeriodoDate);
-
         String testo = textAreaComune.getText();
-
         String[] arrComuni = testo.split("\n");
 
         for (String stringa : arrComuni) {
@@ -444,30 +430,21 @@ public class ControllerAggiungiLavoratore implements Initializable {
         }
 
         if(!comuni.isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
-
             //disponibilità.add(new Disponibilità(periodo,comuni));
-
             model.addDisponibilità(periodo,comuni);
-
             //System.out.println(disponibilità);
-
             /*dataP_field.getEditor().clear();
             dataP2_field.getEditor().clear();
             disp_field.getSelectionModel().clearSelection();
             textAreaComune.clear();*/
-
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
         }else{
-
             campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:red;");
-
         }
-
     }
 
     @Override

@@ -3,11 +3,6 @@ package backend;
 public class Residenza {
 
     private String via, città, provincia;
-
-
-
-
-
     public Residenza(String via, String città, String provincia){
             this.via = via;
             this.città = città;
@@ -43,8 +38,12 @@ public class Residenza {
     }
 
     private boolean numberChecker(String string){
-        return string.contains("0") || string.contains("1") || string.contains("2") || string.contains("3") || string.contains("4") || string.contains("5") ||
-                string.contains("6") || string.contains("7") || string.contains("8") || string.contains("9");
+        for(int i = 0; i < string.length(); i++){
+            if(((int)string.charAt(i) < 65 || (int)string.charAt(i) > 90) &&
+                    ((int)string.charAt(i) < 97 || (int)string.charAt(i) > 122))
+                return true;
+        }
+        return false;
     }
 
     public String getVia() {

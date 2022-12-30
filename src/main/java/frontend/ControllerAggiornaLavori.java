@@ -1,7 +1,6 @@
 package frontend;
 
 import backend.*;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,9 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -27,16 +23,8 @@ public class ControllerAggiornaLavori implements Initializable {
 
     private Stage stage;
     private Scene scene;
-
     Model model = Model.getModel();
-
-    ListaLavoratori listaLavoratori = new ListaLavoratori();
-
-    static Lavoratore lavoratoreDaAggiornare = new Lavoratore();
-
     Set<String> mansioniLavoratore = new HashSet<>();
-
-    String[] listaEsperienze = new String[69];
 
     @FXML
     TextField ricercaNome_field;
@@ -149,11 +137,7 @@ public class ControllerAggiornaLavori implements Initializable {
 
         if(flag) {
             Lavoro lavoroTemp = new Lavoro(periodo2, nomeAzienda, luogoAzienda, mansioniLavoratore, cash);
-            lavoratoreDaAggiornare.lavori.add(lavoroTemp);
-            listaLavoratori.getListaLavoratori().add(lavoratoreDaAggiornare);
-            //objectMapper.writeValue(file, listaLavoratori);
-            model.writeJson(listaLavoratori);
-
+            model.updateWorks(lavoroTemp);
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -194,20 +178,14 @@ public class ControllerAggiornaLavori implements Initializable {
         //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
         //listaLavoratori=model.readJson(listaLavoratori);
 
-        for(Lavoratore lavoratore : listaLavoratori.getListaLavoratori()){
+        for(Lavoratore lavoratore : model.getListaLavoratoriFromModel().getListaLavoratori()){
 
             if(lavoratore.getNome().equals(ricercaNome) && lavoratore.getCognome().equals(ricercaCognome) && lavoratore.getDataDiNascita().equals(ricercaDate)){
 
-                lavoratoreDaAggiornare = lavoratore;
-
-                listaLavoratori.getListaLavoratori().remove(lavoratore);
-
-                model.writeJson(listaLavoratori);
-
+                model.setLavoratoreDaAggiornare(lavoratore);
+                model.remove_saveWorker(lavoratore);
                 flag = true;
-
                 break;
-
             }
 
         }
@@ -290,25 +268,11 @@ public class ControllerAggiornaLavori implements Initializable {
 
     }
 
-    //funzione che inizializza i campi della patente e delle province da selezionare
+    //funzione che inizializza i campi (combobox) della patente e delle province da selezionare
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        String fileesp = "src/main/resources/frontend/lavori_stagionali.txt";
-        try (BufferedReader br = new BufferedReader(new FileReader(fileesp))) {
-            String line;
-            int i = 0;
-            while ((line = br.readLine()) != null) {
-                listaEsperienze[i] = line;
-                i++;
-            }
-        } catch (IOException e) {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-
-        mansioni_field.getItems().addAll(listaEsperienze);
-
+        mansioni_field.getItems().addAll(model.getListaEsperienze());
     }
 
 }
