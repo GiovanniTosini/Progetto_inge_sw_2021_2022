@@ -26,8 +26,6 @@ public class Model {
 
     private List<Disponibilità> disponibilità = new ArrayList<>();
 
-
-    Set<String> comuni = new HashSet<>();
     Set<String> esperienze = new HashSet<>();
 
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
@@ -70,10 +68,6 @@ public class Model {
         return listaProvince;
     }
 
-    public Set<String> getComuni() {
-        return comuni;
-    }
-
     public Set<String> getEsperienze() {
         return esperienze;
     }
@@ -97,9 +91,12 @@ public class Model {
     }
 
 
-    public void addDisponibilità(Disponibilità newDisponibilità) {
+    public void addDisponibilità(Periodo periodo, Set<String> comuni) {
 
-        disponibilità.add(newDisponibilità);
+        Disponibilità nuovaDisp = new Disponibilità(periodo,comuni);
+
+        disponibilità.add(nuovaDisp);
+
     }
 
 
@@ -160,16 +157,5 @@ public class Model {
         }
     }
 
-    public void setComuni(String testo){
 
-        String[] arrComuni = testo.split("\n");
-
-        for (String stringa : arrComuni) {
-            comuni.add(stringa);
-        }
-    }
-
-    public void clearComuni() {
-        comuni.clear();
-    }
 }

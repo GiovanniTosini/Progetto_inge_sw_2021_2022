@@ -419,9 +419,11 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         //salvo parametri periodi e zone
 
+        Set<String> comuni = new HashSet<>();
+
         campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:#333;");
 
-        model.clearComuni();
+        comuni.clear();
 
         Date dataDefault=null;
 
@@ -433,14 +435,19 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         Periodo periodo = new Periodo(inizioPeriodoDate, finePeriodoDate);
 
-        model.setComuni(textAreaComune.getText());
+        String testo = textAreaComune.getText();
 
-        if(!model.getComuni().isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
+        String[] arrComuni = testo.split("\n");
+
+        for (String stringa : arrComuni) {
+            comuni.add(stringa);
+        }
+
+        if(!comuni.isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
 
             //disponibilità.add(new Disponibilità(periodo,comuni));
-            Disponibilità newdisp=new Disponibilità(periodo,model.getComuni());
 
-            model.addDisponibilità(newdisp);
+            model.addDisponibilità(periodo,comuni);
 
             //System.out.println(disponibilità);
 
