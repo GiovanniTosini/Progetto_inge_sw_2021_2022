@@ -1,4 +1,4 @@
-\documentclass[a4paper, 12pt]{book}
+\documentclass{article}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -15,13 +15,67 @@
         \maketitle
     \end{titlepage}
 
-    \frontmatter
+    \newpage
     \tableofcontents
-    \mainmatter
+    \newpage
 
-    \chapter{Note introduttive}
+    \section{Note introduttive}
 
-    Cacca pupu
+    Il sistema in questione è stato creato per un'azienda interinale 
+    per la gestione dei lavoratori stagionali.
+
+    \section{Requisiti}
+
+    Gli operatori dell'agenzia per poter lavorare avranno necessità di essere in possesso delle loro credenziali, le quali verranno create appositamente dagli sviluppatori del suddetto sistema.
+
+    I lavoratori stagionali interessati potranno presentarsi agli sportelli dell'agenzia per farsi registrare, se già presenti in archivio o per aggiornare il loro storico lavorativo degli ultimi 5 anni.
+    La registrazione consiste nel salvataggio dei dati del lavoratore
+
+    \begin{itemize}
+        \item nome
+        \item cognome
+        \item luogo e data di nascita
+        \item nazionalità
+        \item indirizzo di residenza
+        \item telefono cellulare (non necessariamente obbligatorio)
+        \item lingue parlate
+        \item patente e se automunito
+        \item eventuali esperienze precedenti (non sono necessariamente i lavori fatti negli ultimi 5 anni)
+        \item periodi e zone di disponibilità per lavorare
+        \item una persona da contattare per eventuali emergenze della quale saranno necessari: 
+        \begin{itemize}
+            \item nome
+            \item cognome
+            \item indirizzo e-mail
+            \item numero di telefono
+        \end{itemize}
+    \end{itemize}
+
+    L'aggiornamento del loro storico lavorativo consiste nella semplice ricerca del lavoratore (se presente in archivio) tramite nome, cognome e data di nascita e l'inserimento di:
+
+    \begin{itemize}
+        \item periodo in cui ha lavorato
+        \item nome azienda 
+        \item luogo di lavoro
+        \item retribuzione lorda giornaliera
+        \item mansioni svolte
+    \end{itemize}
+
+    Gli operatori dell'agenzia inoltre possono usare una funzione di ricerca che permetterà di ricercare una figura lavorativa specifica (usando l'inclusione obbligatoria di tutti i parametri) oppure di una figura con solo alcuni dei criteri necessari, una volta fatta la ricerca l'elenco verrà stampato in un'apposita finestra. I parametri della funzione ricerca sono:
+
+    \begin{itemize}
+        \item nome
+        \item cognome
+        \item periodo di disponibilità
+        \item città di residenza
+        \item patente e se automunito
+        \item mansioni
+        \item lingue parlate
+    \end{itemize}
+
+    \section{Scenari d'uso}
+
+    TODO sono da controllare e rifare per bene eventualmente
 
 \end{document}
 
