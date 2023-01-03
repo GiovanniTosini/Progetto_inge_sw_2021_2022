@@ -22,7 +22,7 @@ public class Date {
 
         if (month < 1 || month > 12
                 || day < 1 || day > daysInMonth(month, year)
-                || year < 1600)
+                || year < 1920)
             throw new Exception("data illegale!");
     }
 

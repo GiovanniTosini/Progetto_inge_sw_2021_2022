@@ -193,6 +193,11 @@ public class ControllerAggiungiLavoratore implements Initializable {
         email2_field.setStyle("-fx-text-fill:black;");
         tel2_field.setStyle("-fx-text-fill:black;");
         campiObbligatori_label.setStyle("-fx-text-fill:white;");
+        data_field.setEditable(true);
+        data_field.setStyle("-fx-border-color:black;");
+        data_field.setStyle("-fx-background-color:gray;");
+        data_field.setEditable(false);
+
 
         nome = nome_field.getText();
         cognome = cognome_field.getText();
@@ -297,6 +302,14 @@ public class ControllerAggiungiLavoratore implements Initializable {
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
 
         Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilitàTemp, esperienze, personaemergenza, lavori);
+
+        if(lavoratore.checkDate(birthDate)){
+            data_field.setEditable(true);
+            data_field.setStyle("-fx-border-color:red;");
+            data_field.setStyle("-fx-background-color:red;");
+            data_field.setEditable(false);
+            flag=true;
+        }
 
         if(lavoratore.getResidenza().isViaCheck(via_field.getText())){
             via_field.setStyle("-fx-text-fill:red;");
@@ -413,13 +426,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
         //salvo parametri periodi e zone
         campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:#333;");
         comuni.clear();
-        Date dataDefault=null;
 
-        try {
-            dataDefault = new Date(01, 01, 2000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         Periodo periodo = new Periodo(inizioPeriodoDate, finePeriodoDate);
         String testo = textAreaComune.getText();
@@ -429,7 +436,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
             comuni.add(stringa);
         }
 
-        if(!comuni.isEmpty() && !inizioPeriodoDate.equals(dataDefault) && !finePeriodoDate.equals(dataDefault)) {
+        if(!comuni.contains("") && periodo.checkDefault() && periodo.checkDate()) {
             //disponibilità.add(new Disponibilità(periodo,comuni));
             model.addDisponibilità(periodo,comuni);
             //System.out.println(disponibilità);
@@ -444,6 +451,15 @@ public class ControllerAggiungiLavoratore implements Initializable {
             stage.show();
         }else{
             campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:red;");
+
+            dataP_field.setEditable(true);
+            dataP_field.setStyle("-fx-border-color:red;");
+            dataP_field.setStyle("-fx-background-color:red;");
+            dataP_field.setEditable(false);
+            dataP2_field.setEditable(true);
+            dataP2_field.setStyle("-fx-border-color:red;");
+            dataP2_field.setStyle("-fx-background-color:red;");
+            dataP2_field.setEditable(false);
         }
     }
 

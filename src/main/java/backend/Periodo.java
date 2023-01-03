@@ -1,5 +1,7 @@
 package backend;
 
+import java.time.LocalDate;
+
 public class Periodo {
 
     private Date inizioPeriodo, finePeriodo;
@@ -9,8 +11,8 @@ public class Periodo {
         this.finePeriodo = finePeriodo;
 
         //se l'inizio periodo viene dopo il fine periodo non va bene
-        if(inizioPeriodo.compareTo(finePeriodo) > 0)
-            throw new IllegalArgumentException("Inizio periodo incorretto");
+        //if(inizioPeriodo.compareTo(finePeriodo) > 0)
+            //throw new IllegalArgumentException("Inizio periodo incorretto");
     }
 
     public Periodo(){}
@@ -36,5 +38,30 @@ public class Periodo {
 
     public Date getFinePeriodo() {
         return finePeriodo;
+    }
+
+    public boolean checkDefault(){
+        Date dataDefault=null;
+        try {
+            dataDefault = new Date(01, 01, 2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        if(inizioPeriodo==dataDefault ||finePeriodo==dataDefault){
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkDate(){
+        LocalDate mydate = LocalDate.now();
+
+        Date date=new Date();
+        date.setDay(mydate.getDayOfMonth());
+        date.setMonth(mydate.getMonthValue());
+        date.setYear(mydate.getYear());
+        if(inizioPeriodo.compareTo(date)<0)
+            return false;
+        return inizioPeriodo.compareTo(finePeriodo)<0;
     }
 }

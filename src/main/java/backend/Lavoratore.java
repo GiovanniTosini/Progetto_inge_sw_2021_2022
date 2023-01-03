@@ -1,5 +1,6 @@
 package backend;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -38,13 +39,6 @@ public class Lavoratore extends Persona{
         this.esperienze = esperienze; //TODO da controllare?
         this.personaEmergenza = personaEmergenza; //controlli nella classe
         this.lavori = lavori;
-
-
-
-        boolean nazionalitàCheck=false;
-
-        if(numberChecker(nazionalità))
-            nazionalitàCheck=true;
     }
 
     public Lavoratore(){}
@@ -69,6 +63,20 @@ public class Lavoratore extends Persona{
             nazionalitàCheck=true;
         return nazionalitàCheck;
     }
+    public boolean checkDate(Date birthDate){
+        LocalDate mydate = LocalDate.now();
+
+        Date date=new Date();
+        date.setDay(mydate.getDayOfMonth());
+        date.setMonth(mydate.getMonthValue());
+        date.setYear(mydate.getYear());
+        if(birthDate.compareTo(date)>0){
+            return true;
+        }
+        return false;
+    }
+
+
 
     public boolean numeroDiTelefonoCheck(String numero){
 
