@@ -132,7 +132,7 @@ public class ControllerAggiornaLavori implements Initializable {
         //System.out.println(nomeAzienda + "\n" + luogoAzienda + "\n" + mansioni + "\n" + cash + "\n" + periodo2 + "\n");
 
         if(nomeAzienda.equals("") || luogoAzienda.equals("") || mansioniLavoratore.isEmpty() || cash==0 ||
-                (periodo2.getInizioPeriodo().equals(dataDefault) && periodo2.getFinePeriodo().equals(dataDefault)))
+                (periodo2.checkDefault() && !periodo2.checkPreviousDate()))
             flag=false;
 
         if(flag) {

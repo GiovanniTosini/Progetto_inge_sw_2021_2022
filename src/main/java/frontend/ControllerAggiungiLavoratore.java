@@ -452,14 +452,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
         }else{
             campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:red;");
 
-            dataP_field.setEditable(true);
-            dataP_field.setStyle("-fx-border-color:red;");
-            dataP_field.setStyle("-fx-background-color:red;");
-            dataP_field.setEditable(false);
-            dataP2_field.setEditable(true);
-            dataP2_field.setStyle("-fx-border-color:red;");
-            dataP2_field.setStyle("-fx-background-color:red;");
-            dataP2_field.setEditable(false);
         }
     }
 

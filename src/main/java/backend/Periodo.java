@@ -47,7 +47,7 @@ public class Periodo {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        if(inizioPeriodo==dataDefault ||finePeriodo==dataDefault){
+        if(inizioPeriodo==dataDefault || finePeriodo==dataDefault){
             return false;
         }
         return true;
@@ -63,5 +63,20 @@ public class Periodo {
         if(inizioPeriodo.compareTo(date)<0)
             return false;
         return inizioPeriodo.compareTo(finePeriodo)<0;
+    }
+
+    public boolean checkPreviousDate() {
+        LocalDate mydate = LocalDate.now();
+
+        Date date=new Date();
+        date.setDay(mydate.getDayOfMonth());
+        date.setMonth(mydate.getMonthValue());
+        date.setYear(mydate.getYear()-5);
+        if(inizioPeriodo.compareTo(date)<0)
+            return false;
+        date.setYear(mydate.getYear());
+        if(inizioPeriodo.compareTo(finePeriodo)>0)
+            return false;
+        return finePeriodo.compareTo(date)<0;
     }
 }

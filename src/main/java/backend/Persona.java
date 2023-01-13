@@ -64,13 +64,7 @@ public class Persona {
     cicla un carattere alla volta controllando il valose ASCII
      */
     private boolean numberChecker(String string){
-
-        for(int i = 0; i < string.length(); i++){
-            if(((int)string.charAt(i) < 65 || (int)string.charAt(i) > 90) &&
-                    ((int)string.charAt(i) < 97 || (int)string.charAt(i) > 122))
-                return true;
-        }
-        return false;
+        return !string.matches("^[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+$");
     }
 
     /*
