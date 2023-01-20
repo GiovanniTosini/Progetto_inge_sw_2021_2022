@@ -164,6 +164,8 @@ public class Model {
     }
 
     public void updateWorks(Lavoro lavoro) throws IOException {
+
+        remove_saveWorker(lavoratoreDaAggiornare);
         lavoratoreDaAggiornare.lavori.add(lavoro);
         add_saveWorker(lavoratoreDaAggiornare);
     }

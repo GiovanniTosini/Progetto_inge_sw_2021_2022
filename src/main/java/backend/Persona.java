@@ -1,6 +1,5 @@
 package backend;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Persona {
@@ -30,33 +29,14 @@ public class Persona {
         return cognomeCheck;
     }
 
-    public boolean isMailCheck(String indirizzoEmail) {
-        boolean mailCheck=false;
-        if(!mailChecker(indirizzoEmail))
-            mailCheck=true;
-        return mailCheck;
-    }
-
     /*
-                verifica dell'indirizzo email tramite regex per il grosso delle cose
-                più verifica se è presente più di una @ (errore nel caso)
-                 */
-    private boolean mailChecker(String indirizzoEmail){
-         if(!indirizzoEmail.equals("")) {
-             Pattern pattern = Pattern.compile(".+@.+\\.[a-z]+");
-             Matcher matcher = pattern.matcher(indirizzoEmail);
-             int counter = 0;
-             for (int i = 0; i < indirizzoEmail.length(); i++) {
-                 if (indirizzoEmail.charAt(i) == '@')
-                     counter++;
-                 if (counter > 1) {
-                     return false;
-                 }
-             }
-             return matcher.matches();
-         }else{
-             return false;
-         }
+    verifica dell'indirizzo email tramite regex per il grosso delle cose
+    più verifica se è presente più di una @ (errore nel caso)
+     */
+    public boolean mailChecker(String indirizzoEmail){
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pat = Pattern.compile(emailRegex);
+        return pat.matcher(indirizzoEmail).matches();
     }
 
     /*

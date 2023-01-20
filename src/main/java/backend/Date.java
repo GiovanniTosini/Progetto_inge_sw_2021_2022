@@ -26,9 +26,7 @@ public class Date {
             throw new Exception("data illegale!");
     }
 
-    public Date(){
-
-    }
+    public Date(){}
 
     @Override
     public String toString() {
@@ -41,8 +39,7 @@ public class Date {
                 && this.year == other.year;
     }
 
-    //maggiore se this viene dopo di other
-
+    //maggiore di zero se this viene dopo di other
     public int compareTo(Date other) {
         int diff = year - other.year;
         if (diff != 0)

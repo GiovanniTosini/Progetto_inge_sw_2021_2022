@@ -158,19 +158,15 @@ public class ControllerAggiornaLavori implements Initializable {
         erroriRicercaLavoratore_label.setStyle("-fx-text-fill:#333;");
         ricercaNome_field.setStyle("-fx-text-fill:black;");
         ricercaCognome_field.setStyle("-fx-text-fill:black;");
-
         ricercaNome = ricercaNome_field.getText();
 
         if(ricercaNome.equals("")){
-
             ricercaNome_field.setStyle("-fx-text-fill:red;");
-
         }
 
         ricercaCognome = ricercaCognome_field.getText();
 
         if(ricercaCognome.equals("")){
-
             ricercaCognome_field.setStyle("-fx-text-fill:red;");
 
         }
@@ -183,7 +179,8 @@ public class ControllerAggiornaLavori implements Initializable {
             if(lavoratore.getNome().equals(ricercaNome) && lavoratore.getCognome().equals(ricercaCognome) && lavoratore.getDataDiNascita().equals(ricercaDate)){
 
                 model.setLavoratoreDaAggiornare(lavoratore);
-                model.remove_saveWorker(lavoratore);
+                //model.remove_saveWorker(lavoratore); rimosso per permettere di aggiornare il JSON in un unico blocco ed evitare che
+                //venga cancellata la lista se il programma viene interrotto
                 flag = true;
                 break;
             }

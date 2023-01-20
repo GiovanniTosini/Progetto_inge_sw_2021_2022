@@ -60,9 +60,9 @@ public class Periodo {
         date.setDay(mydate.getDayOfMonth());
         date.setMonth(mydate.getMonthValue());
         date.setYear(mydate.getYear());
-        if(inizioPeriodo.compareTo(date)<0)
+        if(inizioPeriodo.compareTo(date) < 0)
             return false;
-        return inizioPeriodo.compareTo(finePeriodo)<0;
+        return inizioPeriodo.compareTo(finePeriodo) <= 0;
     }
 
     public boolean checkPreviousDate() {
@@ -77,6 +77,6 @@ public class Periodo {
         date.setYear(mydate.getYear());
         if(inizioPeriodo.compareTo(finePeriodo)>0)
             return false;
-        return finePeriodo.compareTo(date)<0;
+        return finePeriodo.compareTo(date)<=0; //messo minore uguale perché il lavoratore potrebbe finire di lavorare il giorno stesso
     }
 }

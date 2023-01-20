@@ -64,13 +64,18 @@ public class Lavoratore extends Persona{
         return nazionalitàCheck;
     }
     public boolean checkDate(Date birthDate){
-        LocalDate mydate = LocalDate.now();
 
+        LocalDate mydate = LocalDate.now();
         Date date=new Date();
         date.setDay(mydate.getDayOfMonth());
         date.setMonth(mydate.getMonthValue());
         date.setYear(mydate.getYear()-14);
-        if(birthDate.compareTo(date)>0){
+        /*
+        la funzione è inversa, ritorna true nei casi non voluti:
+        - se la data di nascita è postuma la data attuale
+        - se l'anno di nascita è 100 anni prima l'anno attuale (ipotizzando che uno non lavori a 100, se spera)
+         */
+        if(birthDate.compareTo(date) > 0 || (birthDate.getYear() < (date.getYear() - 86))){
             return true;
         }
         return false;

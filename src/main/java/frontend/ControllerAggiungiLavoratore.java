@@ -2,9 +2,6 @@ package frontend;
 
 import backend.*;
 import backend.Date;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +12,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
@@ -220,7 +214,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
         if (ita_field.isSelected()) {
 
             lingue.add(ita_field.getText());
-
         }
 
         if (al_field.isSelected()) {
@@ -230,69 +223,57 @@ public class ControllerAggiungiLavoratore implements Initializable {
         if (fr_field.isSelected()) {
 
             lingue.add(fr_field.getText());
-
         }
 
         if (slo_field.isSelected()) {
 
             lingue.add(slo_field.getText());
-
         }
 
         if (de_field.isSelected()) {
 
             lingue.add(de_field.getText());
-
         }
 
         if (en_field.isSelected()) {
 
             lingue.add(en_field.getText());
-
         }
 
         if (ar_field.isSelected()) {
 
             lingue.add(ar_field.getText());
-
         }
 
         if (ru_field.isSelected()) {
 
             lingue.add(ru_field.getText());
-
         }
 
         if (cin_field.isSelected()) {
 
             lingue.add(cin_field.getText());
-
         }
 
         if (spa_field.isSelected()) {
 
             lingue.add(spa_field.getText());
-
         }
 
         if (patente_field.getSelectionModel().getSelectedItem() != null) {
 
             patente = patente_field.getSelectionModel().getSelectedItem();
-
         }else{
 
             flag=true;
-
         }
 
         if (auto_field.isSelected()) {
 
             auto = true;
-
         }
 
         String testoesp = textAreaEsp.getText();
-
         String[] arrEsp = testoesp.split("\n");
 
         for (String stringa: arrEsp) {
@@ -300,7 +281,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
         }
 
         PersonaEmergenza personaemergenza = new PersonaEmergenza(nome2, cognome2, tel2, email2);
-
         Lavoratore lavoratore = new Lavoratore(nome, cognome, luogo, nazio, email, tel, birthDate, residenza, patente, auto, lingue, disponibilitàTemp, esperienze, personaemergenza, lavori);
 
         if(lavoratore.checkDate(birthDate)){
@@ -325,76 +305,65 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
             nome_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(lavoratore.isCognomeCheck(cognome)){
 
             cognome_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
-        if(lavoratore.isMailCheck(email)){
+        if(!lavoratore.mailChecker(email)){
 
             email_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(lavoratore.isTelefonoCheck(tel)){
 
             tel_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(lavoratore.isLuogoCheck(luogo)){
 
             luogo_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(lavoratore.isNazionalitàCheck(nazio)){
 
             nazio_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(lingue.isEmpty()){
 
             flag=true;
-
         }
 
         if(personaemergenza.isNomeCheck(nome2)){
 
             nome2_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(personaemergenza.isCognomeCheck(cognome2)){
 
             cognome2_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
-        if(personaemergenza.isMailCheck(email2)){
+        if(!personaemergenza.mailChecker(email2)){
 
             email2_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(personaemergenza.isTelefonoCheck(tel2)){
 
             tel2_field.setStyle("-fx-text-fill:red;");
             flag=true;
-
         }
 
         if(!flag) {
@@ -403,7 +372,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
             //objectMapper.writeValue(file, listaLavoratori);
             //model.writeJson(listaLavoratori);
-
             model.add_saveWorker(lavoratore);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
@@ -411,11 +379,9 @@ public class ControllerAggiungiLavoratore implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
-
         }else{
             campiObbligatori_label.setStyle("-fx-text-fill:red;");
         }
-
     }
 
     //salva disponibilità lavoratore in disponibilità
@@ -540,35 +506,26 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
     public void setBirthDate(ActionEvent actionEvent) throws Exception {
 
-
         LocalDate mydate = data_field.getValue();
-
         birthDate.setDay(mydate.getDayOfMonth());
         birthDate.setMonth(mydate.getMonthValue());
         birthDate.setYear(mydate.getYear());
-
-
-
     }
 
     public void setInizioPeriodo(ActionEvent actionEvent) {
 
         LocalDate mydate = dataP_field.getValue();
-
         inizioPeriodoDate.setDay(mydate.getDayOfMonth());
         inizioPeriodoDate.setMonth(mydate.getMonthValue());
         inizioPeriodoDate.setYear(mydate.getYear());
-
     }
 
     public void setFinePeriodo(ActionEvent actionEvent) {
 
         LocalDate mydate = dataP2_field.getValue();
-
         finePeriodoDate.setDay(mydate.getDayOfMonth());
         finePeriodoDate.setMonth(mydate.getMonthValue());
         finePeriodoDate.setYear(mydate.getYear());
-
     }
 
 }
