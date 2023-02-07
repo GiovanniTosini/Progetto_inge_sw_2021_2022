@@ -22,12 +22,7 @@ public class Model {
     private List<Disponibilità> disponibilità = new ArrayList<>();
     private Lavoratore lavoratoreDaAggiornare = new Lavoratore();
 
-
-    Set<String> esperienze = new HashSet<>();
-
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
-
-    List<Lavoro> lavori = new ArrayList<>();
 
     String[] listaComuni = new String[110];
 
@@ -59,6 +54,7 @@ public class Model {
     public ListaLavoratori getListaLavoratoriFromModel() {
         return listaLavoratori;
     }
+
     public String[] getListaComuni() {
         return listaComuni;
     }
@@ -71,9 +67,6 @@ public class Model {
         return listaProvince;
     }
 
-    public Set<String> getEsperienze() {
-        return esperienze;
-    }
     public void readJson() throws IOException {
 
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
@@ -111,7 +104,6 @@ public class Model {
 
         listaLavoratori.getListaLavoratori().add(newlavoratore);
 
-        //objectMapper.writeValue(file, listaLavoratori);
         writeJson(listaLavoratori);
 
         disponibilità.clear();

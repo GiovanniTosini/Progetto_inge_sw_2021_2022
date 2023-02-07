@@ -13,7 +13,7 @@ public class PagApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        //stage.setResizable(false);
+        stage.setResizable(false);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
         stage.setTitle("PAG TECNOLOGY");
         stage.setScene(new Scene(root));

@@ -47,7 +47,6 @@ public class ControllerLogin {
         String username_text = username_field.getText();
         String password_text = password_field.getText();
 
-        //check con jackson
         if ((username_text.compareTo(aleLorini.getLogin()) == 0 && password_text.compareTo(aleLorini.getPassword()) == 0) ||
                 (username_text.compareTo(gabbaFausty.getLogin()) == 0 && password_text.compareTo(gabbaFausty.getPassword()) == 0) ||
                 (username_text.compareTo(poppoTosini.getLogin()) == 0 && password_text.compareTo(poppoTosini.getPassword()) == 0)) {

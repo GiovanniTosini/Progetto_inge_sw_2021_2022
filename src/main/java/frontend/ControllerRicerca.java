@@ -27,8 +27,10 @@ public class ControllerRicerca implements Initializable {
 
     private Stage stage;
     private Scene scene;
+
     Model model = Model.getModel();
     Set<String> mansioniLavoratoreRicerca = new HashSet<>();
+
     @FXML
     ComboBox<String> patenteRicerca_field = new ComboBox<>();
     @FXML
@@ -61,25 +63,18 @@ public class ControllerRicerca implements Initializable {
     CheckBox enRicerca_field;
     @FXML
     CheckBox arRicerca_field;
-
     @FXML
     CheckBox ruRicerca_field;
-
     @FXML
     CheckBox cinRicerca_field;
-
     @FXML
     CheckBox spaRicerca_field;
-
     @FXML
     TextArea textAreaMansioniRicerca;
-
     @FXML
     TextArea textAreaResRicerca;
-
     @FXML
     DatePicker inizioPeriodoRicerca_field;
-
     @FXML
     DatePicker finePeriodoRicerca_field;
 
@@ -107,9 +102,6 @@ public class ControllerRicerca implements Initializable {
 
         textAreaResRicerca.clear();
 
-        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-        //listaLavoratori=model.readJson(listaLavoratori);
-
         Set<String> lingueRicerca = new HashSet<>();
 
         boolean flag = false;
@@ -118,86 +110,58 @@ public class ControllerRicerca implements Initializable {
         cognomeRicerca = cognomeRicerca_field.getText();
         luogoRicerca = luogoRicerca_field.getText();
 
-
-
         Periodo periodoRicerca = new Periodo(inizioPeriodoRicercaDate, finePeriodoRicercaDate);
 
         if (patenteRicerca_field.getSelectionModel().getSelectedItem() != null) {
-
             patenteRicerca = patenteRicerca_field.getSelectionModel().getSelectedItem();
-
         }
 
         if (autoRicerca_field.isSelected()) {
-
             autoRicerca = true;
-
         }
 
         if (autoRicerca_field2.isSelected()){
-
             autoRicerca = false;
-
         }
 
         if (itaRicerca_field.isSelected()) {
-
             lingueRicerca.add(itaRicerca_field.getText());
-
         }
 
         if (alRicerca_field.isSelected()) {
-
             lingueRicerca.add(alRicerca_field.getText());
-
         }
 
         if (frRicerca_field.isSelected()) {
-
             lingueRicerca.add(frRicerca_field.getText());
-
         }
 
         if (sloRicerca_field.isSelected()) {
-
             lingueRicerca.add(sloRicerca_field.getText());
-
         }
 
         if (deRicerca_field.isSelected()) {
-
             lingueRicerca.add(deRicerca_field.getText());
-
         }
 
         if (enRicerca_field.isSelected()) {
-
             lingueRicerca.add(enRicerca_field.getText());
-
         }
 
         if (arRicerca_field.isSelected()) {
-
             lingueRicerca.add(arRicerca_field.getText());
-
         }
 
         if (ruRicerca_field.isSelected()) {
-
             lingueRicerca.add(ruRicerca_field.getText());
-
         }
 
         if (cinRicerca_field.isSelected()) {
-
             lingueRicerca.add(cinRicerca_field.getText());
-
         }
 
         if (spaRicerca_field.isSelected()) {
-
             lingueRicerca.add(spaRicerca_field.getText());
-
         }
 
         mansioniLavoratoreRicerca.clear();

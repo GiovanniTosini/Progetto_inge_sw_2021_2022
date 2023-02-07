@@ -25,6 +25,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
     Model model = Model.getModel();
 
     Set<String> comuni = new HashSet<>();
+
     Set<String> esperienze = new HashSet<>();
 
     List<Lavoro> lavori = new ArrayList<>();
@@ -168,8 +169,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
     //saveWorkerAction
     public void saveWorkerAction(ActionEvent actionEvent) throws Exception {
 
-        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-        //listaLavoratori=model.readJson(listaLavoratori);
         List<Disponibilità> disponibilitàTemp = new ArrayList<>();
         Set<String> lingue = new HashSet<>();
         boolean flag=false;
@@ -368,10 +367,6 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         if(!flag) {
 
-            //listaLavoratori.getListaLavoratori().add(lavoratore);
-
-            //objectMapper.writeValue(file, listaLavoratori);
-            //model.writeJson(listaLavoratori);
             model.add_saveWorker(lavoratore);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
@@ -403,13 +398,9 @@ public class ControllerAggiungiLavoratore implements Initializable {
         }
 
         if(!comuni.contains("") && periodo.checkDefault() && periodo.checkDate()) {
-            //disponibilità.add(new Disponibilità(periodo,comuni));
+
             model.addDisponibilità(periodo,comuni);
-            //System.out.println(disponibilità);
-            /*dataP_field.getEditor().clear();
-            dataP2_field.getEditor().clear();
-            disp_field.getSelectionModel().clearSelection();
-            textAreaComune.clear();*/
+
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
@@ -435,9 +426,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
     //disponibilità -> afterlogin
     public void exitAction(ActionEvent actionEvent) throws IOException {
 
-        //inizializzazione nuova disponibilità
-
-        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
+        //salvataggio nuova disponibilità
 
         model.saveDisponibilità();
 

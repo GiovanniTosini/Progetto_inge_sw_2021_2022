@@ -87,7 +87,6 @@ public class ControllerAggiornaLavori implements Initializable {
     //updateWorkAction
     public void updateWorkAction(ActionEvent actionEvent) throws IOException {
 
-        //listaLavoratori=model.readJson(listaLavoratori);
         erroriAggiorna_label.setStyle("-fx-text-fill:#333;");
         nomeA_field.setStyle("-fx-text-fill:black");
         luogoA_field.setStyle("-fx-text-fill:black;");
@@ -95,14 +94,6 @@ public class ControllerAggiornaLavori implements Initializable {
         boolean flag=true;
         nomeAzienda = nomeA_field.getText();
         luogoAzienda = luogoA_field.getText();
-
-        Date dataDefault=null;
-
-        try {
-            dataDefault = new Date(01, 01, 2000);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
 
         if(nomeAzienda.equals("")) {
             nomeA_field.setStyle("-fx-text-fill:red");
@@ -128,8 +119,6 @@ public class ControllerAggiornaLavori implements Initializable {
         for (String stringa: arrMansioni) {
             mansioniLavoratore.add(stringa);
         }
-
-        //System.out.println(nomeAzienda + "\n" + luogoAzienda + "\n" + mansioni + "\n" + cash + "\n" + periodo2 + "\n");
 
         if(nomeAzienda.equals("") || luogoAzienda.equals("") || mansioniLavoratore.isEmpty() || cash==0 ||
                 (periodo2.checkDefault() && !periodo2.checkPreviousDate()))
@@ -171,16 +160,12 @@ public class ControllerAggiornaLavori implements Initializable {
 
         }
 
-        //listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);
-        //listaLavoratori=model.readJson(listaLavoratori);
-
         for(Lavoratore lavoratore : model.getListaLavoratoriFromModel().getListaLavoratori()){
 
             if(lavoratore.getNome().equals(ricercaNome) && lavoratore.getCognome().equals(ricercaCognome) && lavoratore.getDataDiNascita().equals(ricercaDate)){
 
                 model.setLavoratoreDaAggiornare(lavoratore);
-                //model.remove_saveWorker(lavoratore); rimosso per permettere di aggiornare il JSON in un unico blocco ed evitare che
-                //venga cancellata la lista se il programma viene interrotto
+
                 flag = true;
                 break;
             }
