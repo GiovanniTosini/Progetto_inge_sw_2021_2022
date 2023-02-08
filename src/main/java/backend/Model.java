@@ -67,6 +67,8 @@ public class Model {
         return listaProvince;
     }
 
+    public List<Disponibilità> getDisponibilità() { return disponibilità; }
+
     public void readJson() throws IOException {
 
         listaLavoratori = objectMapper.readValue(file, ListaLavoratori.class);

@@ -428,13 +428,21 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         //salvataggio nuova disponibilità
 
-        model.saveDisponibilità();
+        if(model.getDisponibilità().isEmpty()){
 
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
-        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            campiObbligatoriDisponibilità_label.setStyle("-fx-text-fill:red;");
+
+        }else{
+
+            model.saveDisponibilità();
+
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
+            stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+
+        }
 
     }
 

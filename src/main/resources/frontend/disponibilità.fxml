@@ -8,24 +8,24 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="1230.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ControllerAggiungiLavoratore">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #333;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.ControllerAggiungiLavoratore">
    <children>
-      <Label layoutX="379.0" layoutY="50.0" text="DISPONIBILITÀ ZONE E PERIODI" textFill="WHITE">
+      <Label layoutX="109.0" layoutY="50.0" text="DISPONIBILITÀ ZONE E PERIODI" textFill="WHITE">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="582.0" layoutY="136.0" text="Disponibilità comuni" textFill="WHITE" />
-      <ComboBox fx:id="disp_field" layoutX="582.0" layoutY="169.0" prefWidth="150.0" promptText="Seleziona comune" />
-      <Button layoutX="582.0" layoutY="241.0" mnemonicParsing="false" onAction="#saveComune" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI / RIMUOVI" />
-      <Label layoutX="755.0" layoutY="136.0" text="Tabella comuni disponibili" textFill="WHITE" />
-      <TextArea fx:id="textAreaComune" editable="false" layoutX="756.0" layoutY="168.0" prefHeight="116.0" prefWidth="138.0" promptText="Nessun comune aggiunto" />
-      <Label layoutX="342.0" layoutY="138.0" text="Periodo da:" textFill="WHITE" />
-      <Label layoutX="342.0" layoutY="220.0" text="a:" textFill="WHITE" />
-      <Button layoutX="454.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveAvailabilityAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA" />
-      <Button layoutX="667.0" layoutY="345.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #ffc900;" text="EXIT" />
-      <DatePicker fx:id="dataP_field" editable="false" layoutX="342.0" layoutY="169.0" onAction="#setInizioPeriodo" promptText="Scegli una data" />
-      <DatePicker fx:id="dataP2_field" editable="false" layoutX="342.0" layoutY="251.0" onAction="#setFinePeriodo" promptText="Scegli una data" />
-      <Label fx:id="campiObbligatoriDisponibilità_label" layoutX="572.0" layoutY="313.0" text="Campi mancanti o errati" />
+      <Label layoutX="312.0" layoutY="136.0" text="Disponibilità comuni" textFill="WHITE" />
+      <ComboBox fx:id="disp_field" layoutX="312.0" layoutY="169.0" prefWidth="150.0" promptText="Seleziona comune" />
+      <Button layoutX="312.0" layoutY="241.0" mnemonicParsing="false" onAction="#saveComune" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc900;" text="AGGIUNGI / RIMUOVI" />
+      <Label layoutX="485.0" layoutY="136.0" text="Tabella comuni disponibili" textFill="WHITE" />
+      <TextArea fx:id="textAreaComune" editable="false" layoutX="486.0" layoutY="168.0" prefHeight="116.0" prefWidth="138.0" promptText="Nessun comune aggiunto" />
+      <Label layoutX="72.0" layoutY="138.0" text="Periodo da:" textFill="WHITE" />
+      <Label layoutX="72.0" layoutY="220.0" text="a:" textFill="WHITE" />
+      <Button layoutX="184.0" layoutY="345.0" mnemonicParsing="false" onAction="#saveAvailabilityAction" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #ffc900;" text="SALVA E CONTINUA" />
+      <Button layoutX="397.0" layoutY="345.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="40.0" prefWidth="109.0" style="-fx-background-color: #ffc900;" text="EXIT" />
+      <DatePicker fx:id="dataP_field" editable="false" layoutX="72.0" layoutY="169.0" onAction="#setInizioPeriodo" promptText="Scegli una data" />
+      <DatePicker fx:id="dataP2_field" editable="false" layoutX="72.0" layoutY="251.0" onAction="#setFinePeriodo" promptText="Scegli una data" />
+      <Label fx:id="campiObbligatoriDisponibilità_label" layoutX="211.0" layoutY="315.0" text="Campi da inserire almeno una volta mancanti o errati" />
    </children>
 </Pane>
