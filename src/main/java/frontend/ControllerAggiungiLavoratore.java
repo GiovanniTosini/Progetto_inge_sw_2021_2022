@@ -367,7 +367,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         if(!flag) {
 
-            model.add_saveWorker(lavoratore);
+            model.saveNewWorker(lavoratore);
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("disponibilità.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
@@ -434,7 +434,7 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
         }else{
 
-            model.saveDisponibilità();
+            model.saveLavoratoreConDisponibilità();
 
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();

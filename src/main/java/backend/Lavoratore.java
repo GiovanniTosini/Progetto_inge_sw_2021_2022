@@ -65,6 +65,21 @@ public class Lavoratore extends Persona{
     }
     public boolean checkDate(Date birthDate){
 
+        Date defaultDate = new Date();
+
+        {
+            try {
+                defaultDate = new Date(01, 01, 2000);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(birthDate.equals(defaultDate)){
+
+            return true;
+        }
+
         LocalDate mydate = LocalDate.now();
         Date date=new Date();
         date.setDay(mydate.getDayOfMonth());

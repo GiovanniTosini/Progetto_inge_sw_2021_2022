@@ -21,6 +21,7 @@ public class Model {
     private ListaLavoratori listaLavoratori = new ListaLavoratori();
     private List<Disponibilità> disponibilità = new ArrayList<>();
     private Lavoratore lavoratoreDaAggiornare = new Lavoratore();
+    private Lavoratore lavoratoreNuovo = new Lavoratore();
 
     ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
 
@@ -67,7 +68,7 @@ public class Model {
         return listaProvince;
     }
 
-    public List<Disponibilità> getDisponibilità() { return disponibilità; }
+    public List<Disponibilità> getDisponibilità() { return lavoratoreNuovo.disponibilità; }
 
     public void readJson() throws IOException {
 
@@ -87,28 +88,25 @@ public class Model {
     }
 
 
+    public void saveNewWorker(Lavoratore lavoratore) throws IOException{
+
+        lavoratoreNuovo=lavoratore;
+    }
+
     public void addDisponibilità(Periodo periodo, Set<String> comuni) {
 
         Disponibilità nuovaDisp = new Disponibilità(periodo,comuni);
 
-        disponibilità.add(nuovaDisp);
+        lavoratoreNuovo.disponibilità.add(nuovaDisp);
 
     }
 
 
-    public void saveDisponibilità() throws IOException {
+    public void saveLavoratoreConDisponibilità() throws IOException {
 
-        Lavoratore newlavoratore = listaLavoratori.getListaLavoratori().get(listaLavoratori.getListaLavoratori().size() - 1);
-
-        listaLavoratori.getListaLavoratori().remove(listaLavoratori.getListaLavoratori().size()-1);
-
-        newlavoratore.setDisponibilità(disponibilità);
-
-        listaLavoratori.getListaLavoratori().add(newlavoratore);
+        listaLavoratori.getListaLavoratori().add(lavoratoreNuovo);
 
         writeJson(listaLavoratori);
-
-        disponibilità.clear();
     }
 
     public void inizializzaListe(){

@@ -117,7 +117,8 @@ public class ControllerAggiornaLavori implements Initializable {
         String[] arrMansioni = testoMan.split("\n");
 
         for (String stringa: arrMansioni) {
-            mansioniLavoratore.add(stringa);
+            if(!stringa.equals(""))
+                mansioniLavoratore.add(stringa);
         }
 
         if(nomeAzienda.equals("") || luogoAzienda.equals("") || mansioniLavoratore.isEmpty() || cash==0 ||
@@ -127,7 +128,7 @@ public class ControllerAggiornaLavori implements Initializable {
         if(flag) {
             Lavoro lavoroTemp = new Lavoro(periodo2, nomeAzienda, luogoAzienda, mansioniLavoratore, cash);
             model.updateWorks(lavoroTemp);
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AggiornaLavoro.fxml")));
             stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             scene = new Scene(root);
             stage.setScene(scene);
