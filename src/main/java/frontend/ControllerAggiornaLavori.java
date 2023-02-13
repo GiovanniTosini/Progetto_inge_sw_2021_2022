@@ -189,6 +189,18 @@ public class ControllerAggiornaLavori implements Initializable {
 
     }
 
+    public void exitAction(ActionEvent actionEvent) throws IOException {
+
+        model.saveLavoratoreConLavori();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));
+        stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
     public void returnAction(ActionEvent actionEvent) throws IOException {
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("afterlogin.fxml")));

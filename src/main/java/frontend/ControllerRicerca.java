@@ -302,8 +302,7 @@ public class ControllerRicerca implements Initializable {
 
     }
 
-    //ci porta in effettuaricerche da afterlogin
-    //afterlogin -> effettuaricerche
+    //ci riporta in effettuaricerche
     public void ricercaAction(ActionEvent actionEvent) throws IOException {
 
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("EffettuaRicerche.fxml")));

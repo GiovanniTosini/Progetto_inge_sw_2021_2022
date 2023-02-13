@@ -15,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ControllerLogin {
@@ -38,18 +40,10 @@ public class ControllerLogin {
     //login -> afterlogin
     public void loginAction(ActionEvent actionEvent) throws Exception {
 
-
-        //inizializzo la lista lavoratori ogni volta che accendo il programma
-        DipendenteAgenzia aleLorini = new DipendenteAgenzia("Alessandro", "Lorini", "3317574347", "alelorini99@gmail.it", "Chiari", new Date(06,01,1999), "Italiano", "ale", "ale");
-        DipendenteAgenzia gabbaFausty = new DipendenteAgenzia("Gabriele", "Faustinoni", "3288865548", "gabrielefausty7@gmail.it", "Esine", new Date(25,05,2001), "Italiano", "gabba", "gabba");
-        DipendenteAgenzia poppoTosini = new DipendenteAgenzia("Giovanni", "Tosini", "3456789090", "poppo@gmail.it", "Soave", new Date(01,01,1995), "Italiano", "poppo", "poppo");
-
         String username_text = username_field.getText();
         String password_text = password_field.getText();
 
-        if ((username_text.compareTo(aleLorini.getLogin()) == 0 && password_text.compareTo(aleLorini.getPassword()) == 0) ||
-                (username_text.compareTo(gabbaFausty.getLogin()) == 0 && password_text.compareTo(gabbaFausty.getPassword()) == 0) ||
-                (username_text.compareTo(poppoTosini.getLogin()) == 0 && password_text.compareTo(poppoTosini.getPassword()) == 0)) {
+        if (checkCredenziali(username_text, password_text)) {
 
             model.readJson();
             model.inizializzaListe();
@@ -104,6 +98,26 @@ public class ControllerLogin {
         stage.setScene(scene);
         stage.show();
 
+    }
+
+    public boolean checkCredenziali(String username, String password) throws Exception {
+
+        List<DipendenteAgenzia> dipendenti = new ArrayList<>();
+
+        //inizializzo la lista lavoratori ogni volta che accendo il programma
+        DipendenteAgenzia aleLorini = new DipendenteAgenzia("Alessandro", "Lorini", "3317574347", "alelorini99@gmail.it", "Chiari", new Date(06,01,1999), "Italiano", "ale", "ale");
+        DipendenteAgenzia gabbaFausty = new DipendenteAgenzia("Gabriele", "Faustinoni", "3288865548", "gabrielefausty7@gmail.it", "Esine", new Date(25,05,2001), "Italiano", "gabba", "gabba");
+        DipendenteAgenzia poppoTosini = new DipendenteAgenzia("Giovanni", "Tosini", "3456789090", "poppo@gmail.it", "Soave", new Date(01,01,1995), "Italiano", "poppo", "poppo");
+
+        dipendenti.add(aleLorini);
+        dipendenti.add(gabbaFausty);
+        dipendenti.add(poppoTosini);
+
+        for (DipendenteAgenzia dipendente:dipendenti) {
+            if(username.equals(dipendente.getLogin()) && password.equals(dipendente.getPassword()))
+                return true;
+        }
+        return false;
     }
 
 }

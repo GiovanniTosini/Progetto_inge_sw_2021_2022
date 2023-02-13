@@ -19,7 +19,7 @@
       <TextField fx:id="luogoA_field" layoutX="748.0" layoutY="182.0" />
       <Label layoutX="110.0" layoutY="244.0" text="Retribuzione lorda giornaliera" textFill="WHITE" />
       <TextField fx:id="cash_field" layoutX="111.0" layoutY="276.0" />
-      <Button layoutX="772.0" layoutY="349.0" mnemonicParsing="false" onAction="#returnAction" prefHeight="40.0" prefWidth="131.0" style="-fx-background-color: #ffc900;" text="EXIT" />
+      <Button layoutX="772.0" layoutY="349.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="40.0" prefWidth="131.0" style="-fx-background-color: #ffc900;" text="EXIT" />
       <DatePicker fx:id="data2_field" editable="false" layoutX="110.0" layoutY="182.0" onAction="#setInizioPeriodo2" promptText="Scegli una data" />
       <DatePicker fx:id="data3_field" editable="false" layoutX="304.0" layoutY="182.0" onAction="#setFinePeriodo2" promptText="Scegli una data" />
       <Label layoutX="311.0" layoutY="244.0" text="Mansioni svolte" textFill="WHITE" />

@@ -19,7 +19,6 @@ public class Model {
     private ObjectMapper objectMapper = new ObjectMapper();
     private File file = new File("lavoratori.json");
     private ListaLavoratori listaLavoratori = new ListaLavoratori();
-    private List<Disponibilità> disponibilità = new ArrayList<>();
     private Lavoratore lavoratoreDaAggiornare = new Lavoratore();
     private Lavoratore lavoratoreNuovo = new Lavoratore();
 
@@ -81,14 +80,7 @@ public class Model {
 
     }
 
-    public void add_saveWorker(Lavoratore lavoratore) throws IOException {
-
-        listaLavoratori.getListaLavoratori().add(lavoratore);
-        writeJson(listaLavoratori);
-    }
-
-
-    public void saveNewWorker(Lavoratore lavoratore) throws IOException{
+    public void saveNewWorker(Lavoratore lavoratore){
 
         lavoratoreNuovo=lavoratore;
     }
@@ -150,16 +142,18 @@ public class Model {
         }
     }
 
-    public void remove_saveWorker(Lavoratore lavoratore) throws IOException {
-        listaLavoratori.getListaLavoratori().remove(lavoratore);
-        writeJson(listaLavoratori);
+
+    public void updateWorks(Lavoro lavoro){
+
+        lavoratoreDaAggiornare.lavori.add(lavoro);
     }
 
-    public void updateWorks(Lavoro lavoro) throws IOException {
+    public void saveLavoratoreConLavori() throws IOException {
 
-        remove_saveWorker(lavoratoreDaAggiornare);
-        lavoratoreDaAggiornare.lavori.add(lavoro);
-        add_saveWorker(lavoratoreDaAggiornare);
+        listaLavoratori.getListaLavoratori().remove(lavoratoreDaAggiornare);
+        listaLavoratori.getListaLavoratori().add(lavoratoreDaAggiornare);
+        writeJson(listaLavoratori);
+
     }
 
 }
