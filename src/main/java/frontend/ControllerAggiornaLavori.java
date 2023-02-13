@@ -23,55 +23,55 @@ public class ControllerAggiornaLavori implements Initializable {
 
     private Stage stage;
     private Scene scene;
-    Model model = Model.getModel();
-    Set<String> mansioniLavoratore = new HashSet<>();
+    public Model model = Model.getModel();
+    public Set<String> mansioniLavoratore = new HashSet<>();
 
     @FXML
-    TextField ricercaNome_field;
+    public TextField ricercaNome_field;
 
     @FXML
-    TextField ricercaCognome_field;
+    public TextField ricercaCognome_field;
 
     @FXML
-    TextField nomeA_field;
+    public TextField nomeA_field;
 
     @FXML
-    TextField luogoA_field;
+    public TextField luogoA_field;
 
     @FXML
-    TextField cash_field;
+    public TextField cash_field;
 
     @FXML
-    Label erroriRicercaLavoratore_label;
+    public Label erroriRicercaLavoratore_label;
 
     @FXML
-    Label erroriAggiorna_label;
+    public Label erroriAggiorna_label;
 
     @FXML
-    TextArea textAreaMansioni;
+    public TextArea textAreaMansioni;
 
     @FXML
-    ComboBox<String> mansioni_field = new ComboBox<>();
+    public ComboBox<String> mansioni_field = new ComboBox<>();
 
     @FXML
-    DatePicker ricercaData_field;
+    public DatePicker ricercaData_field;
 
     @FXML
-    DatePicker data2_field;
+    public DatePicker data2_field;
 
     @FXML
-    DatePicker data3_field;
+    public DatePicker data3_field;
 
-    String ricercaNome;
-    String ricercaCognome;
-    String mansioni;
-    String nomeAzienda;
-    String luogoAzienda;
-    float cash;
+    public String ricercaNome;
+    public String ricercaCognome;
+    public String mansioni;
+    public String nomeAzienda;
+    public String luogoAzienda;
+    public float cash;
 
-    Date ricercaDate;
-    Date inizioPeriodoDate;
-    Date finePeriodoDate;
+    public Date ricercaDate;
+    public Date inizioPeriodoDate;
+    public Date finePeriodoDate;
 
     {
         try {

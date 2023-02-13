@@ -28,65 +28,65 @@ public class ControllerRicerca implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    Model model = Model.getModel();
-    Set<String> mansioniLavoratoreRicerca = new HashSet<>();
+    public Model model = Model.getModel();
+    public Set<String> mansioniLavoratoreRicerca = new HashSet<>();
 
     @FXML
-    ComboBox<String> patenteRicerca_field = new ComboBox<>();
+    public ComboBox<String> patenteRicerca_field = new ComboBox<>();
     @FXML
-    ComboBox<String> mansioniRicerca_field = new ComboBox<>();
+    public ComboBox<String> mansioniRicerca_field = new ComboBox<>();
     @FXML
-    TextField luogoRicerca_field;
+    public TextField luogoRicerca_field;
     @FXML
-    TextField nomeRicerca_field;
+    public TextField nomeRicerca_field;
     @FXML
-    TextField cognomeRicerca_field;
+    public TextField cognomeRicerca_field;
     @FXML
-    RadioButton autoRicerca_field;
+    public RadioButton autoRicerca_field;
     @FXML
-    RadioButton autoRicerca_field2;
+    public RadioButton autoRicerca_field2;
     @FXML
-    RadioButton andSearch_field;
+    public RadioButton andSearch_field;
     @FXML
-    RadioButton orSearch_field;
+    public RadioButton orSearch_field;
     @FXML
-    CheckBox itaRicerca_field;
+    public CheckBox itaRicerca_field;
     @FXML
-    CheckBox alRicerca_field;
+    public CheckBox alRicerca_field;
     @FXML
-    CheckBox frRicerca_field;
+    public CheckBox frRicerca_field;
     @FXML
-    CheckBox sloRicerca_field;
+    public CheckBox sloRicerca_field;
     @FXML
-    CheckBox deRicerca_field;
+    public CheckBox deRicerca_field;
     @FXML
-    CheckBox enRicerca_field;
+    public CheckBox enRicerca_field;
     @FXML
-    CheckBox arRicerca_field;
+    public CheckBox arRicerca_field;
     @FXML
-    CheckBox ruRicerca_field;
+    public CheckBox ruRicerca_field;
     @FXML
-    CheckBox cinRicerca_field;
+    public CheckBox cinRicerca_field;
     @FXML
-    CheckBox spaRicerca_field;
+    public CheckBox spaRicerca_field;
     @FXML
-    TextArea textAreaMansioniRicerca;
+    public TextArea textAreaMansioniRicerca;
     @FXML
-    TextArea textAreaResRicerca;
+    public TextArea textAreaResRicerca;
     @FXML
-    DatePicker inizioPeriodoRicerca_field;
+    public DatePicker inizioPeriodoRicerca_field;
     @FXML
-    DatePicker finePeriodoRicerca_field;
+    public DatePicker finePeriodoRicerca_field;
 
-    String mansioniRicerca;
-    String nomeRicerca;
-    String cognomeRicerca;
-    String luogoRicerca;
-    String patenteRicerca;
-    Boolean autoRicerca;
+    public String mansioniRicerca;
+    public String nomeRicerca;
+    public String cognomeRicerca;
+    public String luogoRicerca;
+    public String patenteRicerca;
+    public Boolean autoRicerca;
 
-    Date inizioPeriodoRicercaDate;
-    Date finePeriodoRicercaDate;
+    public Date inizioPeriodoRicercaDate;
+    public Date finePeriodoRicercaDate;
 
     {
         try {

@@ -5,7 +5,7 @@ import java.util.List;
 
 public class ListaLavoratori {
 
-    List<Lavoratore> listaLavoratori;
+    public List<Lavoratore> listaLavoratori;
 
     public ListaLavoratori() {
         this.listaLavoratori = new ArrayList<>();

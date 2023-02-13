@@ -22,135 +22,135 @@ public class ControllerAggiungiLavoratore implements Initializable {
     private Stage stage;
     private Scene scene;
 
-    Model model = Model.getModel();
+    private Model model = Model.getModel();
 
-    Set<String> comuni = new HashSet<>();
+    private Set<String> comuni = new HashSet<>();
 
-    Set<String> esperienze = new HashSet<>();
+    private Set<String> esperienze = new HashSet<>();
 
-    List<Lavoro> lavori = new ArrayList<>();
-
-    @FXML
-    TextField nome_field;
+    public List<Lavoro> lavori = new ArrayList<>();
 
     @FXML
-    TextField cognome_field;
+    public TextField nome_field;
 
     @FXML
-    TextField luogo_field;
+    public TextField cognome_field;
 
     @FXML
-    TextField nazio_field;
+    public TextField luogo_field;
 
     @FXML
-    TextField via_field;
+    public TextField nazio_field;
 
     @FXML
-    TextField citta_field;
+    public TextField via_field;
 
     @FXML
-    TextField tel_field;
+    public TextField citta_field;
 
     @FXML
-    TextField email_field;
+    public TextField tel_field;
 
     @FXML
-    TextField nome2_field;
+    public TextField email_field;
 
     @FXML
-    TextField cognome2_field;
+    public TextField nome2_field;
 
     @FXML
-    TextField tel2_field;
+    public TextField cognome2_field;
 
     @FXML
-    TextField email2_field;
+    public TextField tel2_field;
 
     @FXML
-    TextArea textAreaComune;
+    public TextField email2_field;
 
     @FXML
-    TextArea textAreaEsp;
+    public TextArea textAreaComune;
 
     @FXML
-    DatePicker data_field;
+    public TextArea textAreaEsp;
 
     @FXML
-    DatePicker dataP_field;
+    public DatePicker data_field;
 
     @FXML
-    DatePicker dataP2_field;
+    public DatePicker dataP_field;
 
     @FXML
-    CheckBox ita_field;
+    public DatePicker dataP2_field;
 
     @FXML
-    CheckBox al_field;
+    public CheckBox ita_field;
 
     @FXML
-    CheckBox fr_field;
+    public CheckBox al_field;
 
     @FXML
-    CheckBox slo_field;
+    public CheckBox fr_field;
 
     @FXML
-    CheckBox de_field;
+    public CheckBox slo_field;
 
     @FXML
-    CheckBox en_field;
+    public CheckBox de_field;
 
     @FXML
-    CheckBox ar_field;
+    public CheckBox en_field;
 
     @FXML
-    CheckBox ru_field;
+    public CheckBox ar_field;
 
     @FXML
-    CheckBox cin_field;
+    public CheckBox ru_field;
 
     @FXML
-    CheckBox spa_field;
+    public CheckBox cin_field;
 
     @FXML
-    ComboBox<String> disp_field = new ComboBox<>();
+    public CheckBox spa_field;
 
     @FXML
-    ComboBox<String> esp_field = new ComboBox<>();
+    public ComboBox<String> disp_field = new ComboBox<>();
 
     @FXML
-    ComboBox<String> province_field = new ComboBox<>();
+    public ComboBox<String> esp_field = new ComboBox<>();
 
     @FXML
-    ComboBox<String> patente_field = new ComboBox<>();
+    public ComboBox<String> province_field = new ComboBox<>();
 
     @FXML
-    RadioButton auto_field;
+    public ComboBox<String> patente_field = new ComboBox<>();
 
     @FXML
-    Label campiObbligatori_label;
+    public RadioButton auto_field;
 
     @FXML
-    Label campiObbligatoriDisponibilità_label;
+    public Label campiObbligatori_label;
 
-    String nome;
-    String cognome;
-    String luogo;
-    String nazio;
-    String tel;
-    String email;
-    String nome2;
-    String cognome2;
-    String tel2;
-    String email2;
-    String patente;
-    String province;
-    String disp;
-    String esp;
-    Boolean auto = false;
+    @FXML
+    public Label campiObbligatoriDisponibilità_label;
 
-    Date birthDate;
-    Date inizioPeriodoDate;
-    Date finePeriodoDate;
+    public String nome;
+    public String cognome;
+    public String luogo;
+    public String nazio;
+    public String tel;
+    public String email;
+    public String nome2;
+    public String cognome2;
+    public String tel2;
+    public String email2;
+    public String patente;
+    public String province;
+    public String disp;
+    public String esp;
+    public Boolean auto = false;
+
+    public Date birthDate;
+    public Date inizioPeriodoDate;
+    public Date finePeriodoDate;
 
 
     {

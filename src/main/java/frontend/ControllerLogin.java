@@ -21,20 +21,20 @@ import java.util.Objects;
 
 public class ControllerLogin {
 
-    Model model = Model.getModel();
+    public Model model = Model.getModel();
 
 
     private Stage stage;
     private Scene scene;
 
     @FXML
-    TextField username_field;
+    public TextField username_field;
 
     @FXML
-    PasswordField password_field;
+    public PasswordField password_field;
 
     @FXML
-    Label status_label;
+    public Label status_label;
 
     //funzione che verifica i dati inseriti di login e ci porta ad afterlogin
     //login -> afterlogin
@@ -108,10 +108,12 @@ public class ControllerLogin {
         DipendenteAgenzia aleLorini = new DipendenteAgenzia("Alessandro", "Lorini", "3317574347", "alelorini99@gmail.it", "Chiari", new Date(06,01,1999), "Italiano", "ale", "ale");
         DipendenteAgenzia gabbaFausty = new DipendenteAgenzia("Gabriele", "Faustinoni", "3288865548", "gabrielefausty7@gmail.it", "Esine", new Date(25,05,2001), "Italiano", "gabba", "gabba");
         DipendenteAgenzia poppoTosini = new DipendenteAgenzia("Giovanni", "Tosini", "3456789090", "poppo@gmail.it", "Soave", new Date(01,01,1995), "Italiano", "poppo", "poppo");
+        DipendenteAgenzia carloCombi=new DipendenteAgenzia("Carlo", "Combi", "1234567890", "carlo.combi@univr.it", "Verona", new Date(01,01,1980), "Italiano", "carlo", "combi");
 
         dipendenti.add(aleLorini);
         dipendenti.add(gabbaFausty);
         dipendenti.add(poppoTosini);
+        dipendenti.add(carloCombi);
 
         for (DipendenteAgenzia dipendente:dipendenti) {
             if(username.equals(dipendente.getLogin()) && password.equals(dipendente.getPassword()))

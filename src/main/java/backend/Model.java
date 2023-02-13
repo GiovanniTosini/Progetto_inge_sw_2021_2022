@@ -22,13 +22,13 @@ public class Model {
     private Lavoratore lavoratoreDaAggiornare = new Lavoratore();
     private Lavoratore lavoratoreNuovo = new Lavoratore();
 
-    ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
+    public ObservableList<String> list = FXCollections.observableArrayList("A", "B", "C", "D");
 
-    String[] listaComuni = new String[110];
+    public String[] listaComuni = new String[110];
 
-    String[] listaEsperienze = new String[69];
+    public String[] listaEsperienze = new String[69];
 
-    String[] listaProvince = new String[110];
+    public String[] listaProvince = new String[110];
 
     public Model() {
 
