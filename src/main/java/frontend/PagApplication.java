@@ -15,7 +15,7 @@ public class PagApplication extends Application {
 
         stage.setResizable(false);
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("login.fxml")));
-        stage.setTitle("PAG TECNOLOGY");
+        stage.setTitle("PAG TECHNOLOGY");
         stage.setScene(new Scene(root));
         stage.show();
 

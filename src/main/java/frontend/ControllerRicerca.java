@@ -112,6 +112,13 @@ public class ControllerRicerca implements Initializable {
 
         Periodo periodoRicerca = new Periodo(inizioPeriodoRicercaDate, finePeriodoRicercaDate);
 
+        Date dataDefault=null;
+        try {
+            dataDefault = new Date(01, 01, 2000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         if (patenteRicerca_field.getSelectionModel().getSelectedItem() != null) {
             patenteRicerca = patenteRicerca_field.getSelectionModel().getSelectedItem();
         }
@@ -193,6 +200,20 @@ public class ControllerRicerca implements Initializable {
 
         }else{
 
+            if(nomeRicerca.equals("") && cognomeRicerca.equals("") && luogoRicerca.equals("") && patenteRicerca==null
+                && autoRicerca==null && lingueRicerca.isEmpty() && mansioniLavoratoreRicerca.isEmpty()
+                    && inizioPeriodoRicercaDate.equals(dataDefault) && finePeriodoRicercaDate.equals(dataDefault)){
+
+                for(Lavoratore lavoratore : model.getListaLavoratoriFromModel().getListaLavoratori()){
+
+                    String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
+                    String testoDaControllare = textAreaResRicerca.getText();
+
+                    if(!testoDaControllare.contains(lavoratoreDaScrivere))
+                        textAreaResRicerca.appendText(lavoratoreDaScrivere);
+                }
+            }
+
             for(Lavoratore lavoratore : model.getListaLavoratoriFromModel().getListaLavoratori()){
                 //controllo primi parametri (+facili)
                 if(lavoratore.getNome().equals(nomeRicerca) || lavoratore.getCognome().equals(cognomeRicerca) ||
@@ -216,7 +237,7 @@ public class ControllerRicerca implements Initializable {
                     }
                 }
 
-                for(String lingua:lingueRicerca){
+                for(String lingua: lingueRicerca){
                     if(lavoratore.lingueParlate.contains(lingua))
                         flag=true;
                 }
@@ -227,8 +248,6 @@ public class ControllerRicerca implements Initializable {
                             flag=true;
                     }
                 }
-
-
 
                 if(flag){
                     String lavoratoreDaScrivere = lavoratore.getNome() + " " + lavoratore.getCognome() + " " + lavoratore.getDataDiNascita() + "\n";
