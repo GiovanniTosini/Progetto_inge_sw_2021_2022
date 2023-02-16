@@ -16,16 +16,16 @@ public class Persona {
     public Persona(){}
 
     public boolean isNomeCheck(String nome) {
-        boolean nomeCheck=false;
+        boolean nomeCheck=true;
         if(numberChecker(nome))
-            nomeCheck=true;
+            nomeCheck=false;
         return nomeCheck;
     }
 
     public boolean isCognomeCheck(String cognome) {
-        boolean cognomeCheck=false;
+        boolean cognomeCheck=true;
         if(numberChecker(cognome))
-            cognomeCheck=true;
+            cognomeCheck=false;
         return cognomeCheck;
     }
 
@@ -43,8 +43,12 @@ public class Persona {
     ritorna true se la stringa contiene almeno un numero
     cicla un carattere alla volta controllando il valose ASCII
      */
-    private boolean numberChecker(String string){
-        return !string.matches("^[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+$");
+    public boolean numberChecker(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            return false;
+        }
+        String regex = "^[A-Z][a-z ]*([ ][A-Z][a-z]*)*$";
+        return inputString.matches(regex);
     }
 
     /*

@@ -19,9 +19,9 @@ public class Residenza {
     public Residenza(){}
 
     public boolean isCittàCheck(String città) {
-        boolean cittàCheck=false;
+        boolean cittàCheck=true;
         if(numberChecker(città) || !isFieldNull(città))
-            cittàCheck=true;
+            cittàCheck=false;
         return cittàCheck;
     }
 
@@ -37,8 +37,12 @@ public class Residenza {
         return via + ", " + città + ", " + provincia;
     }
 
-    private boolean numberChecker(String string){
-            return !string.matches("^[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+$");
+    public boolean numberChecker(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            return false;
+        }
+        String regex = "^[A-Z][a-z ]*([ ][A-Z][a-z]*)*$";
+        return inputString.matches(regex);
     }
 
     public String getVia() {

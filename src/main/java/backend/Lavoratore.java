@@ -51,16 +51,16 @@ public class Lavoratore extends Persona{
     }
 
     public boolean isLuogoCheck(String luogoDiNascita) {
-        boolean luogoCheck=false;
+        boolean luogoCheck=true;
         if(numberChecker(luogoDiNascita))
-            luogoCheck=true;
+            luogoCheck=false;
         return luogoCheck;
     }
 
     public boolean isNazionalitàCheck(String nazionalità) {
-        boolean nazionalitàCheck=false;
+        boolean nazionalitàCheck=true;
         if(numberChecker(nazionalità))
-            nazionalitàCheck=true;
+            nazionalitàCheck=false;
         return nazionalitàCheck;
     }
     public boolean checkDate(Date birthDate){
@@ -113,8 +113,12 @@ public class Lavoratore extends Persona{
         return true;
     }
 
-    private boolean numberChecker(String string){
-        return !string.matches("^[a-zA-ZÀ-ÖØ-öø-ÿ\\s]+$");
+    public boolean numberChecker(String inputString) {
+        if (inputString == null || inputString.isEmpty()) {
+            return false;
+        }
+        String regex = "^[A-Z][a-z ]*([ ][A-Z][a-z]*)*$";
+        return inputString.matches(regex);
     }
 
     public void setDisponibilità(List<Disponibilità> disponibilità) {
