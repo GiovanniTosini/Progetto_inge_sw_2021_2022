@@ -69,7 +69,7 @@ public class Lavoratore extends Persona{
 
         {
             try {
-                defaultDate = new Date(01, 01, 2000);
+                defaultDate = new Date(01, 01, 1920);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -171,7 +171,7 @@ public class Lavoratore extends Persona{
         Date dataDefault=null;
 
         try {
-            dataDefault = new Date(01, 01, 2000);
+            dataDefault = new Date(01, 01, 1920);
         } catch (Exception e) {
             e.printStackTrace();
         }

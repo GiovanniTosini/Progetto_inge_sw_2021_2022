@@ -155,9 +155,9 @@ public class ControllerAggiungiLavoratore implements Initializable {
 
     {
         try {
-            birthDate = new Date(01,01,2000);
-            inizioPeriodoDate = new Date(01, 01, 2000);
-            finePeriodoDate = new Date(01, 01, 2000);
+            birthDate = new Date(01,01,1920);
+            inizioPeriodoDate = new Date(01, 01, 1920);
+            finePeriodoDate = new Date(01, 01, 1920);
         } catch (Exception e) {
             e.printStackTrace();
         }

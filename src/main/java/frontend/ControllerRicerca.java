@@ -90,8 +90,8 @@ public class ControllerRicerca implements Initializable {
 
     {
         try {
-            inizioPeriodoRicercaDate = new Date(01,01,2000);
-            finePeriodoRicercaDate = new Date(01,01,2000);
+            inizioPeriodoRicercaDate = new Date(01,01,1920);
+            finePeriodoRicercaDate = new Date(01,01,1920);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,7 +114,7 @@ public class ControllerRicerca implements Initializable {
 
         Date dataDefault=null;
         try {
-            dataDefault = new Date(01, 01, 2000);
+            dataDefault = new Date(01, 01, 1920);
         } catch (Exception e) {
             e.printStackTrace();
         }

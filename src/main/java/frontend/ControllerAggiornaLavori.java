@@ -75,9 +75,9 @@ public class ControllerAggiornaLavori implements Initializable {
 
     {
         try {
-            ricercaDate = new Date(01,01,2000);
-            inizioPeriodoDate = new Date(01,01,2000);
-            finePeriodoDate = new Date(01,01,2000);
+            ricercaDate = new Date(01,01,1920);
+            inizioPeriodoDate = new Date(01,01,1920);
+            finePeriodoDate = new Date(01,01,1920);
         } catch (Exception e) {
             e.printStackTrace();
         }

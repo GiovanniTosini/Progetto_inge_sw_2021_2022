@@ -43,7 +43,7 @@ public class Periodo {
     public boolean checkDefault(){
         Date dataDefault=null;
         try {
-            dataDefault = new Date(01, 01, 2000);
+            dataDefault = new Date(01, 01, 1920);
         } catch (Exception e) {
             e.printStackTrace();
         }
