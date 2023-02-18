@@ -203,10 +203,18 @@ sarebbe risultata controproducente al fine del diagramma delle attività.
 
     \subsection{Diagramma delle classi}
 
-    \includegraphics[width=\linewidth]{class diagram.png}
+    \includegraphics[width=\linewidth]{DipendenteAgenzia.png}
 
-    Il class diagram corrisponde alla vista del Model e del Controller.
-Possiamo osservare che le classi sono state istanziate nella sintassi UML e contengono i vari metodi ed attributi.
+     \includegraphics[width=\linewidth]{java.png}
+
+    
+
+
+Possiamo osservare che le classi sono state istanziate nella sintassi UML e contengono i vari metodi ed attributi. I lucchetti indicano la visibilità dei metodi e dei attributi:
+\begin{itemize}
+\item I lucchetti rossi e chiusi indicano che il metodo, l'attributo o la classe hanno visibilità privata;
+\item I lucchetti verdi e aperti indicano che si tratta di un elemento con visibilità pubblica.
+\end{itemize}
 
 Per quanto riguarda i campi dei controller, alcuni vengono utilizzati per consentirci di estrapolare dall'interfaccia grafica i dati inseriti dall'utente.
 Notiamo che la classe Model è responsabile nella gestione dei dati dei lavoratori, ci permette di salvarli e di leggerli da un file JSON. In sostanza si occupa di tutta la gestione dei dati da e verso l'applicativo. Per poter utilizzare i suoi metodi, i controller usufruiranno del getModel() che si occuperà di ritornare l'istanza del model, in modo che i controller possano utilizzare i suoi metodi per leggere o scrivere i dati.
@@ -222,8 +230,23 @@ Infine possiamo notare una gerarchia tra le classi DipendenteAgenzia, Lavoratore
 
 
     \subsection{Sequence Diagram}
-
-    Da fare?
+    
+    \includesvg[height=3.4in]{diagramma login.svg}
+    
+    Sequence diagram della fase di Login.
+    
+    \includesvg[height=3.5in]{diagramma aggiungiLavoratore.svg}
+    
+    Sequence diagram dell' inserimento di un nuovo lavoratore nel sistema.
+    
+    \includesvg[height=3.5in]{diagramma aggiornaLavori.svg}
+    
+    Sequence diagram dell' operazione di aggiornamento di un lavoro.
+    
+    \includesvg[height=3.5in]{diagramma ricercaLavoratore.svg}
+    
+    Sequence diagram della ricerca di un lavoratore nel sistema.
+    
 
     \subsection{Design Pattern}
 
